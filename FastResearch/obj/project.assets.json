@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "UAP,Version=v10.0.15063": {
+    "UAP,Version=v10.0.14393": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -290,6 +290,68 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml.pri": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml.dll": {
+            "assetType": "native",
+            "rid": "win10-arm64"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml.pri": {
+            "assetType": "native",
+            "rid": "win10-arm64"
+          },
+          "runtimes/win10-arm64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {
+            "assetType": "native",
+            "rid": "win10-arm64"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.pri": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.pri": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -2106,6 +2168,15 @@
           "lib/win81/_._": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -2211,7 +2282,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.15063/win10-arm": {
+    "UAP,Version=v10.0.14393/win10-arm": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -2448,6 +2519,23 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml.dll": {},
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml.pri": {},
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -4412,6 +4500,15 @@
           "lib/win81/_._": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -4511,7 +4608,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.15063/win10-arm-aot": {
+    "UAP,Version=v10.0.14393/win10-arm-aot": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -4749,6 +4846,23 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml.dll": {},
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml.pri": {},
+          "runtimes/win10-arm/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -6748,6 +6862,15 @@
           "lib/win81/_._": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -6847,7 +6970,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.15063/win10-arm64-aot": {
+    "UAP,Version=v10.0.14393/win10-arm64-aot": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -7083,6 +7206,18 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -8677,6 +8812,15 @@
           "lib/win81/_._": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -8776,7 +8920,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.15063/win10-x64": {
+    "UAP,Version=v10.0.14393/win10-x64": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -9016,6 +9160,23 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.dll": {},
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.pri": {},
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -10986,6 +11147,15 @@
           "lib/win81/_._": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -11085,7 +11255,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.15063/win10-x64-aot": {
+    "UAP,Version=v10.0.14393/win10-x64-aot": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -11326,6 +11496,23 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.dll": {},
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml.pri": {},
+          "runtimes/win10-x64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -13331,6 +13518,15 @@
           "lib/win81/_._": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -13430,7 +13626,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.15063/win10-x86": {
+    "UAP,Version=v10.0.14393/win10-x86": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -13670,6 +13866,23 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.dll": {},
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.pri": {},
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -15640,6 +15853,15 @@
           "lib/win81/_._": {}
         }
       },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -15739,7 +15961,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.15063/win10-x86-aot": {
+    "UAP,Version=v10.0.14393/win10-x86-aot": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -15980,6 +16202,23 @@
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
+      },
+      "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.dll": {},
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml.pri": {},
+          "runtimes/win10-x86/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png": {}
+        },
+        "build": {
+          "build/Microsoft.UI.Xaml.targets": {}
+        }
       },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
@@ -17983,6 +18222,15 @@
         },
         "runtime": {
           "lib/win81/_._": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
         }
       },
       "System.Xml.ReaderWriter/4.0.11": {
@@ -20688,6 +20936,38 @@
         "microsoft.netcore.windows.apisets.1.0.1.nupkg.sha512",
         "microsoft.netcore.windows.apisets.nuspec",
         "runtime.json"
+      ]
+    },
+    "Microsoft.UI.Xaml/2.1.190218001-prerelease": {
+      "sha512": "Q2e5S91mdtEtkdF4SPACCe8DMERRQnhlwUZknLn4UAx9Q7BRohb5e9NQSqDL5wy488QBBgSN2qsxcPPBGyGpxA==",
+      "type": "package",
+      "path": "microsoft.ui.xaml/2.1.190218001-prerelease",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Microsoft.UI.Xaml.targets",
+        "build/native/Microsoft.UI.Xaml.targets",
+        "lib/uap10.0/Design/Microsoft.UI.Xaml.Design.dll",
+        "lib/uap10.0/Microsoft.UI.Xaml.winmd",
+        "lib/uap10.0/Microsoft.UI.Xaml.xml",
+        "lib/uap10.0/Microsoft.UI.Xaml/Themes/Generic.xaml",
+        "microsoft.ui.xaml.2.1.190218001-prerelease.nupkg.sha512",
+        "microsoft.ui.xaml.nuspec",
+        "readme.txt",
+        "runtimes/win10-arm/native/Microsoft.UI.Xaml.dll",
+        "runtimes/win10-arm/native/Microsoft.UI.Xaml.pri",
+        "runtimes/win10-arm/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png",
+        "runtimes/win10-arm64/native/Microsoft.UI.Xaml.dll",
+        "runtimes/win10-arm64/native/Microsoft.UI.Xaml.pri",
+        "runtimes/win10-arm64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png",
+        "runtimes/win10-x64/native/Microsoft.UI.Xaml.dll",
+        "runtimes/win10-x64/native/Microsoft.UI.Xaml.pri",
+        "runtimes/win10-x64/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png",
+        "runtimes/win10-x86/native/Microsoft.UI.Xaml.dll",
+        "runtimes/win10-x86/native/Microsoft.UI.Xaml.pri",
+        "runtimes/win10-x86/native/Microsoft.UI.Xaml/Assets/NoiseAsset_256x256_PNG.png",
+        "tools/VisualStudioToolsManifest.xml"
       ]
     },
     "Microsoft.VisualBasic/10.0.1": {
@@ -27656,6 +27936,50 @@
         "system.threading.timer.nuspec"
       ]
     },
+    "System.ValueTuple/4.5.0": {
+      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "type": "package",
+      "path": "system.valuetuple/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.ValueTuple.dll",
+        "lib/net461/System.ValueTuple.xml",
+        "lib/net47/System.ValueTuple.dll",
+        "lib/net47/System.ValueTuple.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/netstandard1.0/System.ValueTuple.xml",
+        "lib/netstandard2.0/_._",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.ValueTuple.dll",
+        "ref/net47/System.ValueTuple.dll",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard2.0/_._",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.5.0.nupkg.sha512",
+        "system.valuetuple.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Xml.ReaderWriter/4.0.11": {
       "sha512": "ZIiLPsf67YZ9zgr31vzrFaYQqxRPX9cVHjtPSnmx4eN6lbS/yEyYNr2vs1doGDEscF0tjCZFsk9yUg1sC9e8tg==",
       "type": "package",
@@ -27904,8 +28228,10 @@
     }
   },
   "projectFileDependencyGroups": {
-    "UAP,Version=v10.0.15063": [
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.3"
+    "UAP,Version=v10.0.14393": [
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.3",
+      "Microsoft.UI.Xaml >= 2.1.190218001-prerelease",
+      "System.ValueTuple >= 4.5.0"
     ]
   },
   "packageFolders": {
@@ -27930,24 +28256,32 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "uap10.0.15063"
+        "uap10.0.14393"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "uap10.0.15063": {
+        "uap10.0.14393": {
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "uap10.0.15063": {
+      "uap10.0.14393": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.3, )"
+          },
+          "Microsoft.UI.Xaml": {
+            "target": "Package",
+            "version": "[2.1.190218001-prerelease, )"
+          },
+          "System.ValueTuple": {
+            "target": "Package",
+            "version": "[4.5.0, )"
           }
         }
       }

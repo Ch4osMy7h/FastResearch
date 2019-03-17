@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
-using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+using Windows.UI.Xaml.Media.Animation;
 
 namespace FastResearch
 {
@@ -25,6 +13,10 @@ namespace FastResearch
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private void ContentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+        }
         public MainPage()
         {
             this.InitializeComponent();
@@ -36,6 +28,59 @@ namespace FastResearch
             coreTitleBar.ExtendViewIntoTitleBar = true;//变没
             var appTitleBar = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar;//获取最大化、最小化、关闭按钮
             appTitleBar.ButtonBackgroundColor = Colors.Black;//背景变黑
+        }
+        private readonly  List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
+        {
+            ("Tools", typeof(ToolsPage)),
+            ("Papers", typeof(PapersPage)),
+        };
+        private void NavView_Loaded(object sender, RoutedEventArgs e) 
+        {
+            // You can also add items in code.
+            NvFastResearch.MenuItems.Add(new NavigationViewItemSeparator());
+            NvFastResearch.MenuItems.Add(new NavigationViewItem
+            {
+                Content = "Tools",
+                Icon = new SymbolIcon((Symbol)0xF1AD),
+                Tag = "Toolspage"
+            });
+            _pages.Add(("Tools", typeof(ToolsPage)));
+
+
+
+            // NavView doesn't load any page by default, so load home page.
+            NvFastResearch.SelectedItem = NvFastResearch.MenuItems[0];
+            // If navigation occurs on SelectionChanged, this isn't needed.
+            // Because we use ItemInvoked to navigate, we need to call Navigate
+            // here to load the home page.
+            NavView_Navigate("home", new EntranceNavigationTransitionInfo());
+
+        }
+        private void NavView_ItemInvoked(NavigationView sender,
+                                         NavigationViewItemInvokedEventArgs args)
+        {
+            if (args.IsSettingsInvoked == true)
+            {
+                NavView_Navigate("settings", args.RecommendedNavigationTransitionInfo);
+            }
+            else if (args.InvokedItemContainer != null)
+            {
+                var navItemTag = args.InvokedItemContainer.Tag.ToString();
+                NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
+            }
+        }
+        private void NavView_Navigate(string navItemTag, NavigationTransitionInfo transitionInfo)
+        {
+            Type _page = null;
+            if (navItemTag == "settings")
+            {
+                _page = typeof(SettingsPage);
+            }
+            var preNavPageType = ContentFrame.CurrentSourcePageType;
+            if (!(_page is null) && !Type.Equals(preNavPageType, _page))
+            {
+                ContentFrame.Navigate(_page, null, transitionInfo);
+            }
         }
     }
 }
