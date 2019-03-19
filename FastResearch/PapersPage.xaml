@@ -5,10 +5,23 @@
     xmlns:local="using:FastResearch"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/timg.png"/>
+    </Page.Background>
 
-    <Grid>
-
-    </Grid>
+    <GridView ItemsSource="{x:Bind ViewModel.PaperAreas}" 
+              HorizontalAlignment="Left">
+        <GridView.ItemTemplate>
+            <DataTemplate x:DataType="local:PaperArea">
+                <StackPanel Orientation="Vertical" Margin="4">
+                    <SymbolIcon Symbol="Document"/>
+                    <RelativePanel>
+                        <TextBlock Text="{x:Bind Name}" Name ="PaperName" FontWeight="Bold"/>
+                        <TextBlock Text="{x:Bind Description}" RelativePanel.AlignTopWith="PaperName"/>
+                    </RelativePanel>
+                </StackPanel>
+            </DataTemplate>
+        </GridView.ItemTemplate>
+    </GridView>
 </Page>

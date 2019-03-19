@@ -1,1 +1,1 @@
-C:\Users\Roy\source\repos\FastResearch\FastResearch\FastResearch.csproj;x86
+C:\FastResearch\FastResearch\FastResearch.csproj;x86
