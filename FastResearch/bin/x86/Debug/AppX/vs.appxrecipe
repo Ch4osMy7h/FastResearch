@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>D942</Machine>
-    <WindowsUser>linzhichao</WindowsUser>
+    <Machine>DESKTOP-KAN1DFV</Machine>
+    <WindowsUser>Roy</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>3980691f-e003-4ddf-ab5e-c7aa40743121</PackageIdentityName>
     <PackageIdentityPublisher>CN=Roy</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\FastResearch\FastResearch\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\FastResearch\FastResearch\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>CE7F3CCFA44F944E502A593E4197391785AA6A49B73FAE036799101554283572</RegisteredManifestChecksum>
+    <LayoutDir>C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>C90920A0416642A30B6AF84A793227489428D74B2247CFE63FE2B5E939DAB20F</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>3980691f-e003-4ddf-ab5e-c7aa40743121_1.0.0.0_x86__f9xe9tb5b0vkt</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>3980691f-e003-4ddf-ab5e-c7aa40743121_f9xe9tb5b0vkt!App</RegisteredUserModeAppID>
     <RegisteredPackageID>3980691f-e003-4ddf-ab5e-c7aa40743121</RegisteredPackageID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\FastResearch\FastResearch\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-19T15:26:01.338</Modified>
+      <Modified>2019-03-17T04:22:03.784</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\FastResearch.exe">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.exe">
       <PackagePath>entrypoint\FastResearch.exe</PackagePath>
-      <Modified>2019-03-19T15:26:00.574</Modified>
+      <Modified>2019-03-17T04:21:59.065</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -90,7 +90,7 @@
       <PackagePath>System.dll</PackagePath>
       <Modified>2016-07-01T09:10:48.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml.dll">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml.dll">
       <PackagePath>Microsoft.UI.Xaml.dll</PackagePath>
       <Modified>2019-02-18T10:30:48.000</Modified>
     </AppxPackagedFile>
@@ -198,9 +198,9 @@
       <PackagePath>clrcompression.dll</PackagePath>
       <Modified>2016-06-13T12:51:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win7.system.private.uri\4.0.2\runtimes\win\lib\netcore50\System.Private.Uri.dll">
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win7.system.private.uri\4.0.2\runtimes\win\lib\netcore50\System.Private.Uri.dll">
       <PackagePath>System.Private.Uri.dll</PackagePath>
-      <Modified>2016-07-01T07:48:12.000</Modified>
+      <Modified>2016-07-01T06:48:12.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\system.appcontext\4.1.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
@@ -482,7 +482,7 @@
       <PackagePath>System.Threading.Tasks.Parallel.dll</PackagePath>
       <Modified>2016-06-11T14:14:54.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.valuetuple\4.5.0\lib\netstandard1.0\System.ValueTuple.dll">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.valuetuple\4.5.0\lib\netstandard1.0\System.ValueTuple.dll">
       <PackagePath>System.ValueTuple.dll</PackagePath>
       <Modified>2018-05-15T05:29:52.000</Modified>
     </AppxPackagedFile>
@@ -502,11 +502,11 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-06-11T14:15:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png">
       <PackagePath>NoiseAsset_256x256_PNG.png</PackagePath>
       <Modified>2019-02-18T10:30:38.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\lib\uap10.0\Microsoft.UI.Xaml.winmd">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>
       <Modified>2019-02-18T10:30:54.000</Modified>
     </AppxPackagedFile>
@@ -514,87 +514,87 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2018-10-22T17:33:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\timg.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\timg.png">
       <PackagePath>Assets\timg.png</PackagePath>
-      <Modified>2019-03-18T06:58:54.679</Modified>
+      <Modified>2019-03-13T08:56:28.521</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2019-03-18T06:58:54.678</Modified>
+      <Modified>2019-03-03T12:31:32.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-18T06:58:54.678</Modified>
+      <Modified>2019-03-03T12:31:32.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-18T06:58:54.678</Modified>
+      <Modified>2019-03-03T12:31:32.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-18T06:58:54.678</Modified>
+      <Modified>2019-03-03T12:31:32.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-18T06:58:54.678</Modified>
+      <Modified>2019-03-03T12:31:32.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-18T06:58:54.678</Modified>
+      <Modified>2019-03-03T12:31:32.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-18T06:58:54.679</Modified>
+      <Modified>2019-03-03T12:31:32.723</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2019-03-18T06:58:54.681</Modified>
+      <Modified>2019-03-13T08:33:18.424</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\FastResearch.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.xr.xml">
       <PackagePath>FastResearch.xr.xml</PackagePath>
-      <Modified>2019-03-19T15:26:00.334</Modified>
+      <Modified>2019-03-17T04:21:58.329</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-03-19T15:26:00.374</Modified>
+      <Modified>2019-03-17T04:21:58.355</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:26:00.374</Modified>
+      <Modified>2019-03-17T04:21:58.356</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\PapersPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\PapersPage.xbf">
       <PackagePath>PapersPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:26:00.375</Modified>
+      <Modified>2019-03-17T04:21:58.356</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\SettingsPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\SettingsPage.xbf">
       <PackagePath>SettingsPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:26:00.375</Modified>
+      <Modified>2019-03-17T04:21:58.357</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\ToolsPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\ToolsPage.xbf">
       <PackagePath>ToolsPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:26:00.375</Modified>
+      <Modified>2019-03-17T04:21:58.357</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-10-22T16:44:28.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
       <PackagePath>Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png</PackagePath>
       <Modified>2019-02-18T10:30:38.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-03-19T14:06:12.408</Modified>
+      <Modified>2019-03-17T04:22:01.261</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\Core\FastResearch.exe">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\FastResearch.exe">
       <PackagePath>FastResearch.exe</PackagePath>
-      <Modified>2019-03-19T15:26:01.323</Modified>
+      <Modified>2019-03-17T04:22:03.766</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

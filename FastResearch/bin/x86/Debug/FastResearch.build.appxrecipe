@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>D942</Machine>
-    <WindowsUser>linzhichao</WindowsUser>
+    <Machine>DESKTOP-KAN1DFV</Machine>
+    <WindowsUser>Roy</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>3980691f-e003-4ddf-ab5e-c7aa40743121</PackageIdentityName>
     <PackageIdentityPublisher>CN=Roy</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\FastResearch\FastResearch\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\FastResearch\FastResearch\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\FastResearch\FastResearch\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\FastResearch.exe">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.exe">
       <PackagePath>entrypoint\FastResearch.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
@@ -67,7 +67,7 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.netcore.portable.compatibility\1.0.2\lib\netcore50\System.dll">
       <PackagePath>System.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml.dll">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml.dll">
       <PackagePath>Microsoft.UI.Xaml.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.visualbasic\10.0.1\lib\netcore50\Microsoft.VisualBasic.dll">
@@ -148,7 +148,7 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win7-x86.runtime.native.system.io.compression\4.0.1\runtimes\win7-x86\native\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win7.system.private.uri\4.0.2\runtimes\win\lib\netcore50\System.Private.Uri.dll">
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win7.system.private.uri\4.0.2\runtimes\win\lib\netcore50\System.Private.Uri.dll">
       <PackagePath>System.Private.Uri.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\system.appcontext\4.1.0\lib\netcore50\System.AppContext.dll">
@@ -361,7 +361,7 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\system.threading.tasks.parallel\4.0.1\lib\netcore50\System.Threading.Tasks.Parallel.dll">
       <PackagePath>System.Threading.Tasks.Parallel.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.valuetuple\4.5.0\lib\netstandard1.0\System.ValueTuple.dll">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.valuetuple\4.5.0\lib\netstandard1.0\System.ValueTuple.dll">
       <PackagePath>System.ValueTuple.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\system.xml.readerwriter\4.0.11\lib\netcore50\System.Xml.ReaderWriter.dll">
@@ -376,76 +376,76 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\system.xml.xmlserializer\4.0.11\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png">
       <PackagePath>NoiseAsset_256x256_PNG.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\lib\uap10.0\Microsoft.UI.Xaml.winmd">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\timg.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\timg.png">
       <PackagePath>Assets\timg.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\FastResearch.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.xr.xml">
       <PackagePath>FastResearch.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\PapersPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\PapersPage.xbf">
       <PackagePath>PapersPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\SettingsPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\SettingsPage.xbf">
       <PackagePath>SettingsPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\ToolsPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\ToolsPage.xbf">
       <PackagePath>ToolsPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
+    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
       <PackagePath>Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\FastResearch\FastResearch\bin\x86\Debug\Core\FastResearch.exe">
+    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\FastResearch.exe">
       <PackagePath>FastResearch.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

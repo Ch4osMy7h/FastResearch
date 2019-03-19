@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using FastResearch;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,9 +25,6 @@ namespace FastResearch
         public PapersPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new PaperAreaViewModel();
         }
-
-        public PaperAreaViewModel ViewModel { get;  set; }
     }
 }

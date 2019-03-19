@@ -39,39 +39,15 @@
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition" />
     <RootType FullName="FastResearch.MainPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.GridView">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="ItemTemplate" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
-    <RootType FullName="Windows.UI.Xaml.DataTemplate">
-      <RootProperty Name="Template" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Children" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.SymbolIcon">
-      <RootProperty Name="Symbol" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
-      <RootProperty Name="Children" />
-      <RootMethod Name="GetAlignTopWith" />
-      <RootMethod Name="SetAlignTopWith" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Name" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="FontWeight" />
-    </RootType>
-    <RootType FullName="FastResearch.PapersPage" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Children" />
     </RootType>
+    <RootType FullName="FastResearch.PapersPage" />
     <RootType FullName="FastResearch.SettingsPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Text" />
+    </RootType>
     <RootType FullName="FastResearch.ToolsPage" />
   </Roots.RootTypes>
 </Roots>
