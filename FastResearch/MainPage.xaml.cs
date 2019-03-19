@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
+using System.Linq;
 
 namespace FastResearch
 {
@@ -31,8 +32,8 @@ namespace FastResearch
         }
         private readonly  List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
-            ("Tools", typeof(ToolsPage)),
-            ("Papers", typeof(PapersPage)),
+            ("ToolsPage", typeof(ToolsPage)),
+            ("PapersPage", typeof(PapersPage)),
         };
         private void NavView_Loaded(object sender, RoutedEventArgs e) 
         {
@@ -46,7 +47,7 @@ namespace FastResearch
             });
             _pages.Add(("Tools", typeof(ToolsPage)));
 
-
+            ContentFrame.Navigated += On_Navigated;
 
             // NavView doesn't load any page by default, so load home page.
             NvFastResearch.SelectedItem = NvFastResearch.MenuItems[0];
@@ -75,11 +76,41 @@ namespace FastResearch
             if (navItemTag == "settings")
             {
                 _page = typeof(SettingsPage);
+
+            }
+            else
+            {
+                var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
+                _page = item.Page;
             }
             var preNavPageType = ContentFrame.CurrentSourcePageType;
+
             if (!(_page is null) && !Type.Equals(preNavPageType, _page))
             {
+                ContentFrame.Navigate(typeof(ToolsPage));
                 ContentFrame.Navigate(_page, null, transitionInfo);
+            }
+        }
+        private void On_Navigated(object sender, NavigationEventArgs e)
+        {
+            NvFastResearch.IsBackEnabled = ContentFrame.CanGoBack;
+
+            if (ContentFrame.SourcePageType == typeof(SettingsPage))
+            {
+                // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
+                NvFastResearch.SelectedItem = (NavigationViewItem)NvFastResearch.SettingsItem;
+                NvFastResearch.Header = "Settings";
+            }
+            else if (ContentFrame.SourcePageType != null)
+            {
+                var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
+
+                NvFastResearch.SelectedItem = NvFastResearch.MenuItems
+                    .OfType<NavigationViewItem>()
+                    .First(n => n.Tag.Equals(item.Tag));
+
+                NvFastResearch.Header =
+                    ((NavigationViewItem)NvFastResearch.SelectedItem)?.Content?.ToString();
             }
         }
     }

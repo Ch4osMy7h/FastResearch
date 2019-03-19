@@ -241,3 +241,16 @@ C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\SettingsPage.g
 C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\SettingsPage.xaml
 C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\SettingsPage.xbf
 C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\SettingsPage.xbf
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\CommonServiceLocator.dll
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\GalaSoft.MvvmLight.dll
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\System.Console.dll
+C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\FxResources.System.Console.SR.resw
+C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\FxResources.System.Runtime.InteropServices.RuntimeInformation.SR.resw
+C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\FastResearch.csproj.GenerateResource.Cache
+C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml

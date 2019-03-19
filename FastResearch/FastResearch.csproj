@@ -180,6 +180,9 @@
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.1.190218001-prerelease</Version>
     </PackageReference>
+    <PackageReference Include="MvvmLight">
+      <Version>5.4.1.1</Version>
+    </PackageReference>
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
     </PackageReference>
