@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-KAN1DFV</Machine>
-    <WindowsUser>Roy</WindowsUser>
+    <Machine>D942</Machine>
+    <WindowsUser>linzhichao</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>3980691f-e003-4ddf-ab5e-c7aa40743121</PackageIdentityName>
     <PackageIdentityPublisher>CN=Roy</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\Roy\source\repos\FastResearch\FastResearch\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\linzhichao\source\repos\FastResearch\FastResearch\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>C90920A0416642A30B6AF84A793227489428D74B2247CFE63FE2B5E939DAB20F</RegisteredManifestChecksum>
+    <LayoutDir>C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>FB61AEA1F260CD61087B72DE2CB828FAA7E1C349DF185AD622E323D86A2A72EB</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>3980691f-e003-4ddf-ab5e-c7aa40743121_1.0.0.0_x86__f9xe9tb5b0vkt</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>3980691f-e003-4ddf-ab5e-c7aa40743121_f9xe9tb5b0vkt!App</RegisteredUserModeAppID>
     <RegisteredPackageID>3980691f-e003-4ddf-ab5e-c7aa40743121</RegisteredPackageID>
@@ -27,18 +27,18 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-19T15:16:20.839</Modified>
+      <Modified>2019-03-19T16:10:33.657</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.exe">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.exe">
       <PackagePath>entrypoint\FastResearch.exe</PackagePath>
-      <Modified>2019-03-19T15:16:19.724</Modified>
+      <Modified>2019-03-19T16:10:31.446</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\commonservicelocator\2.0.2\lib\netstandard1.0\CommonServiceLocator.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\commonservicelocator\2.0.2\lib\netstandard1.0\CommonServiceLocator.dll">
       <PackagePath>CommonServiceLocator.dll</PackagePath>
       <Modified>2018-01-03T04:27:08.000</Modified>
     </AppxPackagedFile>
@@ -94,7 +94,7 @@
       <PackagePath>System.dll</PackagePath>
       <Modified>2016-07-01T09:10:48.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml.dll">
       <PackagePath>Microsoft.UI.Xaml.dll</PackagePath>
       <Modified>2019-02-18T10:30:48.000</Modified>
     </AppxPackagedFile>
@@ -102,111 +102,111 @@
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
       <Modified>2016-06-11T14:13:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Extras.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Extras.dll">
       <PackagePath>GalaSoft.MvvmLight.Extras.dll</PackagePath>
       <Modified>2018-02-04T15:10:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Platform.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Platform.dll">
       <PackagePath>GalaSoft.MvvmLight.Platform.dll</PackagePath>
       <Modified>2018-02-04T15:10:50.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\mvvmlightlibs\5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.dll">
       <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
       <Modified>2018-02-04T15:10:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.collections\4.3.0\lib\netcore50\System.Collections.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.collections\4.3.0\lib\netcore50\System.Collections.dll">
       <PackagePath>System.Collections.dll</PackagePath>
       <Modified>2016-11-04T20:55:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.diagnostics.tools\4.3.0\lib\netcore50\System.Diagnostics.Tools.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.diagnostics.tools\4.3.0\lib\netcore50\System.Diagnostics.Tools.dll">
       <PackagePath>System.Diagnostics.Tools.dll</PackagePath>
       <Modified>2016-11-04T20:55:54.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.diagnostics.tracing\4.3.0\lib\netcore50\System.Diagnostics.Tracing.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.diagnostics.tracing\4.3.0\lib\netcore50\System.Diagnostics.Tracing.dll">
       <PackagePath>System.Diagnostics.Tracing.dll</PackagePath>
       <Modified>2016-11-04T20:55:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.globalization\4.3.0\lib\netcore50\System.Globalization.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.globalization\4.3.0\lib\netcore50\System.Globalization.dll">
       <PackagePath>System.Globalization.dll</PackagePath>
       <Modified>2016-11-04T20:56:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.globalization.calendars\4.3.0\lib\netcore50\System.Globalization.Calendars.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.globalization.calendars\4.3.0\lib\netcore50\System.Globalization.Calendars.dll">
       <PackagePath>System.Globalization.Calendars.dll</PackagePath>
       <Modified>2016-11-04T20:55:58.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.io\4.3.0\lib\netcore50\System.IO.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.io\4.3.0\lib\netcore50\System.IO.dll">
       <PackagePath>System.IO.dll</PackagePath>
       <Modified>2016-11-04T20:56:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.reflection\4.3.0\lib\netcore50\System.Reflection.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.reflection\4.3.0\lib\netcore50\System.Reflection.dll">
       <PackagePath>System.Reflection.dll</PackagePath>
       <Modified>2016-11-04T20:56:48.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.reflection.extensions\4.3.0\lib\netcore50\System.Reflection.Extensions.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.reflection.extensions\4.3.0\lib\netcore50\System.Reflection.Extensions.dll">
       <PackagePath>System.Reflection.Extensions.dll</PackagePath>
       <Modified>2016-11-04T20:56:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.reflection.primitives\4.3.0\lib\netcore50\System.Reflection.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.reflection.primitives\4.3.0\lib\netcore50\System.Reflection.Primitives.dll">
       <PackagePath>System.Reflection.Primitives.dll</PackagePath>
       <Modified>2016-11-04T20:56:44.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.resources.resourcemanager\4.3.0\lib\netcore50\System.Resources.ResourceManager.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.resources.resourcemanager\4.3.0\lib\netcore50\System.Resources.ResourceManager.dll">
       <PackagePath>System.Resources.ResourceManager.dll</PackagePath>
       <Modified>2016-11-04T20:56:50.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.runtime\4.3.0\lib\netcore50\System.Runtime.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.runtime\4.3.0\lib\netcore50\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2016-11-04T20:57:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.runtime.handles\4.3.0\lib\netstandard1.3\System.Runtime.Handles.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.runtime.handles\4.3.0\lib\netstandard1.3\System.Runtime.Handles.dll">
       <PackagePath>System.Runtime.Handles.dll</PackagePath>
       <Modified>2016-11-04T20:56:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.runtime.interopservices\4.3.0\lib\netcore50\System.Runtime.InteropServices.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.runtime.interopservices\4.3.0\lib\netcore50\System.Runtime.InteropServices.dll">
       <PackagePath>System.Runtime.InteropServices.dll</PackagePath>
       <Modified>2016-11-04T20:56:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.text.encoding\4.3.0\lib\netcore50\System.Text.Encoding.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.text.encoding\4.3.0\lib\netcore50\System.Text.Encoding.dll">
       <PackagePath>System.Text.Encoding.dll</PackagePath>
       <Modified>2016-11-04T20:57:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.text.encoding.extensions\4.3.0\lib\netcore50\System.Text.Encoding.Extensions.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.text.encoding.extensions\4.3.0\lib\netcore50\System.Text.Encoding.Extensions.dll">
       <PackagePath>System.Text.Encoding.Extensions.dll</PackagePath>
       <Modified>2016-11-04T20:57:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.threading.tasks\4.3.0\lib\netcore50\System.Threading.Tasks.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.threading.tasks\4.3.0\lib\netcore50\System.Threading.Tasks.dll">
       <PackagePath>System.Threading.Tasks.dll</PackagePath>
       <Modified>2016-11-04T20:57:24.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.any.system.threading.timer\4.3.0\lib\netcore50\System.Threading.Timer.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.any.system.threading.timer\4.3.0\lib\netcore50\System.Threading.Timer.dll">
       <PackagePath>System.Threading.Timer.dll</PackagePath>
       <Modified>2016-11-04T20:57:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win.microsoft.win32.primitives\4.3.0\runtimes\win\lib\netstandard1.3\Microsoft.Win32.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win.microsoft.win32.primitives\4.3.0\runtimes\win\lib\netstandard1.3\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
       <Modified>2016-11-04T20:55:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win.system.console\4.3.0\runtimes\win\lib\netcore50\System.Console.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win.system.console\4.3.0\runtimes\win\lib\netcore50\System.Console.dll">
       <PackagePath>System.Console.dll</PackagePath>
       <Modified>2016-11-04T20:55:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win.system.diagnostics.debug\4.3.0\runtimes\win\lib\netcore50\System.Diagnostics.Debug.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win.system.diagnostics.debug\4.3.0\runtimes\win\lib\netcore50\System.Diagnostics.Debug.dll">
       <PackagePath>System.Diagnostics.Debug.dll</PackagePath>
       <Modified>2016-11-04T20:55:48.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win.system.io.filesystem\4.3.0\runtimes\win\lib\netcore50\System.IO.FileSystem.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win.system.io.filesystem\4.3.0\runtimes\win\lib\netcore50\System.IO.FileSystem.dll">
       <PackagePath>System.IO.FileSystem.dll</PackagePath>
       <Modified>2016-11-04T20:56:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win.system.net.primitives\4.3.0\runtimes\win\lib\netcore50\System.Net.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win.system.net.primitives\4.3.0\runtimes\win\lib\netcore50\System.Net.Primitives.dll">
       <PackagePath>System.Net.Primitives.dll</PackagePath>
       <Modified>2016-11-04T20:56:24.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win.system.net.sockets\4.3.0\runtimes\win\lib\netcore50\System.Net.Sockets.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win.system.net.sockets\4.3.0\runtimes\win\lib\netcore50\System.Net.Sockets.dll">
       <PackagePath>System.Net.Sockets.dll</PackagePath>
       <Modified>2016-11-04T20:56:28.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win.system.runtime.extensions\4.3.0\runtimes\win\lib\netcore50\System.Runtime.Extensions.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win.system.runtime.extensions\4.3.0\runtimes\win\lib\netcore50\System.Runtime.Extensions.dll">
       <PackagePath>System.Runtime.Extensions.dll</PackagePath>
       <Modified>2016-11-04T20:56:48.000</Modified>
     </AppxPackagedFile>
@@ -214,23 +214,23 @@
       <PackagePath>clrjit.dll</PackagePath>
       <Modified>2016-06-13T09:27:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win7-x86.runtime.native.system.io.compression\4.3.0\runtimes\win7-x86\native\clrcompression.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win7-x86.runtime.native.system.io.compression\4.3.0\runtimes\win7-x86\native\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
       <Modified>2016-11-04T20:34:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\runtime.win7.system.private.uri\4.3.0\runtimes\win\lib\netcore50\System.Private.Uri.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\runtime.win7.system.private.uri\4.3.0\runtimes\win\lib\netcore50\System.Private.Uri.dll">
       <PackagePath>System.Private.Uri.dll</PackagePath>
       <Modified>2016-11-04T20:56:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.appcontext\4.3.0\lib\netcore50\System.AppContext.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.appcontext\4.3.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
       <Modified>2016-11-04T20:55:34.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.buffers\4.3.0\lib\netstandard1.1\System.Buffers.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.buffers\4.3.0\lib\netstandard1.1\System.Buffers.dll">
       <PackagePath>System.Buffers.dll</PackagePath>
       <Modified>2016-11-04T20:55:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.collections.concurrent\4.3.0\lib\netcore50\System.Collections.Concurrent.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.collections.concurrent\4.3.0\lib\netcore50\System.Collections.Concurrent.dll">
       <PackagePath>System.Collections.Concurrent.dll</PackagePath>
       <Modified>2016-11-04T20:55:32.000</Modified>
     </AppxPackagedFile>
@@ -246,7 +246,7 @@
       <PackagePath>System.Collections.Specialized.dll</PackagePath>
       <Modified>2016-06-11T14:13:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.componentmodel\4.3.0\lib\netcore50\System.ComponentModel.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.componentmodel\4.3.0\lib\netcore50\System.ComponentModel.dll">
       <PackagePath>System.ComponentModel.dll</PackagePath>
       <Modified>2016-11-04T20:55:44.000</Modified>
     </AppxPackagedFile>
@@ -262,11 +262,11 @@
       <PackagePath>System.Data.Common.dll</PackagePath>
       <Modified>2016-06-11T14:13:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.diagnostics.contracts\4.3.0\lib\netcore50\System.Diagnostics.Contracts.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.diagnostics.contracts\4.3.0\lib\netcore50\System.Diagnostics.Contracts.dll">
       <PackagePath>System.Diagnostics.Contracts.dll</PackagePath>
       <Modified>2016-11-04T20:55:50.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.diagnostics.diagnosticsource\4.3.0\lib\netstandard1.3\System.Diagnostics.DiagnosticSource.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.diagnostics.diagnosticsource\4.3.0\lib\netstandard1.3\System.Diagnostics.DiagnosticSource.dll">
       <PackagePath>System.Diagnostics.DiagnosticSource.dll</PackagePath>
       <Modified>2016-11-04T20:55:52.000</Modified>
     </AppxPackagedFile>
@@ -282,15 +282,15 @@
       <PackagePath>System.Globalization.Extensions.dll</PackagePath>
       <Modified>2016-06-11T14:13:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.io.compression\4.3.0\runtimes\win\lib\netstandard1.3\System.IO.Compression.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.io.compression\4.3.0\runtimes\win\lib\netstandard1.3\System.IO.Compression.dll">
       <PackagePath>System.IO.Compression.dll</PackagePath>
       <Modified>2016-11-04T20:56:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.io.compression.zipfile\4.3.0\lib\netstandard1.3\System.IO.Compression.ZipFile.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.io.compression.zipfile\4.3.0\lib\netstandard1.3\System.IO.Compression.ZipFile.dll">
       <PackagePath>System.IO.Compression.ZipFile.dll</PackagePath>
       <Modified>2016-11-04T20:56:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.io.filesystem.primitives\4.3.0\lib\netstandard1.3\System.IO.FileSystem.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.io.filesystem.primitives\4.3.0\lib\netstandard1.3\System.IO.FileSystem.Primitives.dll">
       <PackagePath>System.IO.FileSystem.Primitives.dll</PackagePath>
       <Modified>2016-11-04T20:56:08.000</Modified>
     </AppxPackagedFile>
@@ -302,11 +302,11 @@
       <PackagePath>System.IO.UnmanagedMemoryStream.dll</PackagePath>
       <Modified>2016-06-11T14:13:50.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.linq\4.3.0\lib\netcore50\System.Linq.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.linq\4.3.0\lib\netcore50\System.Linq.dll">
       <PackagePath>System.Linq.dll</PackagePath>
       <Modified>2016-11-04T20:56:20.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.linq.expressions\4.3.0\lib\netcore50\System.Linq.Expressions.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.linq.expressions\4.3.0\lib\netcore50\System.Linq.Expressions.dll">
       <PackagePath>System.Linq.Expressions.dll</PackagePath>
       <Modified>2016-11-04T20:56:24.000</Modified>
     </AppxPackagedFile>
@@ -318,7 +318,7 @@
       <PackagePath>System.Linq.Queryable.dll</PackagePath>
       <Modified>2016-06-11T14:13:58.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.net.http\4.3.0\runtimes\win\lib\netcore50\System.Net.Http.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.net.http\4.3.0\runtimes\win\lib\netcore50\System.Net.Http.dll">
       <PackagePath>System.Net.Http.dll</PackagePath>
       <Modified>2016-11-04T20:56:30.000</Modified>
     </AppxPackagedFile>
@@ -326,7 +326,7 @@
       <PackagePath>System.Net.Http.Rtc.dll</PackagePath>
       <Modified>2016-06-11T14:13:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.net.nameresolution\4.3.0\runtimes\win\lib\netcore50\System.Net.NameResolution.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.net.nameresolution\4.3.0\runtimes\win\lib\netcore50\System.Net.NameResolution.dll">
       <PackagePath>System.Net.NameResolution.dll</PackagePath>
       <Modified>2016-11-04T20:56:26.000</Modified>
     </AppxPackagedFile>
@@ -358,7 +358,7 @@
       <PackagePath>System.Numerics.Vectors.WindowsRuntime.dll</PackagePath>
       <Modified>2016-06-11T14:14:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.objectmodel\4.3.0\lib\netcore50\System.ObjectModel.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.objectmodel\4.3.0\lib\netcore50\System.ObjectModel.dll">
       <PackagePath>System.ObjectModel.dll</PackagePath>
       <Modified>2016-11-04T20:56:40.000</Modified>
     </AppxPackagedFile>
@@ -382,11 +382,11 @@
       <PackagePath>System.Reflection.Emit.dll</PackagePath>
       <Modified>2016-06-11T14:14:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.reflection.emit.ilgeneration\4.3.0\lib\netcore50\System.Reflection.Emit.ILGeneration.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.reflection.emit.ilgeneration\4.3.0\lib\netcore50\System.Reflection.Emit.ILGeneration.dll">
       <PackagePath>System.Reflection.Emit.ILGeneration.dll</PackagePath>
       <Modified>2016-11-04T20:56:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.reflection.emit.lightweight\4.3.0\lib\netcore50\System.Reflection.Emit.Lightweight.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.reflection.emit.lightweight\4.3.0\lib\netcore50\System.Reflection.Emit.Lightweight.dll">
       <PackagePath>System.Reflection.Emit.Lightweight.dll</PackagePath>
       <Modified>2016-11-04T20:56:42.000</Modified>
     </AppxPackagedFile>
@@ -394,11 +394,11 @@
       <PackagePath>System.Reflection.Metadata.dll</PackagePath>
       <Modified>2016-06-11T14:14:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.reflection.typeextensions\4.3.0\lib\netcore50\System.Reflection.TypeExtensions.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.reflection.typeextensions\4.3.0\lib\netcore50\System.Reflection.TypeExtensions.dll">
       <PackagePath>System.Reflection.TypeExtensions.dll</PackagePath>
       <Modified>2016-11-04T20:56:48.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.runtime.interopservices.runtimeinformation\4.3.0\runtimes\win\lib\netcore50\System.Runtime.InteropServices.RuntimeInformation.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.runtime.interopservices.runtimeinformation\4.3.0\runtimes\win\lib\netcore50\System.Runtime.InteropServices.RuntimeInformation.dll">
       <PackagePath>System.Runtime.InteropServices.RuntimeInformation.dll</PackagePath>
       <Modified>2016-11-04T20:57:00.000</Modified>
     </AppxPackagedFile>
@@ -406,7 +406,7 @@
       <PackagePath>System.Runtime.InteropServices.WindowsRuntime.dll</PackagePath>
       <Modified>2016-06-11T14:14:26.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.runtime.numerics\4.3.0\lib\netcore50\System.Runtime.Numerics.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.runtime.numerics\4.3.0\lib\netcore50\System.Runtime.Numerics.dll">
       <PackagePath>System.Runtime.Numerics.dll</PackagePath>
       <Modified>2016-11-04T20:57:00.000</Modified>
     </AppxPackagedFile>
@@ -422,7 +422,7 @@
       <PackagePath>System.Runtime.Serialization.Xml.dll</PackagePath>
       <Modified>2017-02-09T05:26:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.runtime.windowsruntime\4.3.0\runtimes\win8\lib\netstandard1.3\System.Runtime.WindowsRuntime.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.runtime.windowsruntime\4.3.0\runtimes\win8\lib\netstandard1.3\System.Runtime.WindowsRuntime.dll">
       <PackagePath>System.Runtime.WindowsRuntime.dll</PackagePath>
       <Modified>2016-11-04T20:57:02.000</Modified>
     </AppxPackagedFile>
@@ -434,23 +434,23 @@
       <PackagePath>System.Security.Claims.dll</PackagePath>
       <Modified>2016-06-11T14:14:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.security.cryptography.algorithms\4.3.0\runtimes\win\lib\netcore50\System.Security.Cryptography.Algorithms.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.security.cryptography.algorithms\4.3.0\runtimes\win\lib\netcore50\System.Security.Cryptography.Algorithms.dll">
       <PackagePath>System.Security.Cryptography.Algorithms.dll</PackagePath>
       <Modified>2016-11-04T20:57:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.security.cryptography.cng\4.3.0\runtimes\win\lib\netstandard1.4\System.Security.Cryptography.Cng.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.security.cryptography.cng\4.3.0\runtimes\win\lib\netstandard1.4\System.Security.Cryptography.Cng.dll">
       <PackagePath>System.Security.Cryptography.Cng.dll</PackagePath>
       <Modified>2016-11-04T20:57:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.security.cryptography.encoding\4.3.0\runtimes\win\lib\netstandard1.3\System.Security.Cryptography.Encoding.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.security.cryptography.encoding\4.3.0\runtimes\win\lib\netstandard1.3\System.Security.Cryptography.Encoding.dll">
       <PackagePath>System.Security.Cryptography.Encoding.dll</PackagePath>
       <Modified>2016-11-04T20:57:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.security.cryptography.primitives\4.3.0\lib\netstandard1.3\System.Security.Cryptography.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.security.cryptography.primitives\4.3.0\lib\netstandard1.3\System.Security.Cryptography.Primitives.dll">
       <PackagePath>System.Security.Cryptography.Primitives.dll</PackagePath>
       <Modified>2016-11-04T20:57:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.security.cryptography.x509certificates\4.3.0\runtimes\win\lib\netcore50\System.Security.Cryptography.X509Certificates.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.security.cryptography.x509certificates\4.3.0\runtimes\win\lib\netcore50\System.Security.Cryptography.X509Certificates.dll">
       <PackagePath>System.Security.Cryptography.X509Certificates.dll</PackagePath>
       <Modified>2016-11-04T20:57:18.000</Modified>
     </AppxPackagedFile>
@@ -482,15 +482,15 @@
       <PackagePath>System.Text.Encoding.CodePages.dll</PackagePath>
       <Modified>2016-06-11T14:14:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.text.regularexpressions\4.3.0\lib\netcore50\System.Text.RegularExpressions.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.text.regularexpressions\4.3.0\lib\netcore50\System.Text.RegularExpressions.dll">
       <PackagePath>System.Text.RegularExpressions.dll</PackagePath>
       <Modified>2016-11-04T20:57:24.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.threading\4.3.0\lib\netcore50\System.Threading.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.threading\4.3.0\lib\netcore50\System.Threading.dll">
       <PackagePath>System.Threading.dll</PackagePath>
       <Modified>2016-11-04T20:57:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.threading.overlapped\4.3.0\runtimes\win\lib\netcore50\System.Threading.Overlapped.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.threading.overlapped\4.3.0\runtimes\win\lib\netcore50\System.Threading.Overlapped.dll">
       <PackagePath>System.Threading.Overlapped.dll</PackagePath>
       <Modified>2016-11-04T20:57:26.000</Modified>
     </AppxPackagedFile>
@@ -498,7 +498,7 @@
       <PackagePath>System.Threading.Tasks.Dataflow.dll</PackagePath>
       <Modified>2016-06-11T14:14:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.threading.tasks.extensions\4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.threading.tasks.extensions\4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll">
       <PackagePath>System.Threading.Tasks.Extensions.dll</PackagePath>
       <Modified>2016-11-04T20:57:24.000</Modified>
     </AppxPackagedFile>
@@ -506,15 +506,15 @@
       <PackagePath>System.Threading.Tasks.Parallel.dll</PackagePath>
       <Modified>2016-06-11T14:14:54.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.valuetuple\4.5.0\lib\netstandard1.0\System.ValueTuple.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.valuetuple\4.5.0\lib\netstandard1.0\System.ValueTuple.dll">
       <PackagePath>System.ValueTuple.dll</PackagePath>
       <Modified>2018-05-15T05:29:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.xml.readerwriter\4.3.0\lib\netcore50\System.Xml.ReaderWriter.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.xml.readerwriter\4.3.0\lib\netcore50\System.Xml.ReaderWriter.dll">
       <PackagePath>System.Xml.ReaderWriter.dll</PackagePath>
       <Modified>2016-11-04T20:57:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\system.xml.xdocument\4.3.0\lib\netcore50\System.Xml.XDocument.dll">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\system.xml.xdocument\4.3.0\lib\netcore50\System.Xml.XDocument.dll">
       <PackagePath>System.Xml.XDocument.dll</PackagePath>
       <Modified>2016-11-04T20:57:34.000</Modified>
     </AppxPackagedFile>
@@ -526,11 +526,11 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-06-11T14:15:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256x256_PNG.png">
       <PackagePath>NoiseAsset_256x256_PNG.png</PackagePath>
       <Modified>2019-02-18T10:30:38.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\lib\uap10.0\Microsoft.UI.Xaml.winmd">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>
       <Modified>2019-02-18T10:30:54.000</Modified>
     </AppxPackagedFile>
@@ -538,87 +538,87 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2018-10-22T17:33:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\timg.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\timg.png">
       <PackagePath>Assets\timg.png</PackagePath>
-      <Modified>2019-03-13T08:56:28.521</Modified>
+      <Modified>2019-03-19T16:00:43.372</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2019-03-03T12:31:32.723</Modified>
+      <Modified>2019-03-19T16:00:43.370</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-03T12:31:32.723</Modified>
+      <Modified>2019-03-19T16:00:43.371</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-03T12:31:32.723</Modified>
+      <Modified>2019-03-19T16:00:43.371</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-03T12:31:32.723</Modified>
+      <Modified>2019-03-19T16:00:43.371</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-03T12:31:32.723</Modified>
+      <Modified>2019-03-19T16:00:43.371</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-03T12:31:32.723</Modified>
+      <Modified>2019-03-19T16:00:43.371</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-03-03T12:31:32.723</Modified>
+      <Modified>2019-03-19T16:00:43.371</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2019-03-13T08:33:18.424</Modified>
+      <Modified>2019-03-19T16:00:43.373</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.xr.xml">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\FastResearch.xr.xml">
       <PackagePath>FastResearch.xr.xml</PackagePath>
-      <Modified>2019-03-17T04:21:58.329</Modified>
+      <Modified>2019-03-19T16:08:02.021</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-03-19T15:16:19.510</Modified>
+      <Modified>2019-03-19T16:10:31.264</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:16:19.510</Modified>
+      <Modified>2019-03-19T16:10:31.264</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\PapersPage.xbf">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\PapersPage.xbf">
       <PackagePath>PapersPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:16:19.510</Modified>
+      <Modified>2019-03-19T16:10:31.265</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\SettingsPage.xbf">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\SettingsPage.xbf">
       <PackagePath>SettingsPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:16:19.511</Modified>
+      <Modified>2019-03-19T16:10:31.265</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\ToolsPage.xbf">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\ToolsPage.xbf">
       <PackagePath>ToolsPage.xbf</PackagePath>
-      <Modified>2019-03-19T15:16:19.512</Modified>
+      <Modified>2019-03-19T16:10:31.265</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-10-22T16:44:28.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
+    <AppxPackagedFile Include="C:\Users\linzhichao\.nuget\packages\microsoft.ui.xaml\2.1.190218001-prerelease\runtimes\win10-x86\native\Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png">
       <PackagePath>Microsoft.UI.Xaml\Assets\NoiseAsset_256X256_PNG.png</PackagePath>
       <Modified>2019-02-18T10:30:38.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-03-18T03:48:17.593</Modified>
+      <Modified>2019-03-19T16:10:32.574</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Roy\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\FastResearch.exe">
+    <AppxPackagedFile Include="C:\Users\linzhichao\source\repos\FastResearch\FastResearch\bin\x86\Debug\Core\FastResearch.exe">
       <PackagePath>FastResearch.exe</PackagePath>
-      <Modified>2019-03-19T15:16:20.821</Modified>
+      <Modified>2019-03-19T16:10:33.648</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

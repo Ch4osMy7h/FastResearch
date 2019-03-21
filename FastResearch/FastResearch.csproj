@@ -133,6 +133,7 @@
     <Compile Include="ToolsPage.xaml.cs">
       <DependentUpon>ToolsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\PaperArea.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -186,6 +187,9 @@
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
