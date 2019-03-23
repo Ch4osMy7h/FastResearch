@@ -5,6 +5,7 @@
     xmlns:local="using:FastResearch"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:FastResearch.Converter"
     mc:Ignorable="d">
     <Page.Background>
         <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/timg.png"/>
@@ -13,7 +14,6 @@
     <Page.Resources>
         <DataTemplate x:Key="NavLinkItemTemplate"                             >
             <StackPanel x:ConnectionId='4' Orientation="Horizontal" Margin="2,0,0,0" AutomationProperties.Name="PaperArea">
-                <SymbolIcon Symbol="Document" />
                 <TextBlock x:ConnectionId='5'                      Margin="24,0,0,0" VerticalAlignment="Center" Height="Auto" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
@@ -113,7 +113,7 @@
 
     <Grid>
         <SplitView x:ConnectionId='6' x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-               IsPaneOpen="True"  OpenPaneLength="256" CompactPaneLength="48" DisplayMode="Inline">
+                                                                                                                                          DisplayMode="Overlay">
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -133,11 +133,11 @@
                             x:Name="NewAreaButton" 
                             Background= "{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                             BorderBrush="LightGray"
-                            Margin="0,0,0,0"                        
-                            
+                            Margin="0,0,0,0"                                                   
                             Width="256"/>
                 </Grid>
             </SplitView.Pane>
+            
 
             <Grid>
                 <Grid.RowDefinitions>

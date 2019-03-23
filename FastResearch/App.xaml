@@ -2,9 +2,10 @@
     x:Class="FastResearch.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FastResearch.Converter"
 >
     <Application.Resources>
-        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
+        <local:NullableBooleanToBoolean x:Key="NullableBooleanToBooleanKey"/>
     </Application.Resources>
 
 

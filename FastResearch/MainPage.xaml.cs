@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
 using System.Linq;
+using FastResearch.DatabaseManager;
 
 namespace FastResearch
 {
