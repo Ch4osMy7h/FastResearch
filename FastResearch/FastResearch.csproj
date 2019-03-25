@@ -124,7 +124,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Servers\Navigation\Navigation.cs" />
+    <Compile Include="Service\Navigation\Navigation.cs" />
     <Compile Include="PapersPage.xaml.cs">
       <DependentUpon>PapersPage.xaml</DependentUpon>
     </Compile>
@@ -178,7 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite">
-      <Version>2.0.0</Version>
+      <Version>1.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.3</Version>

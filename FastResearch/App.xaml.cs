@@ -31,6 +31,7 @@ namespace FastResearch
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            DatabaseManager.UserDataBase.InitializeDatabase();
         }
 
         /// <summary>

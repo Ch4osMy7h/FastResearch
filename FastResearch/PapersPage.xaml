@@ -133,7 +133,8 @@
                             x:Name="NewAreaButton" 
                             Background= "{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                             BorderBrush="LightGray"
-                            Margin="0,0,0,0"                                                   
+                            Margin="0,0,0,0"  
+                            Click="NewAreaButton_OnClic"
                             Width="256"/>
                 </Grid>
             </SplitView.Pane>
