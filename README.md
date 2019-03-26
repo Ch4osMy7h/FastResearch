@@ -22,4 +22,18 @@
 - 类似于things3的任务设计
   ![avatar](readme_img/1.png) -->
 
+# Structure
+## DataBaseManger:
+- UserDataBase.cs: 数据库的创建和增删改查
+  
+## ViewModel
+MainPageViewModel.cs
+ToolsPageViewModel.cs
+PapersPageViewModel.cs
+## Model
+
+
+
+
+
   

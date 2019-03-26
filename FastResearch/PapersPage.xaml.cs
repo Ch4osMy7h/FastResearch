@@ -26,6 +26,7 @@ namespace FastResearch
     {
         public PapersPage()
         {
+           
             this.InitializeComponent();
             this.ViewModel = new PaperAreaViewModel();
         }
@@ -34,12 +35,12 @@ namespace FastResearch
 
         private void NavLinksList_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            throw new NotImplementedException();
         }
 
         private void NewAreaButton_OnClick(object sender, RoutedEventArgs e)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
 

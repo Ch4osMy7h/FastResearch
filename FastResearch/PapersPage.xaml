@@ -2,7 +2,7 @@
     x:Class="FastResearch.PapersPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FastResearch"
+    xmlns:local="using:FastResearch.Model"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="using:FastResearch.Converter"
@@ -14,7 +14,7 @@
     <Page.Resources>
         <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="local:PaperArea">
             <StackPanel Orientation="Horizontal" Margin="2,0,0,0" AutomationProperties.Name="PaperArea">
-                <TextBlock Text="{x:Bind Name}" Margin="24,0,0,0" VerticalAlignment="Center" Height="Auto" FontWeight="Bold"/>
+                <TextBlock Text="{x:Bind _name}" Margin="24,0,0,0" VerticalAlignment="Center" Height="Auto" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
         <ControlTemplate x:Key="SplitViewTogglePaneButtonTemplate"
@@ -113,7 +113,7 @@
 
     <Grid>
         <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-               IsPaneOpen="{x:Bind SplitViewToggleButton.IsChecked, Mode=TwoWay, Converter={StaticResource NullableBooleanToBooleanKey}}" DisplayMode="Overlay">
+               IsPaneOpen="True">
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -134,7 +134,7 @@
                             Background= "{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                             BorderBrush="LightGray"
                             Margin="0,0,0,0"  
-                            Click="NewAreaButton_OnClic"
+                            Click="NewAreaButton_OnClick"
                             Width="256"/>
                 </Grid>
             </SplitView.Pane>

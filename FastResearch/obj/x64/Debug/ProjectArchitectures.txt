@@ -1,1 +1,1 @@
-C:\Users\linzhichao\source\repos\FastResearch\FastResearch\FastResearch.csproj;x64
+C:\FastResearch\FastResearch\FastResearch.csproj;x64

@@ -129,14 +129,10 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Style" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
-      <RootProperty Name="Mode" />
-      <RootProperty Name="Converter" />
-    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.SplitView">
       <RootProperty Name="PaneBackground" />
       <RootProperty Name="IsPaneOpen" />
-      <RootProperty Name="DisplayMode" />
       <RootProperty Name="Pane" />
       <RootProperty Name="Content" />
     </RootType>
@@ -161,6 +157,7 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="FastResearch.PapersPage" />
     <RootType FullName="FastResearch.SettingsPage" />

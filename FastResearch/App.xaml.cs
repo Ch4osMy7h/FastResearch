@@ -14,7 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using FastResearch.DatabaseManager;
+using FastResearch.Services;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace FastResearch
 {
@@ -73,6 +74,9 @@ namespace FastResearch
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+            //此处加入服务类型
+            SimpleIoc.Default.Register<PaperAreaService>();
+            
         }
 
         /// <summary>
