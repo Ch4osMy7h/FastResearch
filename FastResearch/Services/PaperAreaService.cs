@@ -18,12 +18,16 @@ namespace FastResearch.Services
         {
 
 
-                _paperArea = DatabaseManager.UserDataBase.GetPaperArea();            
+                _paperArea = DatabaseManager.UserDataBase.getPaperArea();            
                 return _paperArea;
         }
-        public void AddPaperArea(string PaperArea)
+        public void AddPaperArea(string paperArea)
         {
-            DatabaseManager.UserDataBase.AddData(PaperArea);
+            DatabaseManager.UserDataBase.addPaperArea(paperArea);
+        }
+        public void AddPaper(string paper, string paperArea)
+        {
+            DatabaseManager.UserDataBase.addPaper(paperArea, paper);
         }
     }
 }

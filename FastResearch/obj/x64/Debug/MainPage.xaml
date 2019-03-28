@@ -21,7 +21,7 @@
         <NavigationView.AutoSuggestBox>
             <AutoSuggestBox x:ConnectionId='3' x:Name="NavViewSearchBox" QueryIcon="Find"/>
         </NavigationView.AutoSuggestBox>
-        <Frame x:ConnectionId='4' x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+        <Frame x:ConnectionId='4' x:Name="ContentFrame" Padding="0,0,0,0" IsTabStop="True"
                                                                >
             <Frame.ContentTransitions>
                 <TransitionCollection>

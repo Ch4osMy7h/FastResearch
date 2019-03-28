@@ -137,7 +137,7 @@
     <Compile Include="ToolsPage.xaml.cs">
       <DependentUpon>ToolsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\PaperArea.cs" />
+    <Compile Include="ViewModel\PaperPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

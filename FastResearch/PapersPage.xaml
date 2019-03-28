@@ -13,8 +13,8 @@
 
     <Page.Resources>
         <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="local:PaperArea">
-            <StackPanel Orientation="Horizontal" Margin="2,0,0,0" AutomationProperties.Name="PaperArea">
-                <TextBlock Text="{x:Bind _name}" Margin="24,0,0,0" VerticalAlignment="Center" Height="Auto" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" AutomationProperties.Name="PaperArea">
+                <TextBlock Text="{x:Bind _name}" Margin="0,0,0,0" VerticalAlignment="Center" Height="Auto" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
         <ControlTemplate x:Key="SplitViewTogglePaneButtonTemplate"
@@ -113,43 +113,53 @@
 
     <Grid>
         <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-               IsPaneOpen="True">
+               IsPaneOpen="True" DisplayMode="Inline">
             <SplitView.Pane>
-                <Grid>
+                <Grid Margin="0,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="48"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="48"/>
                     </Grid.RowDefinitions>
+                    <Button Content="PaperArea" Name="AreaButton" Grid.Row="0" Click="AreaButton_Click" Width="321" Height="48" />
+                    <!--<ComboBox ItemsSource="{x:Bind ViewModel.PaperAreas}" 
+                                             Width="321" Grid.Row="0" IsEditable="True"/>-->
                     <ListView  x:Name="NavLinksList" Margin="0,0,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch"
                           ItemClick="NavLinksList_OnItemClick" IsItemClickEnabled="True"
-                          ItemsSource="{x:Bind ViewModel.PaperAreas}" ItemTemplate="{StaticResource NavLinkItemTemplate}"                         
+                          ItemsSource="{x:Bind ViewModel.PapersItems}" ItemTemplate="{StaticResource NavLinkItemTemplate}"
+                          
                           />
                     <Button Grid.Row="2" 
-                            Content="New Area" 
+                            Content="Add Paper" 
                             Height="48"
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"                           
                             x:Name="NewAreaButton" 
                             Background= "{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-                            BorderBrush="LightGray"
-                            Margin="0,0,0,0"  
-                            Click="NewAreaButton_OnClick"
-                            Width="256"/>
+                            BorderBrush="LightGray"  
+                           Width="321"
+                            >
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel>
+                                    <TextBox Name ="PaperAreaInputBox" PlaceholderText="Input the Area" Margin="0,0,0,12" />
+                                    <Button Name="PaperAreaSaveButton" Content="Yes, Save My PaperArea" Click="PaperAreaSaveButton_Click"/>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+
+                    </Button>
                 </Grid>
             </SplitView.Pane>
-            
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
-                <TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" />
+                <Image x:Name="Output" AutomationProperties.Name="PDF document content" Stretch="None" Margin="0,0,0,0"/>
             </Grid>
         </SplitView>
-        <ToggleButton Name="SplitViewToggleButton" Style="{StaticResource SplitViewTogglePaneButtonStyle}"/>
+        
     </Grid>
 
 </Page>

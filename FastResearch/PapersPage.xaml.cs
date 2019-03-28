@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FastResearch;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,9 +27,9 @@ namespace FastResearch
     {
         public PapersPage()
         {
-           
             this.InitializeComponent();
             this.ViewModel = new PaperAreaViewModel();
+            this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
         }
 
         public PaperAreaViewModel ViewModel { get; set; }
@@ -38,11 +39,19 @@ namespace FastResearch
             throw new NotImplementedException();
         }
 
-        private void NewAreaButton_OnClick(object sender, RoutedEventArgs e)
+        private void AreaButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
+            this.NewAreaButton.Content = "Add Paper Area";
+            this.AreaButton.Content = "Paper Area";
+            this.ViewModel.readPaperArea();
         }
 
-
+        private void PaperAreaSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            String paperArea = PaperAreaInputBox.Text;
+            this.ViewModel.addPaperArea(paperArea);
+            this.ViewModel.readPaperArea();
+        }
     }
 }
