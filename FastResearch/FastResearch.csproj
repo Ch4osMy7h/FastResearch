@@ -125,6 +125,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\PaperArea.cs" />
+    <Compile Include="PdfReader\PdfFileManger.cs" />
+    <Compile Include="PdfReader\PdfReader.cs" />
     <Compile Include="Services\Navigation\Navigation.cs" />
     <Compile Include="PapersPage.xaml.cs">
       <DependentUpon>PapersPage.xaml</DependentUpon>
@@ -146,6 +148,7 @@
     <None Include="FastResearch_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\anime-landscape-sea-ships-colorful-clouds-scenic-tree-horizon-anime-18266.jpg" />
     <Content Include="Assets\timg.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -195,7 +198,9 @@
       <Version>4.5.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\Document\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

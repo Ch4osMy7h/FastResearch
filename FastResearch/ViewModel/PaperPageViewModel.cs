@@ -21,6 +21,7 @@ namespace FastResearch
     {
 
         public ObservableCollection<PaperArea> papersItems = new ObservableCollection<PaperArea>();
+        public bool IsPaperAreaMenu { get; set; }
 
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace FastResearch
 
         public PaperAreaViewModel()
         {
-
+            IsPaperAreaMenu = false;
             //PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
             //List<String> PaperAreaName = service.PaperArea();
             //foreach (string paper_name in PaperAreaName)
@@ -63,7 +64,15 @@ namespace FastResearch
         public void addPaperArea(String PaperName)
         {
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            
             service.AddPaperArea(PaperName);
+            PdfReader.PdfFileManger.addPaperAreaFolder(PaperName);
+
+        }
+        public void addPaper(String paperName, String paperArea)
+        {
+            PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            service.AddPaper(paperName, paperArea);
         }
         public void readPaperArea()
         {
@@ -89,5 +98,22 @@ namespace FastResearch
             List<String> paperAreas = service.PaperArea();
             return paperAreas;
         }
-    }
+        public void getPapers(string paperArea)
+        {
+            try
+            {
+                PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+                List<string> papers = service.getPapers(paperArea);
+                this.papersItems.Clear();
+                foreach (string paper_name in papers)
+                {
+                    this.papersItems.Add(new PaperArea { _name = paper_name });
+                }
+            } catch
+            {
+                Debug.WriteLine("读取error");
+            }
+           
+        }
+     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
 
@@ -12,10 +11,17 @@ using System.Diagnostics;
 /// </summary>
 namespace FastResearch.DatabaseManager
 {
+    /// <summary>
+    /// 数据库类
+    /// </summary>
     public static class UserDataBase
     {
+        /// <summary>
+        /// 初始化数据库
+        /// </summary>
         public static void InitializeDatabase()
         {
+            
             try
             {
                 using (SqliteConnection db =
@@ -24,12 +30,11 @@ namespace FastResearch.DatabaseManager
                     db.Open();
 
                     String TablePaperAreaCommand = "CREATE TABLE IF NOT " +
-                                "EXISTS PaperAreas(PaperAreaId INTEGER PRIMARY KEY, " +
-                                "PaperArea Text)";
+                                "EXISTS PaperAreas(PaperAreaId INTEGER, PaperArea Text)";
                     SqliteCommand createTable = new SqliteCommand(TablePaperAreaCommand, db);
                     createTable.ExecuteReader();
                     String TablePaperCommand = "CREATE TABLE IF NOT " +
-                                "EXISTS Papers (PaperId INTEGER PRIMARY KEY, " +"Paper Text, " + "BelongToPaperArea Text, " + "FOREIGN KEY(BelongToPaperArea) REFERENCES PaperAreas(PaperArea)";
+                                "EXISTS Papers(PaperId INTEGER, " + "Paper Text, " + "BelongToPaperArea Text)";
                     createTable = new SqliteCommand(TablePaperCommand, db);
                     createTable.ExecuteReader();
                 }
@@ -38,6 +43,10 @@ namespace FastResearch.DatabaseManager
                 Debug.WriteLine("无法打开数据库");
             }
         }
+        /// <summary>
+        ///  在数据库中加入PaperArea
+        /// </summary>
+        /// <param name="PaperArea"></param>
         public static void addPaperArea(string PaperArea)
         {
             try
@@ -46,10 +55,8 @@ namespace FastResearch.DatabaseManager
                 new SqliteConnection("Filename=userdata.db"))
                 {
                     db.Open();
-
                     SqliteCommand insertCommand = new SqliteCommand();
                     insertCommand.Connection = db;
-
                     // Use parameterized query to prevent SQL injection attacks
                     insertCommand.CommandText = "INSERT INTO PaperAreas VALUES (NULL, @PaperArea);";
                     insertCommand.Parameters.AddWithValue("@PaperArea", PaperArea);
@@ -58,10 +65,15 @@ namespace FastResearch.DatabaseManager
                 }
             } catch
             {
-                Debug.WriteLine("加入不了数据");
-            }
-            
+                Debug.WriteLine("加入不了Area数据");
+            }            
         }
+        /// <summary>
+        /// 
+        /// 在数据库中加入论文名
+        /// </summary>
+        /// <param name="paperAreaId"></param>
+        /// <param name="paper"></param>
         public static void addPaper(string paperArea, string paper)
         {
             try
@@ -69,23 +81,29 @@ namespace FastResearch.DatabaseManager
                 using (SqliteConnection db =
                 new SqliteConnection("Filename=userdata.db"))
                 {
+                    //db.
                     db.Open();
 
                     SqliteCommand insertCommand = new SqliteCommand();
                     insertCommand.Connection = db;
                     // Use parameterized query to prevent SQL injection attacks
-                    insertCommand.CommandText = "INSERT INTO Paper VALUES (NULL, @Paper, @BelongToPaperArea);";
-                    insertCommand.Parameters.AddWithValue("@BelongToPaperArea", paperArea);
+                    insertCommand.CommandText = "INSERT INTO Papers VALUES (Null, @Paper, @BelongToPaperArea)";
                     insertCommand.Parameters.AddWithValue("@Paper", paper);
+                    insertCommand.Parameters.AddWithValue("@BelongToPaperArea", paperArea);
+                 
                     insertCommand.ExecuteReader();
                     db.Close();
                 }
             }
             catch
             {
-                Debug.WriteLine("加入不了数据");
+                Debug.WriteLine("加入不了Paper数据");
             }
         }
+        /// <summary>
+        /// 在数据中获取论文
+        /// </summary>
+        /// <returns></returns>
         public static List<String> getPaperArea()
         {
             List<String> PaperArea = new List<string>();
@@ -120,23 +138,30 @@ namespace FastResearch.DatabaseManager
         {
             List<String> PaperName = new List<string>();
 
-            using (SqliteConnection db =
-                new SqliteConnection("Filename=userdata.db"))
+            try
             {
-                db.Open();
-                SqliteCommand selectCommand = new SqliteCommand
-                    ("SELECT Paper FROM Papers WHERE BelongToPaperArea='" + paperArea + "'" , db);
-            
-                SqliteDataReader query = selectCommand.ExecuteReader();
-
-                while (query.Read())
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
                 {
-                    PaperName.Add(query.GetString(0));
+                    db.Open();
+                    SqliteCommand selectCommand = new SqliteCommand
+                        ("SELECT Paper FROM Papers WHERE BelongToPaperArea='" + paperArea + "'", db);
+                    //Debug.WriteLine("SELECT Paper FROM Papers WHERE BelongToPaperArea='" + paperArea + "'");
+                    //Debug.WriteLine(selectCommand);
+                    SqliteDataReader query = selectCommand.ExecuteReader();
+                    
+                    while (query.Read())
+                    {
+
+                        PaperName.Add(query.GetString(0));
+                    }
+                    //Debug.WriteLine(PaperName.Count);
+                    db.Close();
                 }
-
-                db.Close();
+            } catch
+            {
+                Debug.WriteLine("Bug!");
             }
-
             return PaperName;
         }
 

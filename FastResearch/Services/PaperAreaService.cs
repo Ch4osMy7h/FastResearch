@@ -29,5 +29,9 @@ namespace FastResearch.Services
         {
             DatabaseManager.UserDataBase.addPaper(paperArea, paper);
         }
+        public List<String> getPapers(string paperArea)
+        {
+            return DatabaseManager.UserDataBase.GetPaperName(paperArea);
+        }
     }
 }

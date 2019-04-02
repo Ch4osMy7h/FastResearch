@@ -112,6 +112,7 @@
     </Page.Resources>
 
     <Grid>
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;"/>
         <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                IsPaneOpen="True" DisplayMode="Inline">
             <SplitView.Pane>
@@ -142,8 +143,9 @@
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel>
-                                    <TextBox Name ="PaperAreaInputBox" PlaceholderText="Input the Area" Margin="0,0,0,12" />
-                                    <Button Name="PaperAreaSaveButton" Content="Yes, Save My PaperArea" Click="PaperAreaSaveButton_Click"/>
+                                    <TextBox Name ="PaperItemInputBox" PlaceholderText="Input" Margin="0,0,0,12" />
+                                    <Button Name="PaperItemBindButton" Content="Bind" Click="PaperItemBindButton_Click"/>
+                                    <Button Name="PaperItemSaveButton" Content="Save" Click="PaperItemSaveButton_Click"/>
                                 </StackPanel>
                             </Flyout>
                         </Button.Flyout>
@@ -156,7 +158,25 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Image x:Name="Output" AutomationProperties.Name="PDF document content" Stretch="None" Margin="0,0,0,0"/>
+                <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.Row="0" HorizontalAlignment="Left">
+  
+                    <AppBarButton Icon="OpenFile" Label="Open"/>
+                    <!--<AppBarButton Icon="Bold" Label="Bind" Click="AppBarButtonBind_Click"/>-->
+                    <AppBarButton Icon="Delete" Label="Delete"/>
+                    <AppBarButton Icon="SolidStar" Label="Mark"/>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton Icon="Setting" Label="Settings"/>
+                    </CommandBar.SecondaryCommands>
+                </CommandBar>
+                <!--<FlipView Grid.Row="1" Name="PdfView">
+                    <FlipView.ItemTemplate>
+                        <DataTemplate>
+                            <ScrollViewer ZoomMode="Enabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <Image Source="{Binding}"/>
+                            </ScrollViewer>
+                        </DataTemplate>
+                    </FlipView.ItemTemplate>
+                </FlipView>-->
             </Grid>
         </SplitView>
         

@@ -15,6 +15,11 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FastResearch;
 using System.Diagnostics;
+using Windows.Data.Pdf;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,13 +35,25 @@ namespace FastResearch
             this.InitializeComponent();
             this.ViewModel = new PaperAreaViewModel();
             this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
+            this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
         }
 
         public PaperAreaViewModel ViewModel { get; set; }
 
         private void NavLinksList_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            throw new NotImplementedException();
+            if(this.ViewModel.IsPaperAreaMenu)
+            {
+               
+                Model.PaperArea item = (Model.PaperArea)e.ClickedItem;
+                this.ViewModel.getPapers(item._name);
+                this.NewAreaButton.Content = "Add Paper";
+                this.AreaButton.Content = item._name;
+                this.ViewModel.IsPaperAreaMenu = false;
+            } else
+            {
+                //实现读取论文
+            }
         }
 
         private void AreaButton_Click(object sender, RoutedEventArgs e)
@@ -44,14 +61,34 @@ namespace FastResearch
 
             this.NewAreaButton.Content = "Add Paper Area";
             this.AreaButton.Content = "Paper Area";
+            this.ViewModel.IsPaperAreaMenu = true;
             this.ViewModel.readPaperArea();
         }
 
-        private void PaperAreaSaveButton_Click(object sender, RoutedEventArgs e)
+        private void PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            String paperArea = PaperAreaInputBox.Text;
-            this.ViewModel.addPaperArea(paperArea);
-            this.ViewModel.readPaperArea();
+            if (this.ViewModel.IsPaperAreaMenu)
+            {
+                String paperArea = PaperItemInputBox.Text;
+                this.ViewModel.addPaperArea(paperArea);
+                this.ViewModel.readPaperArea();
+
+            } else
+            {
+                String paper = PaperItemInputBox.Text;
+                this.ViewModel.addPaper(paper, (string)this.AreaButton.Content);
+                this.ViewModel.getPapers((string)this.AreaButton.Content);
+            } 
+        }
+        
+        private void AppBarButtonBind_Click(object sender, RoutedEventArgs e)
+        {
+            //LoadDocument();
+        }
+
+        private void PaperItemBindButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

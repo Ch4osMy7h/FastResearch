@@ -61,6 +61,9 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\anime-landscape-sea-ships-colorful-clouds-scenic-tree-horizon-anime-18266.jpg">
+      <PackagePath>Assets\anime-landscape-sea-ships-colorful-clouds-scenic-tree-horizon-anime-18266.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\FastResearch\FastResearch\Assets\timg.png">
       <PackagePath>Assets\timg.png</PackagePath>
     </AppxPackagedFile>

@@ -127,6 +127,10 @@
       <RootProperty Name="FontWeight" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.FontIcon">
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Glyph" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.SplitView">
       <RootProperty Name="PaneBackground" />
       <RootProperty Name="IsPaneOpen" />
@@ -166,20 +170,17 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="Background" />
-      <RootProperty Name="Children" />
-      <RootMethod Name="GetLeft" />
-      <RootMethod Name="SetLeft" />
-      <RootMethod Name="GetTop" />
-      <RootMethod Name="SetTop" />
-      <RootMethod Name="GetZIndex" />
-      <RootMethod Name="SetZIndex" />
+      <RootProperty Name="IsOpen" />
+      <RootProperty Name="DefaultLabelPosition" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="SecondaryCommands" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
-      <RootProperty Name="Fill" />
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
     </RootType>
     <RootType FullName="FastResearch.PapersPage" />
     <RootType FullName="FastResearch.SettingsPage" />
