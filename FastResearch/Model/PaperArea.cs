@@ -11,7 +11,7 @@ namespace FastResearch.Model
     {
         public string _name { get; set; }
         public string _description { get; set; }
-        public List<String> _papers { get; set; }
+        public List<Paper> _papers { get; set; }
         public PaperArea()
         {
             this._name = "None";

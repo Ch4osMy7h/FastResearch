@@ -124,6 +124,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Paper.cs" />
     <Compile Include="Model\PaperArea.cs" />
     <Compile Include="PdfReader\PdfFileManger.cs" />
     <Compile Include="PdfReader\PdfReader.cs" />

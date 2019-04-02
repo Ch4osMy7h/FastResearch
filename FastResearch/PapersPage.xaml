@@ -127,8 +127,7 @@
                                              Width="321" Grid.Row="0" IsEditable="True"/>-->
                     <ListView  x:Name="NavLinksList" Margin="0,0,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch"
                           ItemClick="NavLinksList_OnItemClick" IsItemClickEnabled="True"
-                          ItemsSource="{x:Bind ViewModel.PapersItems}" ItemTemplate="{StaticResource NavLinkItemTemplate}"
-                          
+                          ItemsSource="{x:Bind ViewModel.PapersItems}" ItemTemplate="{StaticResource NavLinkItemTemplate}"                     
                           />
                     <Button Grid.Row="2" 
                             Content="Add Paper" 
@@ -144,7 +143,11 @@
                             <Flyout>
                                 <StackPanel>
                                     <TextBox Name ="PaperItemInputBox" PlaceholderText="Input" Margin="0,0,0,12" />
-                                    <Button Name="PaperItemBindButton" Content="Bind" Click="PaperItemBindButton_Click"/>
+                                    <CheckBox Name="Bind"
+                                              Content="Bind Paper"
+                                              Checked="Bind_Checked"
+                                              Unchecked="Bind_Unchecked" 
+                                              Visibility="Collapsed"/>   
                                     <Button Name="PaperItemSaveButton" Content="Save" Click="PaperItemSaveButton_Click"/>
                                 </StackPanel>
                             </Flyout>
@@ -158,17 +161,17 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.Row="0" HorizontalAlignment="Left">
+                <!--<CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.Row="0" HorizontalAlignment="Left">
   
                     <AppBarButton Icon="OpenFile" Label="Open"/>
-                    <!--<AppBarButton Icon="Bold" Label="Bind" Click="AppBarButtonBind_Click"/>-->
+                    --><!--<AppBarButton Icon="Bold" Label="Bind" Click="AppBarButtonBind_Click"/>--><!--
                     <AppBarButton Icon="Delete" Label="Delete"/>
                     <AppBarButton Icon="SolidStar" Label="Mark"/>
                     <CommandBar.SecondaryCommands>
                         <AppBarButton Icon="Setting" Label="Settings"/>
                     </CommandBar.SecondaryCommands>
-                </CommandBar>
-                <!--<FlipView Grid.Row="1" Name="PdfView">
+                </CommandBar>-->
+                <FlipView Grid.Row="0" Name="PdfView">
                     <FlipView.ItemTemplate>
                         <DataTemplate>
                             <ScrollViewer ZoomMode="Enabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -176,7 +179,7 @@
                             </ScrollViewer>
                         </DataTemplate>
                     </FlipView.ItemTemplate>
-                </FlipView>-->
+                </FlipView>
             </Grid>
         </SplitView>
         

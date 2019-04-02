@@ -20,6 +20,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Pickers;
 using Windows.Storage;
+using FastResearch.Model;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -39,13 +40,16 @@ namespace FastResearch
         }
 
         public PaperAreaViewModel ViewModel { get; set; }
+        public StorageFile addPaperFile {get; set;}
 
-        private void NavLinksList_OnItemClick(object sender, ItemClickEventArgs e)
+        private async void NavLinksList_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            if(this.ViewModel.IsPaperAreaMenu)
+            Model.PaperArea item = (Model.PaperArea)e.ClickedItem;
+            if (this.ViewModel.IsPaperAreaMenu)
             {
                
-                Model.PaperArea item = (Model.PaperArea)e.ClickedItem;
+                
+                Bind.Visibility = Visibility.Visible;
                 this.ViewModel.getPapers(item._name);
                 this.NewAreaButton.Content = "Add Paper";
                 this.AreaButton.Content = item._name;
@@ -53,19 +57,25 @@ namespace FastResearch
             } else
             {
                 //实现读取论文
+                PdfReader.PdfFileManger.DeSerializeFile();
+                StorageFile file = PdfReader.PdfFileManger.mapPaperToFile(item._name);
+                List<BitmapImage> bitmapImages =
+                        await PdfReader.PdfReader.LoadDocument(file, NewAreaButton.Name, PaperItemInputBox.Name);
+                PdfView.ItemsSource = bitmapImages;
             }
         }
 
         private void AreaButton_Click(object sender, RoutedEventArgs e)
         {
 
+            Bind.Visibility = Visibility.Collapsed;
             this.NewAreaButton.Content = "Add Paper Area";
             this.AreaButton.Content = "Paper Area";
             this.ViewModel.IsPaperAreaMenu = true;
             this.ViewModel.readPaperArea();
         }
 
-        private void PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
+        private async void  PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.ViewModel.IsPaperAreaMenu)
             {
@@ -78,7 +88,14 @@ namespace FastResearch
                 String paper = PaperItemInputBox.Text;
                 this.ViewModel.addPaper(paper, (string)this.AreaButton.Content);
                 this.ViewModel.getPapers((string)this.AreaButton.Content);
-            } 
+               
+                StorageFile file = PdfReader.PdfFileManger.copyPaperToFileManger(addPaperFile, paper).Result;
+                PdfReader.PdfFileManger.SerializeFile();
+
+                List<BitmapImage> bitmapImages =
+                        await PdfReader.PdfReader.LoadDocument(file, NewAreaButton.Name, PaperItemInputBox.Name);
+                PdfView.ItemsSource = bitmapImages;
+            }
         }
         
         private void AppBarButtonBind_Click(object sender, RoutedEventArgs e)
@@ -86,9 +103,22 @@ namespace FastResearch
             //LoadDocument();
         }
 
-        private void PaperItemBindButton_Click(object sender, RoutedEventArgs e)
-        {
 
+        private async void Bind_Checked(object sender, RoutedEventArgs e)
+        {
+           
+                var picker = new FileOpenPicker();
+                picker.FileTypeFilter.Add(".pdf");
+                addPaperFile = await picker.PickSingleFileAsync();
+                //List<BitmapImage> bitmapImages =
+                //        await PdfReader.PdfReader.LoadDocument(NewAreaButton.Name, PaperItemInputBox.Name);
+                //PdfView.ItemsSource = bitmapImages;
+                
+        }
+
+        private void Bind_Unchecked(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
