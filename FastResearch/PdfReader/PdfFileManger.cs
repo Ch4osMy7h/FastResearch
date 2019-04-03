@@ -17,11 +17,12 @@ namespace FastResearch.PdfReader
     public static class PdfFileManger
     {
        
-        private static StorageFolder RootPaperItems { get; set; }
-        private static List<StorageFolder> PaperAreaFolder { get; set; }
+        public static StorageFolder RootPaperItems { get; set; }
+        public static List<StorageFolder> PaperAreaFolder { get; set; }
         //讲论文文件绑定
-        private static List<Paper> Papers { get; set; }
-        private static string PapersPath { get; set; }
+        public static List<Paper> Papers { get; set; }
+        public static string PapersPath { get; set; }
+        public static string PaperAreaFolderPath { get; set; }
 
 
         /// <summary>
@@ -36,13 +37,23 @@ namespace FastResearch.PdfReader
                 PaperAreaFolder = new List<StorageFolder>();
                 Windows.Storage.StorageFolder storageFolder =
                            Windows.Storage.ApplicationData.Current.LocalFolder;
+                
                 //Windows.Storage.StorageFile sampleFile =
                 //    await storageFolder.CreateFileAsync("sample.txt",
                 //        Windows.Storage.CreationCollisionOption.ReplaceExisting);
                 //Debug.WrWindows.Storage.StorageFile sampleFile =
                 RootPaperItems = await storageFolder.CreateFolderAsync("Root",
                     Windows.Storage.CreationCollisionOption.OpenIfExists);
+                Papers = new List<Paper>();
+                PaperAreaFolder = new List<StorageFolder>();
+                PapersPath = RootPaperItems.Path + "\\Paper";
+                PaperAreaFolderPath = RootPaperItems.Path + "\\PaperFolder";
+                Debug.WriteLine(PapersPath);
+                await RootPaperItems.CreateFileAsync("Paper", CreationCollisionOption.OpenIfExists);
+                await RootPaperItems.CreateFileAsync("PaperFolder", CreationCollisionOption.OpenIfExists);
                 SerializeFile();
+                DeSerializeFile();
+                Debug.WriteLine("go here");
             }
             catch
             {
@@ -64,25 +75,34 @@ namespace FastResearch.PdfReader
 
 
 
-        public static async Task<StorageFile> copyPaperToFileManger(StorageFile file, string paperName)
+        public static async Task<StorageFile> copyPaperToFileManger(StorageFile file, string paperArea, string paperName)
         {
-            await file.RenameAsync(paperName + ".pdf");
-            StorageFolder folder = PaperAreaFolder.Find(x => x.Name == paperName);
-            StorageFile newFile = await file.CopyAsync(folder);
-            Papers.Add(new Paper() { name = paperName, paperLocation = newFile});
-            Debug.WriteLine("copy success");
+            
+            Debug.WriteLine(paperArea);
+            Debug.WriteLine(PaperAreaFolder[0].Name);
+            StorageFolder folder = PaperAreaFolder.Find(x => x.Name == paperArea);
+            Debug.WriteLine(folder.Path);
+            StorageFile newFile = null;
+ 
+            newFile = await file.CopyAsync(folder);
+            Papers.Add(new Paper() { name = paperName, paperLocation = newFile });
+
             return newFile;
         }
 
         /// <summary>
-        /// 序列化
+        /// 序列化 存储PaperAreaFolder以及Paper的Location
         /// </summary>
         public static async void SerializeFile()
         {
+            //存储Paper 
             DataContractSerializer serializer = new DataContractSerializer(typeof(List<Paper>));
-            StorageFolder appFolder = ApplicationData.Current.LocalFolder;
-            StorageFile file = await appFolder.CreateFileAsync("SavePdf", CreationCollisionOption.ReplaceExisting);
             
+ 
+            StorageFile file = await RootPaperItems.GetFileAsync("Paper");
+
+            PapersPath = file.Path;
+           
             if (file != null)
             {
                 // Prevent updates to the remote version of the file until
@@ -104,6 +124,35 @@ namespace FastResearch.PdfReader
                    
                 }
             }
+            serializer = new DataContractSerializer(typeof(List<StorageFolder>));
+            file = await RootPaperItems.GetFileAsync("PaperFolder");
+            PaperAreaFolderPath = file.Path;
+
+            if (file != null)
+            {
+                // Prevent updates to the remote version of the file until
+                // we finish making changes and call CompleteUpdatesAsync.
+                CachedFileManager.DeferUpdates(file);
+                // write to file
+                var stream = await file.OpenStreamForWriteAsync();
+                Debug.WriteLine("write stream: " + stream.ToString());
+                serializer.WriteObject(stream, PaperAreaFolder);
+
+                Windows.Storage.Provider.FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                if (status == Windows.Storage.Provider.FileUpdateStatus.Complete)
+                {
+                    Debug.WriteLine("File " + file.Name + " was saved.");
+                }
+                else
+                {
+                    Debug.WriteLine("File " + file.Name + " couldn't be saved.");
+
+                }
+            }
+
+
+
+
         }
 
         /// <summary>
@@ -113,12 +162,25 @@ namespace FastResearch.PdfReader
         public static async void DeSerializeFile()
         {
             DataContractSerializer deserializer = new DataContractSerializer(typeof(List<Paper>));
-            StorageFile storageFile = await StorageFile.GetFileFromPathAsync(PapersPath);
+            StorageFile storageFile = await RootPaperItems.GetFileAsync("Paper");
+            
             if (storageFile != null)
             {
                 var stream = await storageFile.OpenStreamForReadAsync();
-                Papers = deserializer.ReadObject(stream) as List<Paper>;
 
+                Papers = deserializer.ReadObject(stream) as List<Paper>;
+            }
+            else
+            {
+                Debug.WriteLine("反序列化失败");
+            }
+            Debug.WriteLine("成功读取Paper");
+            deserializer = new DataContractSerializer(typeof(List<StorageFolder>));
+            storageFile = await StorageFile.GetFileFromPathAsync(PaperAreaFolderPath);
+            if (storageFile != null)
+            {
+                var stream = await storageFile.OpenStreamForReadAsync();
+                PaperAreaFolder = deserializer.ReadObject(stream) as List<StorageFolder>;
             }
             else
             {

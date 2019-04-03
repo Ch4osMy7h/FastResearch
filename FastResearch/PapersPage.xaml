@@ -56,8 +56,6 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-
-
                 <ContentPresenter x:Name="ContentPresenter"
                                   Padding="{TemplateBinding Padding}"
                                   BorderBrush="{TemplateBinding BorderBrush}"
@@ -92,7 +90,6 @@
                     Value="Center" />
             <Setter Property="UseSystemFocusVisuals"
                     Value="True" />
-
             <Setter Property="FontFamily"
                     Value="{ThemeResource SymbolThemeFontFamily}" />
             <Setter Property="Content"
@@ -101,7 +98,6 @@
                     Value="48" />
             <Setter Property="Width"
                     Value="48" />
-
             <Setter Property="FontWeight"
                     Value="Normal" />
             <Setter Property="FontSize"
@@ -137,7 +133,7 @@
                             x:Name="NewAreaButton" 
                             Background= "{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                             BorderBrush="LightGray"  
-                           Width="321"
+                            Width="321"
                             >
                         <Button.Flyout>
                             <Flyout>
@@ -147,12 +143,11 @@
                                               Content="Bind Paper"
                                               Checked="Bind_Checked"
                                               Unchecked="Bind_Unchecked" 
-                                              Visibility="Collapsed"/>   
-                                    <Button Name="PaperItemSaveButton" Content="Save" Click="PaperItemSaveButton_Click"/>
+                                              Visibility="Collapsed"/>
+                                    <Button Name="PaperItemSaveButton" Content="Save" Click="PaperItemSaveButton_Click" Visibility="Collapsed"/>
                                 </StackPanel>
                             </Flyout>
                         </Button.Flyout>
-
                     </Button>
                 </Grid>
             </SplitView.Pane>

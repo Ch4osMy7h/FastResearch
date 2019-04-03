@@ -37,6 +37,7 @@ namespace FastResearch
             this.ViewModel = new PaperAreaViewModel();
             this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
             this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
+            Bind.Visibility = Visibility.Collapsed;
         }
 
         public PaperAreaViewModel ViewModel { get; set; }
@@ -47,8 +48,6 @@ namespace FastResearch
             Model.PaperArea item = (Model.PaperArea)e.ClickedItem;
             if (this.ViewModel.IsPaperAreaMenu)
             {
-               
-                
                 Bind.Visibility = Visibility.Visible;
                 this.ViewModel.getPapers(item._name);
                 this.NewAreaButton.Content = "Add Paper";
@@ -69,35 +68,35 @@ namespace FastResearch
         {
 
             Bind.Visibility = Visibility.Collapsed;
+            PaperItemSaveButton.Visibility = Visibility.Visible;
             this.NewAreaButton.Content = "Add Paper Area";
             this.AreaButton.Content = "Paper Area";
             this.ViewModel.IsPaperAreaMenu = true;
             this.ViewModel.readPaperArea();
         }
 
-        private async void  PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
+        private async void PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.ViewModel.IsPaperAreaMenu)
             {
                 String paperArea = PaperItemInputBox.Text;
                 this.ViewModel.addPaperArea(paperArea);
                 this.ViewModel.readPaperArea();
-
-            } else
+            }
+            else
             {
                 String paper = PaperItemInputBox.Text;
                 this.ViewModel.addPaper(paper, (string)this.AreaButton.Content);
                 this.ViewModel.getPapers((string)this.AreaButton.Content);
-               
-                StorageFile file = PdfReader.PdfFileManger.copyPaperToFileManger(addPaperFile, paper).Result;
-                PdfReader.PdfFileManger.SerializeFile();
 
+                StorageFile file = PdfReader.PdfFileManger.copyPaperToFileManger(addPaperFile, (string)this.AreaButton.Content, paper).Result;
+                PdfReader.PdfFileManger.SerializeFile();
                 List<BitmapImage> bitmapImages =
                         await PdfReader.PdfReader.LoadDocument(file, NewAreaButton.Name, PaperItemInputBox.Name);
                 PdfView.ItemsSource = bitmapImages;
             }
         }
-        
+
         private void AppBarButtonBind_Click(object sender, RoutedEventArgs e)
         {
             //LoadDocument();
@@ -106,14 +105,35 @@ namespace FastResearch
 
         private async void Bind_Checked(object sender, RoutedEventArgs e)
         {
-           
+
+            try
+            {
                 var picker = new FileOpenPicker();
                 picker.FileTypeFilter.Add(".pdf");
                 addPaperFile = await picker.PickSingleFileAsync();
-                //List<BitmapImage> bitmapImages =
-                //        await PdfReader.PdfReader.LoadDocument(NewAreaButton.Name, PaperItemInputBox.Name);
-                //PdfView.ItemsSource = bitmapImages;
-                
+                await addPaperFile.RenameAsync(PaperItemInputBox.Text + ".pdf");
+  
+                List<StorageFolder> storageFolders = PdfReader.PdfFileManger.PaperAreaFolder;
+                Debug.WriteLine(storageFolders[0].Name);
+                StorageFolder folder = storageFolders.Find(x => x.Name == (string)this.AreaButton.Content);
+                Debug.WriteLine(folder.Path);
+            
+                StorageFile newFile = await addPaperFile.CopyAsync(folder);
+                Debug.WriteLine("copy success");
+
+                PdfReader.PdfFileManger.Papers.Add(new Paper() { name = PaperItemInputBox.Text, paperLocation = newFile });
+            }
+            catch
+            {
+                Debug.WriteLine("这句有bUG");
+            }
+            
+            Debug.WriteLine("1234");
+            PdfReader.PdfFileManger.SerializeFile();
+            Debug.WriteLine("12345");
+            List<BitmapImage> bitmapImages =
+                    await PdfReader.PdfReader.LoadDocument(addPaperFile, NewAreaButton.Name, PaperItemInputBox.Name);
+            PdfView.ItemsSource = bitmapImages;
         }
 
         private void Bind_Unchecked(object sender, RoutedEventArgs e)
