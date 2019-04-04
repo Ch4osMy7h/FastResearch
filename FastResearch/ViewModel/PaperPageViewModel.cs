@@ -10,6 +10,7 @@ using FastResearch.Model;
 using FastResearch.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using Windows.Storage;
 
 namespace FastResearch
 {
@@ -61,6 +62,13 @@ namespace FastResearch
                 return this.papersItems;
             }
         }
+        public StorageFolder rootLocalDataFolder
+        {
+            get
+            {
+                return PdfReader.PdfFileManger.RootPaperItems;
+            }
+        }
         public void addPaperArea(String PaperName)
         {
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
@@ -69,10 +77,17 @@ namespace FastResearch
             PdfReader.PdfFileManger.addPaperAreaFolder(PaperName);
 
         }
-        public void addPaper(String paperName, String paperArea)
+
+        public string getPdfDocument(string paper)
         {
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
-            service.AddPaper(paperName, paperArea);
+            return service.getPaperPath(paper);
+        } 
+
+        public void addPaper(String paperName, String paperArea, String paperPath)
+        {
+            PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            service.AddPaper(paperName, paperArea, paperPath);
         }
         public void readPaperArea()
         {
@@ -113,7 +128,6 @@ namespace FastResearch
             {
                 Debug.WriteLine("读取error");
             }
-           
         }
      }
 }

@@ -34,7 +34,7 @@ namespace FastResearch.DatabaseManager
                     SqliteCommand createTable = new SqliteCommand(TablePaperAreaCommand, db);
                     createTable.ExecuteReader();
                     String TablePaperCommand = "CREATE TABLE IF NOT " +
-                                "EXISTS Papers(PaperId INTEGER, " + "Paper Text, " + "BelongToPaperArea Text)";
+                                "EXISTS Papers(PaperId INTEGER, " + "Paper Text, " + "BelongToPaperArea Text," + "PapersPath Text)";
                     createTable = new SqliteCommand(TablePaperCommand, db);
                     createTable.ExecuteReader();
                 }
@@ -74,7 +74,7 @@ namespace FastResearch.DatabaseManager
         /// </summary>
         /// <param name="paperAreaId"></param>
         /// <param name="paper"></param>
-        public static void addPaper(string paperArea, string paper)
+        public static void addPaper(string paperArea, string paper, string paperPath)
         {
             try
             {
@@ -87,9 +87,10 @@ namespace FastResearch.DatabaseManager
                     SqliteCommand insertCommand = new SqliteCommand();
                     insertCommand.Connection = db;
                     // Use parameterized query to prevent SQL injection attacks
-                    insertCommand.CommandText = "INSERT INTO Papers VALUES (Null, @Paper, @BelongToPaperArea)";
+                    insertCommand.CommandText = "INSERT INTO Papers VALUES (Null, @Paper, @BelongToPaperArea, @PapersPath)";
                     insertCommand.Parameters.AddWithValue("@Paper", paper);
                     insertCommand.Parameters.AddWithValue("@BelongToPaperArea", paperArea);
+                    insertCommand.Parameters.AddWithValue("@PapersPath", paperPath);
                  
                     insertCommand.ExecuteReader();
                     db.Close();
@@ -165,5 +166,41 @@ namespace FastResearch.DatabaseManager
             return PaperName;
         }
 
+        public static String GetPaperPath(String paper)
+        {
+            string paperPath = "";
+
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand selectCommand = new SqliteCommand
+                        ("SELECT PapersPath FROM Papers WHERE Paper='" + paper + "'", db);
+                    //Debug.WriteLine("SELECT Paper FROM Papers WHERE BelongToPaperArea='" + paperArea + "'");
+                    //Debug.WriteLine(selectCommand);
+                    SqliteDataReader query = selectCommand.ExecuteReader();
+      
+                    Debug.WriteLine("go here");
+                    while (query.Read())
+                    {
+
+                        paperPath = query.GetString(0);
+                    }
+                    //Debug.WriteLine(PaperName.Count);
+                    db.Close();
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Bug!");
+            }
+            return paperPath;
+        }
+
+
+        
+        
     }
 }

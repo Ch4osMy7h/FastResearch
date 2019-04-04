@@ -9,6 +9,7 @@ using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 using FastResearch.PdfReader;
+using System.Diagnostics;
 
 namespace FastResearch.PdfReader
 {
@@ -46,6 +47,7 @@ namespace FastResearch.PdfReader
                 page.Dispose();
                 pageimages.Add(bmp);
             }
+            Debug.WriteLine("go here");
            return pageimages;
         }
     }
