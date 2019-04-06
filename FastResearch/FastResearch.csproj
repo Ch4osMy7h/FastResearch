@@ -195,6 +195,21 @@
     <PackageReference Include="MvvmLight">
       <Version>5.4.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Pdf.UWP">
+      <Version>17.1.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.SfColorPickers.UWP">
+      <Version>17.1.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.SfInput.UWP">
+      <Version>17.1.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.SfPdfViewer.UWP">
+      <Version>17.1.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.SfRadialMenu.UWP">
+      <Version>17.1.0.38</Version>
+    </PackageReference>
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
     </PackageReference>

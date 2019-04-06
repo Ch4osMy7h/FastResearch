@@ -30,11 +30,14 @@ namespace FastResearch
         /// </summary>
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("ODYzMzVAMzEzNzJlMzEyZTMwa042VTdFOVNzem4rNVRZa0hvdGVyaHdkWHE2d0JTZnpHSzc3NHU4cU1jWT0=");
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             DatabaseManager.UserDataBase.InitializeDatabase();
             PdfReader.PdfFileManger.InitFileMange();
-            
+           
+
+
         }
 
         /// <summary>
