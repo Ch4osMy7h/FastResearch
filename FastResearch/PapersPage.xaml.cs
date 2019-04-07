@@ -1,38 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using Syncfusion.Pdf.Interactive;
+using Syncfusion.Pdf.Parsing;
+using Syncfusion.UI.Xaml.Controls.Navigation;
+using Syncfusion.Windows.PdfViewer;
+using System;
+using System.Diagnostics;
+using System.Drawing;
+using Windows.ApplicationModel.Core;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.System;
+using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using FastResearch;
-using System.Diagnostics;
-using Windows.Data.Pdf;
-using Windows.Storage.Streams;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.Storage.Pickers;
-using Windows.Storage;
-using FastResearch.Model;
-using Syncfusion.Pdf.Parsing;
-using Windows.System;
-using Windows.UI.Core;
-using Syncfusion.Pdf.Interactive;
-using Syncfusion.UI.Xaml.Controls.Navigation;
-using Syncfusion.Windows.PdfViewer;
-using System.Reflection;
-using System.Drawing;
-using Windows.UI;
-using Windows.UI.Popups;
-using Windows.UI.ViewManagement;
-using Windows.Graphics.Display;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -67,8 +50,16 @@ namespace FastResearch
 
         public PapersPage()
         {
+           
             this.InitializeComponent();
             this.ViewModel = new PaperAreaViewModel();
+            this.DataContext = pdfViewer;
+            this.Unloaded += MainPage_Unloaded;
+            this.pdfViewer.SemanticZoomChanged += PdfViewer_SemanitcZoomChanged;
+            //solve the problem that can't not press a button in titlebar 
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            Window.Current.SetTitleBar(BackgroundElement);
+
             this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
             this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
             PaperItemList.ItemsSource = this.ViewModel.PapersItems;
@@ -76,8 +67,61 @@ namespace FastResearch
             PaperItemSaveButton.Visibility = Visibility.Collapsed;
         }
 
+        private void PdfViewer_SemanitcZoomChanged(object sender, SemanticZoomViewChangedEventArgs e)
+        {
+            
+        }
+
         public PaperAreaViewModel ViewModel { get; set; }
         public StorageFile addPaperFile { get; set; }
+
+        private void MainPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (this.pdfViewer != null)
+                this.pdfViewer.Unload(true);
+            UnlinkChildrens(this);
+        }
+
+        void UnlinkChildrens(UIElement element)
+        {
+            if (element == null)
+                return;
+            if (element is Panel)
+            {
+                for (int i = 0; i < (element as Panel).Children.Count; i++)
+                {
+                    UIElement childElement = (element as Panel).Children[i];
+                    UnlinkChildrens(childElement);
+                    (element as Panel).Children.Remove(childElement);
+                    i--;
+                }
+            }
+            else if (element is ItemsControl)
+            {
+                for (int j = 0; j < (element as ItemsControl).Items.Count; j++)
+                {
+                    UIElement childElement = ((element as ItemsControl).Items[j] as UIElement);
+                    if (childElement != null)
+                    {
+                        UnlinkChildrens(childElement);
+                        (element as ItemsControl).Items.Remove(childElement);
+                        j--;
+                    }
+                }
+            }
+            else if (element is ContentControl)
+            {
+                UnlinkChildrens((element as ContentControl).Content as UIElement);
+                (element as ContentControl).Content = null;
+            }
+            else if (element is UserControl)
+            {
+                UnlinkChildrens((element as UserControl).Content as UIElement);
+                (element as UserControl).Content = null;
+            }
+        }
+
+
 
         private async void NavLinksList_OnItemClick(object sender, Windows.UI.Xaml.Controls.ItemClickEventArgs e)
         {
@@ -105,8 +149,8 @@ namespace FastResearch
                     this.ViewModel.getPapers((string)AreaButton.Content);
 
                     BookmarkButton.IsEnabled = false;
+                    pdfViewer.PageChanged += PdfViewer_PageChanged;
 
-                    
                     PaperItemList.ItemsSource = this.ViewModel.PapersItems;
                     if(InkButton.IsChecked.Value)
                     {
@@ -138,6 +182,19 @@ namespace FastResearch
                     ContentDialogResult result = await noWifiDialog.ShowAsync();
                 }
             }
+        }
+
+        private void PdfViewer_PageChanged(object sender, PageChangedEventArgs e)
+        {
+            PageDestinationTextBox.Text = string.Format("{0}", pdfViewer.PageNumber.ToString());
+            if (pdfViewer.PageNumber == 1)
+                PrevPageButton.IsEnabled = false;
+            else
+                PrevPageButton.IsEnabled = true;
+            if (pdfViewer.PageNumber == pdfViewer.PageCount)
+                NextPageButton.IsEnabled = false;
+            else
+                NextPageButton.IsEnabled = true;
         }
 
         private void AreaButton_Click(object sender, RoutedEventArgs e)
@@ -189,8 +246,19 @@ namespace FastResearch
             PdfLoadedDocument pdf =
                 await PdfReader.PdfReader.LoadDocument(newFile, NewAreaButton.Name, PaperItemInputBox.Name);
             pdfViewer.LoadDocument(pdf);
-
+            if (PageCounttext != null)
+                PageCounttext.Text = string.Format("of {0}", pdfViewer.PageCount.ToString());
+          
+            pdfViewer.PopupAnnotationAdded += PdfViewer_PopupAnnotationAdded;
+            if (pdf.Bookmarks.Count > 0)
+                BookmarkButton.IsEnabled = true;
+            LoadNavigator(pdf);
             this.ViewModel.getPapers((string)AreaButton.Content);
+        }
+
+        private void PdfViewer_PopupAnnotationAdded(object sender, PopupAnnotationAddedEventArgs e)
+        {
+            PopupButton.IsChecked = false;
         }
 
 

@@ -5,30 +5,30 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d" RequestedTheme="Light">
+    mc:Ignorable="d" RequestedTheme="Dark">
     <Page.Background>
         <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/timg.png"/>
     </Page.Background>
-
-    <NavigationView x:Name="NvFastResearch" PaneTitle="FastResearch" 
+    <Grid>
+        <NavigationView x:Name="NvFastResearch" PaneTitle="FastResearch" 
                     ItemInvoked="NavView_ItemInvoked"
                     >
-        <NavigationView.MenuItems>
-            <NavigationViewItemSeparator/>
-            <NavigationViewItem Icon="Repair" Content="Tools" Tag="ToolsPage" />
-            <NavigationViewItem Icon="Document" Content="Papers" Tag="PapersPage"/>
-        </NavigationView.MenuItems>
-        <NavigationView.AutoSuggestBox>
-            <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
-        </NavigationView.AutoSuggestBox>
-        <Frame x:Name="ContentFrame" Padding="0,0,0,0" IsTabStop="True"
+            <NavigationView.MenuItems>
+                <NavigationViewItemSeparator/>
+                <NavigationViewItem Icon="Repair" Content="Tools" Tag="ToolsPage" />
+                <NavigationViewItem Icon="Document" Content="Papers" Tag="PapersPage"/>
+            </NavigationView.MenuItems>
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
+            </NavigationView.AutoSuggestBox>
+            <Frame x:Name="ContentFrame" Padding="0,0,0,0" IsTabStop="True"
                NavigationFailed="ContentFrame_NavigationFailed">
-            <Frame.ContentTransitions>
-                <TransitionCollection>
-                    <NavigationThemeTransition />
-                </TransitionCollection>
-            </Frame.ContentTransitions>
-        </Frame>
-    </NavigationView>
-
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition />
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </NavigationView>
+    </Grid>
 </Page>

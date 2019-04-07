@@ -195,9 +195,6 @@
     <PackageReference Include="MvvmLight">
       <Version>5.4.1.1</Version>
     </PackageReference>
-    <PackageReference Include="Syncfusion.Pdf.UWP">
-      <Version>17.1.0.38</Version>
-    </PackageReference>
     <PackageReference Include="Syncfusion.SfColorPickers.UWP">
       <Version>17.1.0.38</Version>
     </PackageReference>

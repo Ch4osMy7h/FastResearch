@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FastResearch.Services;
 using GalaSoft.MvvmLight.Ioc;
+using Windows.ApplicationModel.Core;
 
 namespace FastResearch
 {
@@ -30,12 +31,13 @@ namespace FastResearch
         /// </summary>
         public App()
         {
+            
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("ODYzMzVAMzEzNzJlMzEyZTMwa042VTdFOVNzem4rNVRZa0hvdGVyaHdkWHE2d0JTZnpHSzc3NHU4cU1jWT0=");
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             DatabaseManager.UserDataBase.InitializeDatabase();
             PdfReader.PdfFileManger.InitFileMange();
-           
+            
 
 
         }
@@ -47,6 +49,7 @@ namespace FastResearch
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
