@@ -138,6 +138,9 @@
     </Page.Resources>
 
     <Grid>
+        <!--cover the app title bar-->
+        <Rectangle x:Name="BackgroundElement" />
+        
         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;"/>
         <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                IsPaneOpen="True" DisplayMode="Inline">
@@ -182,55 +185,7 @@
                     </Button>
                 </Grid>
             </SplitView.Pane>
-            <!--<RelativePanel>
-                <Frame x:Name="PaperViewFrame" Margin="0,5,0,0" RelativePanel.AlignTopWithPanel="True" RelativePanel.Above="PdfEditCommandBar" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Navigated="PaperViewFrame_Navigated"/>
-                <CommandBar Name ="PdfEditCommandBar" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.Row="0" HorizontalAlignment="Left">
-                    <AppBarButton Icon="OpenFile" Label="Open"/>
-                    <AppBarButton Icon="Bold" Label="Bind" Click="AppBarButtonBind_Click"/>
-                    <AppBarButton Icon="Delete" Label="Delete"/>
-                    <AppBarButton Icon="SolidStar" Label="Mark"/>
-                    <CommandBar.SecondaryCommands>
-                        <AppBarButton Icon="Setting" Label="Settings"/>
-                    </CommandBar.SecondaryCommands>
-                </CommandBar>-->
-            <!--<StackPanel x:Name="StatusPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-                    <TextBlock x:Name="StatusLabel" Margin="10,0,0,10" TextWrapping="Wrap" Text="Status:" />
-                    <Border x:Name="StatusBorder" Margin="0,0,0,0">
-                        <ScrollViewer VerticalScrollMode="Auto"  VerticalScrollBarVisibility="Auto" MaxHeight="200">
-                            -->
-            <!-- Use LiveSetting to enable screen readers to announce the status update. -->
-            <!--
-                            <TextBlock x:Name="StatusBlock" FontWeight="Bold" AutomationProperties.LiveSetting="Assertive"
-                                   MaxWidth="{Binding ElementName=Splitter, Path=ActualWidth}" Margin="10,10,10,20" TextWrapping="Wrap"  />
-                        </ScrollViewer>
-                    </Border>
-                </StackPanel>-->
-            
-            <!--</RelativePanel>-->
-            <!--<Grid>
-                --><!--<CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.Row="0" HorizontalAlignment="Left">
-                    <AppBarButton Icon="OpenFile" Label="Open"/>
-                    <AppBarButton Icon="Bold" Label="Bind" Click="AppBarButtonBind_Click"/>
-                    <AppBarButton Icon="Delete" Label="Delete"/>
-                    <AppBarButton Icon="SolidStar" Label="Mark"/>
-                    <CommandBar.SecondaryCommands>
-                        <AppBarButton Icon="Setting" Label="Settings"/>
-                    </CommandBar.SecondaryCommands>
-                </CommandBar>-->
-                    <!--<FlipView Grid.Row="0" Name="PdfView">
-                        --><!-- Use a vertical stack panel for vertical flipping. --><!--
-                        <FlipView.ItemTemplate>
-                                    <DataTemplate>
-                                <ScrollViewer ZoomMode="Enabled" 
-                                              HorizontalScrollBarVisibility="Auto" 
-                                              VerticalScrollBarVisibility="Auto" >
-                                    <Image Source="{Binding}"/>
-                                </ScrollViewer>
-                            </DataTemplate>
-                        </FlipView.ItemTemplate>
-                    </FlipView>--><!--
-                <syncfusion:SfPdfViewerControl Name="PdfView"></syncfusion:SfPdfViewerControl>
-            </Grid>-->
+          
             <Grid x:Name="parentGrid" KeyDown="Viewer_KeyDown" Background="Gray">
 
                 <Grid.ColumnDefinitions>
@@ -402,7 +357,7 @@
                         <Button ToolTipService.ToolTip="Click to go to next page in the document" Style="{StaticResource ButtonStyle}" Name="NextPageButton" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding NextPageCommand}" IsEnabled="True" Height="40" Width="50">
                             <TextBlock x:Name="iconDown" FontFamily="Segoe MDL2 Assets" Text="&#xE099;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16.2"/>
                         </Button>
-                        <TextBox Margin="0 10 0 10" Padding="0 7 0 0" BorderThickness="0" FontSize="12" x:Name="PageDestinationTextBox" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" KeyDown="PageDestinationTextBox_KeyDown" TextChanged="PageDestinationTextBox_TextChanged" TextAlignment="Center" Foreground="Black" LostFocus="PageDestinationTextBox_LostFocus" GotFocus="PageDestinationTextBox_GotFocus"/>
+                        <TextBox Margin="0 10 0 10" Padding="0 7 0 0" BorderThickness="0" FontSize="12" x:Name="PageDestinationTextBox" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" KeyDown="PageDestinationTextBox_KeyDown" TextChanged="PageDestinationTextBox_TextChanged" TextAlignment="Center" Foreground="White" LostFocus="PageDestinationTextBox_LostFocus" GotFocus="PageDestinationTextBox_GotFocus"/>
                         <TextBlock Width="Auto" Height="20" TextAlignment="Center" x:Name="PageCounttext" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="12" />
                         <Rectangle Fill="#888888" Height="20" Width="0.75" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         <Button ToolTipService.ToolTip="Click to increase the magnification of the entire page" x:Name="ZoomInButton" Style="{StaticResource ButtonStyle}" Grid.Column="9" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding IncreaseZoomCommand}" Click="ChangeZoom" Height="40" Width="50">
