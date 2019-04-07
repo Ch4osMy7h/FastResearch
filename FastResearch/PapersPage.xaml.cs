@@ -34,7 +34,7 @@ namespace FastResearch
         bool m_isSinglePageView;
         bool isSearchToolbarVisible = false;
         bool isAnnotationToolbarVisible = false;
-        bool isAnnotationMode;
+
         bool isBookmarkClicked = false;
         enum AnnotationMode
         {
@@ -128,6 +128,7 @@ namespace FastResearch
             Model.PaperArea item = (Model.PaperArea)e.ClickedItem;
             if (this.ViewModel.IsPaperAreaMenu)
             {
+                PaperItemSaveButton.Visibility = Visibility.Collapsed;
                 Bind.Visibility = Visibility.Visible;
                 this.ViewModel.getPapers(item._name);
                 PaperItemList.ItemsSource = this.ViewModel.PapersItems;
@@ -207,12 +208,22 @@ namespace FastResearch
             this.ViewModel.readPaperArea();
         }
 
-        private void PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
+        private async void PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.ViewModel.IsPaperAreaMenu)
             {
                 String paperArea = PaperItemInputBox.Text;
-                this.ViewModel.addPaperArea(paperArea);
+                if(this.ViewModel.addPaperArea(paperArea) == false)
+                {
+                    ContentDialog noWifiDialog = new ContentDialog
+                    {
+                        Title = "Wrong",
+                        Content = "不能插入同名的领域",
+                        CloseButtonText = "Close"
+                    };
+
+                    ContentDialogResult result = await noWifiDialog.ShowAsync();
+                }
                 this.ViewModel.readPaperArea();
                 PaperItemList.ItemsSource = this.ViewModel.PapersItems;
             }
@@ -234,15 +245,42 @@ namespace FastResearch
 
         private async void Bind_Click(object sender, RoutedEventArgs e)
         {
+            PaperItemSaveButton.Visibility = Visibility.Collapsed;
             String paper = PaperItemInputBox.Text;
             var picker = new FileOpenPicker();
             picker.FileTypeFilter.Add(".pdf");
             addPaperFile = await picker.PickSingleFileAsync();
-            //当没有选择到文件的时候，返回w
+            //当没有选择到文件的时候，返回
             if (addPaperFile == null) return;
-            await addPaperFile.RenameAsync(paper + ".pdf");
+
+            try
+            {
+                await addPaperFile.RenameAsync(paper + ".pdf");
+                
+            } catch (Exception ex)
+            {
+                ContentDialog noWifiDialog = new ContentDialog
+                {
+                    Title = "Wrong",
+                    Content = "Paper的名字不能重复",
+                    CloseButtonText = "Close"
+                };
+
+                ContentDialogResult result = await noWifiDialog.ShowAsync();
+                return ;
+            }
             StorageFile newFile = await addPaperFile.CopyAsync(ViewModel.rootLocalDataFolder);
-            this.ViewModel.addPaper(paper, (string)AreaButton.Content, newFile.Path);
+            if (this.ViewModel.addPaper(paper, (string)AreaButton.Content, newFile.Path) == false)
+            {
+                ContentDialog noWifiDialog = new ContentDialog
+                {
+                    Title = "Wrong",
+                    Content = "Paper的名字不能重复",
+                    CloseButtonText = "Close"
+                };
+
+                ContentDialogResult result = await noWifiDialog.ShowAsync();
+            }
             PdfLoadedDocument pdf =
                 await PdfReader.PdfReader.LoadDocument(newFile, NewAreaButton.Name, PaperItemInputBox.Name);
             pdfViewer.LoadDocument(pdf);
@@ -429,83 +467,104 @@ namespace FastResearch
 
         private void InkButton_Checked(object sender, RoutedEventArgs e)
         {
+            UncheckOthers(InkButton);
             pdfViewer.InkAnnotationCommand.Execute(true);
-        }
-
-        private void HighlightButton_Checked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.HighlightAnnotationCommand.Execute(true);
-        }
-
-        private void UnderlineButton_Checked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.UnderlineAnnotationCommand.Execute(true);
-        }
-
-        private void StrikethroughButton_Checked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.StrikeoutAnnotationCommand.Execute(true);
-        }
-
-        private void LineButton_Checked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.LineAnnotationCommand.Execute(true);
-        }
-
-        private void RectangleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.RectangleAnnotationCommand.Execute(true);
-        }
-
-        private void EllipseButton_Checked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.EllipseAnnotationCommand.Execute(true);
-        }
-
-        private void PopupButton_Checked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.PopupAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
         }
 
         private void InkButton_Unchecked(object sender, RoutedEventArgs e)
         {
             pdfViewer.InkAnnotationCommand.Execute(false);
+            m_isButtonClicked = true;
+        }
+
+        private void HighlightButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UncheckOthers(HighlightButton);
+            pdfViewer.HighlightAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
         }
 
         private void HighlightButton_Unchecked(object sender, RoutedEventArgs e)
         {
             pdfViewer.HighlightAnnotationCommand.Execute(false);
+            m_isButtonClicked = true;
+        }
+
+        private void UnderlineButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UncheckOthers(UnderlineButton);
+            pdfViewer.UnderlineAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
         }
 
         private void UnderlineButton_Unchecked(object sender, RoutedEventArgs e)
         {
             pdfViewer.UnderlineAnnotationCommand.Execute(false);
+            m_isButtonClicked = true;
+        }
+
+        private void StrikethroughButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UncheckOthers(StrikethroughButton);
+            pdfViewer.StrikeoutAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
         }
 
         private void StrikethroughButton_Unchecked(object sender, RoutedEventArgs e)
         {
             pdfViewer.StrikeoutAnnotationCommand.Execute(false);
+            m_isButtonClicked = true;
+        }
+
+        private void LineButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UncheckOthers(LineButton);
+            pdfViewer.LineAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
         }
 
         private void LineButton_Unchecked(object sender, RoutedEventArgs e)
         {
             pdfViewer.LineAnnotationCommand.Execute(false);
+            m_isButtonClicked = true;
+        }
+        private void PopupButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UncheckOthers(PopupButton);
+            pdfViewer.PopupAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
+        }
+        private void PopupButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            pdfViewer.PopupAnnotationCommand.Execute(false);
+            m_isButtonClicked = true;
+        }
+
+        private void RectangleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UncheckOthers(RectangleButton);
+            pdfViewer.RectangleAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
         }
 
         private void RectangleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             pdfViewer.RectangleAnnotationCommand.Execute(false);
+            m_isButtonClicked = true;
+        }
+
+        private void EllipseButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UncheckOthers(EllipseButton);
+            pdfViewer.EllipseAnnotationCommand.Execute(true);
+            m_isButtonClicked = true;
         }
 
         private void EllipseButton_Unchecked(object sender, RoutedEventArgs e)
         {
             pdfViewer.EllipseAnnotationCommand.Execute(false);
             m_isButtonClicked = true;
-        }
-
-        private void PopupButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            pdfViewer.PopupAnnotationCommand.Execute(false);
         }
 
         private void CloseAnnotations_Click(object sender, RoutedEventArgs e)

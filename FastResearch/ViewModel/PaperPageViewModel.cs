@@ -69,13 +69,18 @@ namespace FastResearch
                 return PdfReader.PdfFileManger.RootPaperItems;
             }
         }
-        public void addPaperArea(String PaperName)
+        public bool addPaperArea(String paperArea)
         {
+            List<String> curPaperArea = getPaperArea();
+            if(curPaperArea.Find(x => x == paperArea) != null)
+            {
+                return false;
+            }
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
             
-            service.AddPaperArea(PaperName);
-            PdfReader.PdfFileManger.addPaperAreaFolder(PaperName);
-
+            service.AddPaperArea(paperArea);
+            PdfReader.PdfFileManger.addPaperAreaFolder(paperArea);
+            return true;
         }
 
         public string getPdfDocument(string paper)
@@ -84,10 +89,16 @@ namespace FastResearch
             return service.getPaperPath(paper);
         } 
 
-        public void addPaper(String paperName, String paperArea, String paperPath)
+        public bool addPaper(String paperName, String paperArea, String paperPath)
         {
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            List<string> papers = service.getPapers(paperArea);
+            if(papers.Find(x => x == paperName) != null)
+            {
+                return false;
+            }
             service.AddPaper(paperName, paperArea, paperPath);
+            return true;
         }
         public void readPaperArea()
         {
