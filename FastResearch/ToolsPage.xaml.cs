@@ -25,6 +25,16 @@ namespace FastResearch
         public ToolsPage()
         {
             this.InitializeComponent();
+            this.ViewModel = new ToolsPageViewModel();
+            //this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
+            //this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
+        }
+
+        public ToolsPageViewModel ViewModel { get; set; }
+
+        private void NewButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
