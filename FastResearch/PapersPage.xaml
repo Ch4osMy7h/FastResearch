@@ -21,7 +21,7 @@
                 <TextBlock Text="{x:Bind _name}" VerticalAlignment="Center" Height="Auto" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
-          <Style x:Key="ButtonStyle" TargetType="ButtonBase">
+        <Style x:Key="ButtonStyle" TargetType="ButtonBase">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ButtonBase">
@@ -140,7 +140,7 @@
     <Grid>
         <!--cover the app title bar-->
         <Rectangle x:Name="BackgroundElement" />
-        
+
         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;"/>
         <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                IsPaneOpen="True" DisplayMode="Inline">
@@ -185,7 +185,7 @@
                     </Button>
                 </Grid>
             </SplitView.Pane>
-          
+
             <Grid x:Name="parentGrid" KeyDown="Viewer_KeyDown" Background="Gray">
 
                 <Grid.ColumnDefinitions>
@@ -226,11 +226,15 @@
                     </Grid>
 
                     <Grid Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="59*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Grid Background="#1d1d1d" Height="40" Grid.Row="0" x:Name="SearchToolbar" Visibility="Collapsed" BorderThickness="0.5 0.5 0 0" BorderBrush="#707070">
+                        <Grid Background="#1d1d1d" Height="40" Grid.Row="0" x:Name="SearchToolbar" Visibility="Collapsed" BorderThickness="0.5 0.5 0 0" BorderBrush="#707070" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,0,0,920" Grid.RowSpan="2" VerticalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100" />
                                 <ColumnDefinition Width="260" />
@@ -256,7 +260,7 @@
 
                         </Grid>
 
-                        <Grid Background="#1d1d1d" Height="40" Grid.Row="0" x:Name="AnnotationToolbar" Visibility="Collapsed" BorderThickness="0.5 0.5 0 0" BorderBrush="#707070">
+                        <Grid Background="#1d1d1d" Height="40" Grid.Row="0" x:Name="AnnotationToolbar" Visibility="Collapsed" BorderThickness="0.5 0.5 0 0" BorderBrush="#707070" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,0,0,920" Grid.RowSpan="2" VerticalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="30" />
@@ -312,7 +316,7 @@
                                 <Path x:Name="iconPopUp" Data="F1M10,6L9,6 9,4 11,4 11,6C11,6.141 10.974,6.271 10.922,6.391 10.869,6.511 10.798,6.617 10.707,6.708 10.615,6.799 10.51,6.87 10.391,6.923 10.271,6.975 10.141,7 10,7z M6,6L5,6 5,4 7,4 7,6C7,6.141 6.974,6.271 6.921,6.391 6.869,6.511 6.798,6.617 6.707,6.708 6.616,6.799 6.51,6.87 6.39,6.923 6.271,6.975 6.141,7 6,7z M15,1L1,1 1,10 3,10 3,12.625 5.29,10 15,10z M16,0L16,11 5.711,11 2,14.938 2,11 0,11 0,0z" Fill="White" HorizontalAlignment="Center" Height="20" Stretch="Fill" VerticalAlignment="Center" Width="17"/>
                             </ToggleButton>
                         </Grid>
-                        <syncfusion:SfPdfViewerControl Name="pdfViewer" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <syncfusion:SfPdfViewerControl Name="pdfViewer" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
 
                     </Grid>
 
@@ -325,24 +329,26 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="20" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
 
-                        <Button ToolTipService.ToolTip="Rebind a PDF document" Style="{StaticResource ButtonStyle}" x:Name="BindButton" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="BindButton_Click" Height="40" Width="50">
-                            <Path x:Name="iconOpen" Data="M1.2500003,2.139 L1.2500003,16.251 3.750001,18.75 3.750001,15.313 C3.750001,15.02 3.7810011,14.768 3.8430012,14.556 3.9050012,14.345 3.9810012,14.156 4.0720012,13.99 4.1640013,13.824 4.2640012,13.676 4.3750015,13.545 4.486001,13.415 4.5860014,13.283 4.6780014,13.15 4.7690015,13.017 4.8450013,12.873 4.9070015,12.72 4.9690013,12.567 5.0000015,12.39 5.0000015,12.188 L5.0000015,5.8889998 z M2.1390007,1.25 L5.8890014,4.9999999 C6.0060015,5.1179999 6.0950017,5.2530001 6.1570015,5.406 6.2190018,5.5589999 6.2500019,5.7200001 6.2500019,5.8889998 L6.2500019,12.188 C6.2500019,12.481 6.2190018,12.733 6.1570015,12.945 6.0950017,13.156 6.0190015,13.345 5.9280014,13.511 5.8360014,13.677 5.7360015,13.825 5.6250015,13.956 5.5140014,14.086 5.4140015,14.218 5.3220015,14.351 5.2310014,14.484 5.1550012,14.628 5.0930014,14.781 5.0310016,14.934 5.0000015,15.111 5.0000015,15.313 L5.0000015,16.251 13.750003,16.251 13.750003,13.438 C13.750003,13.236 13.719003,13.061 13.657004,12.911 13.595004,12.761 13.519003,12.619 13.428004,12.486 13.336004,12.353 13.236003,12.219 13.125003,12.085 13.014003,11.952 12.914003,11.804 12.822003,11.641 12.731003,11.479 12.655003,11.29 12.593004,11.075 12.531004,10.86 12.500003,10.606 12.500003,10.313 L12.500003,1.25 z M0,0 L12.500003,0 C12.669003,0 12.831004,0.032999992 12.983003,0.097999871 13.136003,0.163 13.270004,0.253 13.384003,0.36700011 13.498004,0.48 13.587003,0.61399999 13.652004,0.76700002 13.717003,0.91999999 13.750003,1.081 13.750003,1.25 L13.750003,10.313 C13.750003,10.515 13.781004,10.69 13.843004,10.84 13.905004,10.99 13.981003,11.132 14.072004,11.265 14.164004,11.398 14.264003,11.532 14.375003,11.666 14.486003,11.799 14.586004,11.947 14.678004,12.11 14.769003,12.272 14.845004,12.461 14.907004,12.676 14.969004,12.891 15.000004,13.145 15.000004,13.438 L15.000004,16.251 C15.000004,16.42 14.967004,16.581 14.902004,16.734 14.837004,16.886999 14.748004,17.021 14.634004,17.133999 14.520004,17.248 14.386004,17.338 14.233004,17.403 14.081004,17.468001 13.919004,17.5 13.750003,17.5 L5.0000015,17.5 5.0000015,18.75 C5.0000015,19.004 4.9300013,19.235001 4.7900014,19.444001 4.6500011,19.652001 4.4630013,19.805001 4.2290011,19.903 4.0790012,19.968001 3.9190011,20 3.750001,20 3.405001,20 3.109001,19.876999 2.861001,19.629 L0,16.768 z" Fill="White" HorizontalAlignment="Center" Height="18" Stretch="Fill" VerticalAlignment="Center" Width="13.5"/>
+                 
+                        <Button ToolTipService.ToolTip="Delete this Paper in PaperArea" Style="{StaticResource ButtonStyle}" x:Name="DeletButton" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Click="DeletButton_Click" Height="40" Width="50">
+                            <SymbolIcon Symbol="Cancel"/>
                         </Button>
                         <Button ToolTipService.ToolTip="Click to save the document in the local disk" Style="{StaticResource ButtonStyle}" x:Name="SaveButton" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SaveButton_Click" Height="40" Width="50">
                             <TextBlock x:Name="iconSave" FontFamily="Segoe MDL2 Assets" Text="&#xE74E;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16.2"/>
@@ -384,7 +390,7 @@
                         <Button ToolTipService.ToolTip="Click to show the annotation tools" Style="{StaticResource ToggleButtonStyle}" Name="AnnotationButton" Grid.Column="14" VerticalAlignment="Center" HorizontalAlignment="Center" Click="AnnotationButton_Click" Height="40" Width="50">
                             <Path x:Name="iconAnnotation" Data="M2.9519992,6.8879981 L7.8710003,6.8879981 7.8710003,7.8719969 2.9519992,7.8719969 z M14.499001,5.3910014 C14.428002,5.3910015 14.361001,5.4030025 14.295006,5.4240062 14.231003,5.4480007 14.173004,5.4840038 14.123001,5.5340068 L8.9279983,10.730004 8.6730011,11.742005 9.6870017,11.487 14.882004,6.299006 C14.986001,6.1950021 15.039002,6.0670037 15.039002,5.9170024 15.039002,5.7620035 14.987999,5.6350046 14.885003,5.5380044 14.783005,5.4400051 14.653,5.3910015 14.499001,5.3910014 z M2.9519992,4.9200002 L10.824005,4.9200002 10.824005,5.9039993 2.9519992,5.9039993 z M14.499001,4.4300033 C14.709,4.4300032 14.904999,4.4670057 15.088006,4.5440015 15.270005,4.6170072 15.429002,4.7210035 15.565003,4.8540067 15.700006,4.9870023 15.806001,5.145007 15.883004,5.3280057 15.960999,5.5100048 16.000001,5.7070032 16.000001,5.9170024 16.000001,6.1120019 15.963006,6.3020043 15.887002,6.4870019 15.813004,6.6720068 15.704003,6.8350012 15.565003,6.9760001 L10.180998,12.358002 7.3510017,13.064003 8.0569959,10.233003 13.441001,4.8580045 C13.584999,4.7130002 13.748001,4.6060057 13.928001,4.5350066 14.108002,4.4650068 14.299004,4.4300032 14.499001,4.4300033 z M2.9519992,2.9520025 L10.824005,2.9520025 10.824005,3.9360014 2.9519992,3.9360014 z M0,0 L13.775006,0 13.775006,3.085 12.791006,4.0690001 12.791006,0.98400021 0.98400021,0.98400021 0.98400021,9.8389997 1.7890005,9.8389997 C2.0610008,10.096 2.3230009,10.355 2.578001,10.615 2.8300009,10.878 3.0880013,11.138 3.3500013,11.4 3.6110015,11.138 3.8690014,10.878 4.1220016,10.615 4.3760018,10.355 4.6390018,10.096 4.9110019,9.8389997 L7.0200028,9.8389997 6.0370024,10.823 5.3180022,10.823 3.3500013,12.791 1.3820004,10.823 0,10.823 z" Fill="White" HorizontalAlignment="Center" Height="18" Stretch="Fill" VerticalAlignment="Center" Width="18"/>
                         </Button>
-                        <Button ToolTipService.ToolTip="Click to search text in the document" Style="{StaticResource ToggleButtonStyle}" Name="SearchButton" Grid.Column="16" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SearchButton_Click" Height="40" Width="50">
+                        <Button ToolTipService.ToolTip="Click to search text in the document" Style="{StaticResource ToggleButtonStyle}" Name="SearchButton" Grid.Column="15" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SearchButton_Click" Height="40" Width="50">
                             <TextBlock x:Name="iconSearch" FontFamily="Segoe MDL2 Assets" Text="&#xE1A3;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16.2"/>
                         </Button>
                     </Grid>

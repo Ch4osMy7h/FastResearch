@@ -37,5 +37,15 @@ namespace FastResearch.Services
         {
             return DatabaseManager.UserDataBase.GetPaperPath(paper);
         }
+
+        public bool updatePaperPath(string paper, string paperPath)
+        {
+            return DatabaseManager.UserDataBase.UpdatePaperPath(paper, paperPath);
+        }
+
+        public void deletePaper(string paper)
+        {
+            DatabaseManager.UserDataBase.deletePaper(paper);
+        }
     }
 }

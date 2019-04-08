@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using FastResearch.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Windows.Storage;
+using Windows.UI.Popups;
 
 namespace FastResearch
 {
@@ -87,7 +89,13 @@ namespace FastResearch
         {
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
             return service.getPaperPath(paper);
-        } 
+        }
+
+        public bool updatePaperPath(string paper, string paperPath)
+        {
+            PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            return service.updatePaperPath(paper, paperPath);
+        }
 
         public bool addPaper(String paperName, String paperArea, String paperPath)
         {
@@ -140,5 +148,38 @@ namespace FastResearch
                 Debug.WriteLine("读取error");
             }
         }
-     }
+
+        internal async void Save(Stream stream, string curPaperName)
+        {
+            string paperPath = this.getPdfDocument(curPaperName);
+            StorageFile stFile = await StorageFile.GetFileFromPathAsync(paperPath);
+
+            if (stFile != null)
+            {
+                Windows.Storage.Streams.IRandomAccessStream fileStream = await stFile.OpenAsync(FileAccessMode.ReadWrite);
+                Stream st = fileStream.AsStreamForWrite();
+                st.SetLength(0);
+                st.Write((stream as MemoryStream).ToArray(), 0, (int)stream.Length);
+                st.Flush();
+                st.Dispose();
+                fileStream.Dispose();
+                MessageDialog msgDialog = new MessageDialog("File has been saved successfully.");
+                IUICommand cmd = await msgDialog.ShowAsync();
+            }
+            
+        }
+
+
+
+        internal void Bind(string text)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void Delete(string paper)
+        {
+            PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            service.deletePaper(paper);
+        }
+    }
 }

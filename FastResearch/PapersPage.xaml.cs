@@ -1,10 +1,12 @@
-﻿using Syncfusion.Pdf.Interactive;
+﻿using FastResearch.Model;
+using Syncfusion.Pdf.Interactive;
 using Syncfusion.Pdf.Parsing;
 using Syncfusion.UI.Xaml.Controls.Navigation;
 using Syncfusion.Windows.PdfViewer;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -34,6 +36,8 @@ namespace FastResearch
         bool m_isSinglePageView;
         bool isSearchToolbarVisible = false;
         bool isAnnotationToolbarVisible = false;
+        private string curPaperName = "";
+
 
         bool isBookmarkClicked = false;
         enum AnnotationMode
@@ -74,6 +78,7 @@ namespace FastResearch
 
         public PaperAreaViewModel ViewModel { get; set; }
         public StorageFile addPaperFile { get; set; }
+        public PaperArea CurClickItem { get; private set; }
 
         private void MainPage_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -126,6 +131,8 @@ namespace FastResearch
         private async void NavLinksList_OnItemClick(object sender, Windows.UI.Xaml.Controls.ItemClickEventArgs e)
         {
             Model.PaperArea item = (Model.PaperArea)e.ClickedItem;
+            //获取当前click的ListItem
+            CurClickItem = item;
             if (this.ViewModel.IsPaperAreaMenu)
             {
                 PaperItemSaveButton.Visibility = Visibility.Collapsed;
@@ -134,6 +141,7 @@ namespace FastResearch
                 PaperItemList.ItemsSource = this.ViewModel.PapersItems;
                 this.NewAreaButton.Content = "Add Paper";
                 this.AreaButton.Content = item._name;
+                this.PaperItemInputBox.Text = "";
                 this.ViewModel.IsPaperAreaMenu = false;
             }
             else
@@ -141,7 +149,7 @@ namespace FastResearch
                 //实现读取论文 
                 try
                 {
-
+                    curPaperName = item._name;
                     string paperPath = this.ViewModel.getPdfDocument(item._name);
                     Debug.WriteLine(paperPath);
                     StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
@@ -292,6 +300,7 @@ namespace FastResearch
                 BookmarkButton.IsEnabled = true;
             LoadNavigator(pdf);
             this.ViewModel.getPapers((string)AreaButton.Content);
+            curPaperName = (string)AreaButton.Content;
         }
 
         private void PdfViewer_PopupAnnotationAdded(object sender, PopupAnnotationAddedEventArgs e)
@@ -596,14 +605,13 @@ namespace FastResearch
                 PopupButton.IsChecked = false;
         }
 
-        private void BindButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.ViewModel.Save(pdfViewer.Save(), curPaperName);
+            this.ViewModel.getPapers((string)AreaButton.Content);
+            m_isButtonClicked = true;
         }
 
         private async void PageDestinationTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -759,6 +767,13 @@ namespace FastResearch
                 m_isButtonClicked = true;
                 isAnnotationToolbarVisible = false;
             }
+        }
+
+        private void DeletButton_Click(object sender, RoutedEventArgs e)
+        {
+            string paper = CurClickItem._name;
+            this.ViewModel.Delete(paper);
+            this.ViewModel.getPapers((string)this.AreaButton.Content);
         }
     }
 }

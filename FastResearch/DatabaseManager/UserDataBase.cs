@@ -166,6 +166,12 @@ namespace FastResearch.DatabaseManager
             return PaperName;
         }
 
+
+        /// <summary>
+        /// 获取PaperPath对应的Paper文件夹
+        /// </summary>
+        /// <param name="paper"> Paper 名字</param>
+        /// <returns></returns>
         public static String GetPaperPath(String paper)
         {
             string paperPath = "";
@@ -200,7 +206,44 @@ namespace FastResearch.DatabaseManager
         }
 
 
+        public static bool UpdatePaperPath(String paper, String paperpath)
+        {
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand
+                        ("UPDATE Papers SET PapersPath='" + paperpath + "' " + "WHERE Paper='" + paper + "'", db);
+                    updateCommand.ExecuteReader();
+                    return true;
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Bug!");
+            }
+            return false;
+        }
         
-        
+        public static void deletePaper(string paper)
+        {
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand
+                        ("DELETE FROM Papers " + "WHERE Paper='" + paper + "'", db);
+                    updateCommand.ExecuteReader();
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Bug!");
+            }
+        }
     }
 }
