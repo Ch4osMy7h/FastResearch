@@ -32,9 +32,22 @@ namespace FastResearch
 
         public ToolsPageViewModel ViewModel { get; set; }
 
-        private void NewButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            AddDialog addDialog = new AddDialog();
+            await addDialog.ShowAsync();
+            if(addDialog.Result == AddResult.AddOK)
+            {
+                ViewModel.AddCommand(addDialog.name);
+            }
         }
+
+       private async void GridView_ItemClick(object sender, ItemClickEventArgs e)
+       {
+            var command = (Model.Command)e.ClickedItem;
+            DetailDialog detailDialog = new DetailDialog(command);
+            await detailDialog.ShowAsync();
+            //System.Diagnostics.Debug.WriteLine(command.GetCommand());
+       }
     }
 }

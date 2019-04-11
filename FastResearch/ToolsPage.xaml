@@ -1,25 +1,41 @@
 ﻿<Page
-    x:Class="FastResearch.ToolsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FastResearch.Model"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
+    x:Class="FastResearch.ToolsPage"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    >
 
     <Page.Resources>
         <DataTemplate x:Key="CommandItem" x:DataType="local:Command">
-            <Button Content="{x:Bind name}" FontWeight="Bold"/>
+            <Grid>
+                <Border Background="DarkGray" Height="200" Width="200">
+                    <TextBlock Text="{x:Bind name}"/>
+                </Border>
+                <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                    <TextBlock Text="{x:Bind description}" TextWrapping="NoWrap"/>
+                    
+                </StackPanel>
+            </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid>
-        <Button Content="+" Click="NewButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <GridView ItemsSource="{x:Bind ViewModel.CommandItems}" ItemTemplate="{StaticResource CommandItem}"
-          IsItemClickEnabled="True"
-          Margin="25,127,26,25">
+    <Page.Background>
+        <ThemeResource ResourceKey="ApplicationPageBackgroundThemeBrush"/>
+    </Page.Background>
 
-        </GridView>
+    <Grid>
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="0,32,0,0" VerticalAlignment="Top">
+            <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click"/>
+        </CommandBar>
+        <GridView ItemsSource="{x:Bind Path=ViewModel.CommandItems}" ItemTemplate="{StaticResource CommandItem}"
+          IsItemClickEnabled="True"
+          ItemClick="GridView_ItemClick"
+          Margin="25,127,26,25"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="543,32,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
     </Grid>
 </Page>

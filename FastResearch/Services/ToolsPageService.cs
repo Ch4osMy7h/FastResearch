@@ -8,5 +8,9 @@ namespace FastResearch.Services
 {
     class ToolsPageService
     {
+        public void AddCommand(string commandName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

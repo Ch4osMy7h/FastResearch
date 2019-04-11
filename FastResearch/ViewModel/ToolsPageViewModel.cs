@@ -17,8 +17,8 @@ namespace FastResearch
     {
         public ToolsPageViewModel()
         {
-            this.commandItems.Add(new Command() { name = "dsadas" });
-            this.commandItems.Add(new Command() { name = "dsajio" });
+            this.commandItems.Add(new Command() { name = "dsadas", description = "你妈死了", executable = "python", file = "a.py", options = new List<Tuple<string, string>>{Tuple.Create("fuck", "1"), Tuple.Create("suck", "2")}});
+            this.commandItems.Add(new Command() { name = "dsajio", description = "我们两个都是你的哥哥" });
         }
 
         private ObservableCollection<Command> commandItems = new ObservableCollection<Command>();
@@ -29,6 +29,13 @@ namespace FastResearch
             {
                 return this.commandItems;
             }
+        }
+
+        public void AddCommand(String commandName)
+        {
+            ToolsPageService service = SimpleIoc.Default.GetInstance<ToolsPageService>();
+            service.AddCommand(commandName);
+            commandItems.Add(new Command() { name = commandName });
         }
     }
 }
