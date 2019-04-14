@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization.Formatters.Binary;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -39,15 +41,30 @@ namespace FastResearch
             if(addDialog.Result == AddResult.AddOK)
             {
                 ViewModel.AddCommand(addDialog.name);
+                
             }
         }
 
        private async void GridView_ItemClick(object sender, ItemClickEventArgs e)
        {
             var command = (Model.Command)e.ClickedItem;
+            Debug.WriteLine(command.name);
             DetailDialog detailDialog = new DetailDialog(command);
+            var old_command = ViewModel.CopyCommand(command);
+       
             await detailDialog.ShowAsync();
+            if(detailDialog.result == EditResult.EditOK)
+            {
+                
+                CommandItemGrid.ItemsSource = ViewModel.CommandItems;
+            }
+            else
+            {
+                ((Model.Command)e.ClickedItem).name = old_command.name;
+                ((Model.Command)e.ClickedItem).description = old_command.description;
+            }
             //System.Diagnostics.Debug.WriteLine(command.GetCommand());
+            
        }
     }
 }

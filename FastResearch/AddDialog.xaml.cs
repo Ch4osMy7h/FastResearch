@@ -42,7 +42,7 @@ namespace FastResearch
                 args.Cancel = true;
                 errorTextBlock.Text = "名称不能为空！";
             }
-
+            else this.Result = AddResult.AddOK;
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
