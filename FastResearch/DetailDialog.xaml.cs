@@ -57,6 +57,7 @@ namespace FastResearch
             }
             else
             {
+
                 result = EditResult.EditOK;
             }
         }

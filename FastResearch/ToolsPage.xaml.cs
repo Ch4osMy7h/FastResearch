@@ -45,6 +45,21 @@ namespace FastResearch
             }
         }
 
+        private void Restore(object sender, TappedRoutedEventArgs e)
+        {
+            TileView.SelectedIndex = -1;
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(TileView.SelectedIndex != -1)
+            {
+                ViewModel.DeleteCommand(TileView.SelectedIndex);
+            }
+            TileView.SelectedIndex = -1;
+        }
+
+        /*
        private async void GridView_ItemClick(object sender, ItemClickEventArgs e)
        {
             var command = (Model.Command)e.ClickedItem;
@@ -66,5 +81,6 @@ namespace FastResearch
             //System.Diagnostics.Debug.WriteLine(command.GetCommand());
             
        }
+       */
     }
 }

@@ -5,27 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
+    xmlns:layout="using:Syncfusion.UI.Xaml.Controls.Layout"
     x:Class="FastResearch.ToolsPage"
     mc:Ignorable="d"
     >
-
-    <Page.Resources>
-        <DataTemplate x:Key="CommandItem" x:DataType="local:Command">
-            <Border Background="DarkGray" Height="200" Width="200">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
-                    <TextBlock Text="{x:Bind description, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="1"/>
-                </Grid>
-            </Border>
-
-            
-        </DataTemplate>
-    </Page.Resources>
 
     <Page.Background>
         <ThemeResource ResourceKey="ApplicationPageBackgroundThemeBrush"/>
@@ -34,10 +17,100 @@
     <Grid>
         <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="0,32,0,0" VerticalAlignment="Top">
             <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click"/>
+            <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click"/>
+            
         </CommandBar>
-        <GridView x:Name="CommandItemGrid" ItemsSource="{x:Bind ViewModel.CommandItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource CommandItem}"
-          IsItemClickEnabled="True"
-          ItemClick="GridView_ItemClick"
-          Margin="25,127,26,25"/>
+        <layout:SfTileView x:Name="TileView" Margin="25,127,26,25"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   ItemsSource="{x:Bind ViewModel.CommandItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				   SelectedIndex="0"
+				   ItemWidth="250" ItemHeight="160">
+            <layout:SfTileView.MaximizedItemTemplate>
+                <DataTemplate x:DataType="local:Command">
+                    <Border Background="DarkGray" Height="1000" Width="1000">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid Grid.ColumnSpan="2" Tapped="Restore">
+                                <TextBlock Text="{x:Bind name}" FontSize="25" Margin="20" Foreground="White"/>
+                            </Grid>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" Grid.Row="1" Grid.Column="0">
+                                <Grid VerticalAlignment="Top">
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="14"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Style>
+                                    </Grid.Resources>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="800"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Description " Grid.Row="0" Grid.Column="0"/>
+                                    <TextBlock Text="{x:Bind description}" Grid.Row="1" Grid.Column="0"/>
+
+                                    <ListView x:Name="optionPairsList" CanDragItems="True" CanReorderItems="True" 
+                                          AllowDrop="True" SelectionMode="Single" IsItemClickEnabled = "False"
+                                          ItemsSource="{x:Bind options, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                          Grid.Row="2">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="local:OptionPair">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="{x:Bind option, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Column="0"/>
+                                                    <TextBlock Text="{x:Bind myValue, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Column="1"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </StackPanel>
+
+                            <!--<TextBlock Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
+                    <TextBlock Text="{x:Bind description, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="1"/>-->
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </layout:SfTileView.MaximizedItemTemplate>
+
+            <layout:SfTileView.ItemTemplate>
+                <DataTemplate x:DataType="local:Command">
+                    <Grid Background="LightBlue">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
+                        <TextBlock Text="{x:Bind description, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </layout:SfTileView.ItemTemplate>
+
+        </layout:SfTileView>
     </Grid>
+   
 </Page>

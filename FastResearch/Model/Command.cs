@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,46 @@ using System.Threading.Tasks;
 
 namespace FastResearch.Model
 {
+    [Serializable]
+    public class OptionPair : INotifyPropertyChanged
+    {
+        private string _option;
+        public string option
+        {
+            get
+            {
+                return _option;
+            }
+
+            set
+            {
+                _option = value;
+                OnPropertyChanged("option");
+            }
+        }
+        private string _myValue;
+        public string myValue
+        {
+            get
+            {
+                return _myValue;
+            }
+
+            set
+            {
+                _myValue = value;
+                OnPropertyChanged("myValue");
+            }
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
+
     [Serializable]
     public class Command : INotifyPropertyChanged
     {
@@ -26,7 +67,7 @@ namespace FastResearch.Model
         }
         public string executable { get; set; }
         public string file { get; set; }
-        public List<Tuple<string, string>> options { get; set; }
+        public ObservableCollection<OptionPair> options;
 
         private string _description = string.Empty;
         public string description
@@ -51,7 +92,7 @@ namespace FastResearch.Model
 
         public string GetCommand() => executable + " " + file + " " +   
             (options != null && options.Count > 0 ? 
-            options.Select(it => new string("-" + it.Item1 + " " + it.Item2)).ToList().Aggregate((acc, item) => acc + " " + item) : "");
+            options.Select(it => new string("-" + it.option + " " + it.myValue)).ToList().Aggregate((acc, item) => acc + " " + item) : "");
 
     }
 }
