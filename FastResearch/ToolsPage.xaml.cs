@@ -1,12 +1,15 @@
-﻿using System;
+﻿using FastResearch.Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization.Formatters.Binary;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -41,13 +44,7 @@ namespace FastResearch
             if(addDialog.Result == AddResult.AddOK)
             {
                 ViewModel.AddCommand(addDialog.name);
-                
             }
-        }
-
-        private void Restore(object sender, TappedRoutedEventArgs e)
-        {
-            TileView.SelectedIndex = -1;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -58,6 +55,56 @@ namespace FastResearch
             }
             TileView.SelectedIndex = -1;
         }
+
+        
+
+        private void DeletePairButton_Click(object sender, RoutedEventArgs e)
+        {
+            OptionPair pair = (sender as Button).Tag as OptionPair;
+            ((Command)TileView.SelectedItem).options.Remove(pair);
+        }
+
+        private void OutputButton_Click(object sender, RoutedEventArgs e)
+        {
+            int temp = TileView.SelectedIndex;
+            var dp = new DataPackage();
+            dp.SetText(((Command)TileView.SelectedItem).GetCommand());//将当前命令对象的命令文本形式写入剪贴板
+            Clipboard.SetContent(dp);      
+            TileView.SelectedIndex = temp;
+        }
+
+        private void AddPairButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void AddSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void AddCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void EditPairButton_Click(object sender, RoutedEventArgs e)
+        {
+            OptionPair pair = (sender as Button).Tag as OptionPair;
+        }
+
+        private void EditSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
 
         /*
        private async void GridView_ItemClick(object sender, ItemClickEventArgs e)

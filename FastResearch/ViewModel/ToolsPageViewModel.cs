@@ -24,6 +24,7 @@ namespace FastResearch
             this.CommandItems.Add(new Command() { name = "dsadas", description = "你妈死了", executable = "python", file = "a.py", options = new ObservableCollection<OptionPair>{new OptionPair{ option = "fuck", myValue = "1" }, new OptionPair { option = "suck", myValue = "2" } } });
             this.CommandItems.Add(new Command() { name = "dsajio", description = "我们两个都是你的哥哥" });
             this.CommandItems.Add(new Command() { name = "普公司的", description = "大苏打！！" });
+            
         }
 
         public ObservableCollection<Command> CommandItems { get; set; } = new ObservableCollection<Command>();
@@ -54,7 +55,15 @@ namespace FastResearch
 
         public void DeleteCommand(int pos)
         {
-            CommandItems.RemoveAt(pos);
+
+            Debug.Print(pos.ToString());
+            Debug.Print(CommandItems.Count.ToString() + " ");
+            try
+            {
+                CommandItems.RemoveAt(pos);
+            }
+            catch {}
+            
         }
 
         public T DeepCopy<T>(T obj)

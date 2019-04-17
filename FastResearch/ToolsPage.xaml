@@ -19,7 +19,7 @@
             <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click"/>
             <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click"/>
             
-        </CommandBar>
+        </CommandBar>     
         <layout:SfTileView x:Name="TileView" Margin="25,127,26,25"
 				   HorizontalAlignment="Left"
 				   VerticalAlignment="Top"
@@ -36,16 +36,34 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <Grid Grid.ColumnSpan="2" Tapped="Restore">
-                                <TextBlock Text="{x:Bind name}" FontSize="25" Margin="20" Foreground="White"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{x:Bind name}" FontSize="25" Margin="20" Foreground="White" Grid.Column="0"/>
+                                <Button Content="导出" Click="OutputButton_Click" Grid.Column="1"/>
+                                <Button Content="添加" Click="AddPairButton_Click" Grid.Column="2">
+                                    <Button.Flyout>
+                                        <Flyout x:Name="addFlyout">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBox Name="addOptionTextBox" Header="option"/>
+                                                <TextBox Name="addValueTextBox" Header="value"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="保存" Click="AddSaveButton_Click"/>
+                                                    <Button Content="取消" Click="AddCancelButton_Click"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                </Button>
+
                             </Grid>
 
-                            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" Grid.Row="1" Grid.Column="0">
+                            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" Grid.Row="1">
                                 <Grid VerticalAlignment="Top">
                                     <Grid.Resources>
                                         <Style TargetType="TextBlock">
@@ -77,20 +95,37 @@
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="50" />
-                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="50" />
+                                                        <ColumnDefinition Width="50" />
+                                                        <ColumnDefinition Width="50" />
                                                         <ColumnDefinition />
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock Text="{x:Bind option, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Column="0"/>
                                                     <TextBlock Text="{x:Bind myValue, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Column="1"/>
+                                                    <Button Tag="{Binding}"  Click="EditPairButton_Click" Grid.Column="2">
+                                                        <Button.Flyout>
+                                                            <Flyout x:Name="editFlyout">
+                                                                <StackPanel Orientation="Vertical">
+                                                                    <TextBox Name="editOptionTextBox" Header="option"/>
+                                                                    <TextBox Name="editValueTextBox" Header="value"/>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Button Content="保存" Click="EditSaveButton_Click"/>
+                                                                        <Button Content="取消" Click="EditCancelButton_Click"/>
+                                                                    </StackPanel>
+                                                                </StackPanel>
+                                                            </Flyout>
+                                                        </Button.Flyout>
+                                                        <SymbolIcon Symbol="Edit"/>
+                                                    </Button>
+                                                    <Button Tag="{Binding}" Click="DeletePairButton_Click" Grid.Column="3">
+                                                        <SymbolIcon Symbol="Delete"/>
+                                                    </Button>
                                                 </Grid>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
                                 </Grid>
                             </StackPanel>
-
-                            <!--<TextBlock Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
-                    <TextBlock Text="{x:Bind description, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="1"/>-->
                         </Grid>
                     </Border>
                 </DataTemplate>
