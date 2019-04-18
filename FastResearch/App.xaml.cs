@@ -84,6 +84,7 @@ namespace FastResearch
             }
             //此处加入服务类型
             SimpleIoc.Default.Register<PaperAreaService>();
+            SimpleIoc.Default.Register<ToolsPageService>();
             
         }
 

@@ -1,10 +1,15 @@
-﻿using System;
+﻿using FastResearch.Model;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization.Formatters.Binary;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -32,9 +37,97 @@ namespace FastResearch
 
         public ToolsPageViewModel ViewModel { get; set; }
 
-        private void NewButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddDialog addDialog = new AddDialog();
+            await addDialog.ShowAsync();
+            if(addDialog.Result == AddResult.AddOK)
+            {
+                ViewModel.AddCommand(addDialog.name);
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(TileView.SelectedIndex != -1)
+            {
+                ViewModel.DeleteCommand(TileView.SelectedIndex);
+            }
+            TileView.SelectedIndex = -1;
+        }
+
+        
+
+        private void DeletePairButton_Click(object sender, RoutedEventArgs e)
+        {
+            OptionPair pair = (sender as Button).Tag as OptionPair;
+            ((Command)TileView.SelectedItem).options.Remove(pair);
+        }
+
+        private void OutputButton_Click(object sender, RoutedEventArgs e)
+        {
+            int temp = TileView.SelectedIndex;
+            var dp = new DataPackage();
+            dp.SetText(((Command)TileView.SelectedItem).GetCommand());//将当前命令对象的命令文本形式写入剪贴板
+            Clipboard.SetContent(dp);      
+            TileView.SelectedIndex = temp;
+        }
+
+        private void AddPairButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void AddSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void AddCancelButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+
+        private void EditPairButton_Click(object sender, RoutedEventArgs e)
+        {
+            OptionPair pair = (sender as Button).Tag as OptionPair;
+        }
+
+        private void EditSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
+
+        /*
+       private async void GridView_ItemClick(object sender, ItemClickEventArgs e)
+       {
+            var command = (Model.Command)e.ClickedItem;
+            Debug.WriteLine(command.name);
+            DetailDialog detailDialog = new DetailDialog(command);
+            var old_command = ViewModel.CopyCommand(command);
+       
+            await detailDialog.ShowAsync();
+            if(detailDialog.result == EditResult.EditOK)
+            {
+                
+                CommandItemGrid.ItemsSource = ViewModel.CommandItems;
+            }
+            else
+            {
+                ((Model.Command)e.ClickedItem).name = old_command.name;
+                ((Model.Command)e.ClickedItem).description = old_command.description;
+            }
+            //System.Diagnostics.Debug.WriteLine(command.GetCommand());
+            
+       }
+       */
     }
 }

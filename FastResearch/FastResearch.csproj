@@ -119,6 +119,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddDialog.xaml.cs">
+      <DependentUpon>AddDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DetailDialog.xaml.cs">
+      <DependentUpon>DetailDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converter\NullableBooleanToBoolean.cs" />
     <Compile Include="DatabaseManager\UserDataBase.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -168,6 +174,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -209,6 +223,9 @@
     </PackageReference>
     <PackageReference Include="Syncfusion.SfRadialMenu.UWP">
       <Version>17.1.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.SfTileView.UWP">
+      <Version>17.1.0.41</Version>
     </PackageReference>
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
