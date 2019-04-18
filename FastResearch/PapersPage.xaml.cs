@@ -135,6 +135,8 @@ namespace FastResearch
             CurClickItem = item;
             if (this.ViewModel.IsPaperAreaMenu)
             {
+               
+                
                 PaperItemSaveButton.Visibility = Visibility.Collapsed;
                 Bind.Visibility = Visibility.Visible;
                 this.ViewModel.getPapers(item._name);
@@ -772,8 +774,29 @@ namespace FastResearch
         private void DeletButton_Click(object sender, RoutedEventArgs e)
         {
             string paper = CurClickItem._name;
-            this.ViewModel.Delete(paper);
+            this.ViewModel.deletePaper(paper);
             this.ViewModel.getPapers((string)this.AreaButton.Content);
+        }
+
+        private void ListItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            string paper = CurClickItem._name;
+            //this.ViewModel.DeletePaperArea(paper);
+            this.ViewModel.getPaperArea();
+        }
+
+        private void PaperItemDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.ViewModel.IsPaperAreaMenu)
+            {
+                string paper = CurClickItem._name;
+                Debug.WriteLine(paper);
+                this.ViewModel.deletePaper(paper);
+            } else
+            {
+                string paper = CurClickItem._name;
+                this.ViewModel.deletePaper(paper);
+            }
         }
     }
 }

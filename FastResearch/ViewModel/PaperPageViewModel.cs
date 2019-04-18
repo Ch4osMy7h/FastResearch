@@ -176,7 +176,7 @@ namespace FastResearch
             //throw new NotImplementedException();
         }
 
-        public void Delete(string paper)
+        public void deletePaper(string paper)
         {
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
             service.deletePaper(paper);
