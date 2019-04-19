@@ -16,9 +16,11 @@
     <Page.Resources>
         <!-- Paper Item Data Template-->
         <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="local:PaperArea">
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" AutomationProperties.Name="PaperArea">
-                <SymbolIcon Symbol="Bookmarks"/>
-                <TextBlock Text="{x:Bind _name}" VerticalAlignment="Center" Height="Auto" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" AutomationProperties.Name="PaperArea" Width="321">
+                <TextBlock Name ="Item" Text="{x:Bind _name}" VerticalAlignment="Center" Height="Auto" FontWeight="Bold" Width="281"/>
+                <Button Name="PaperItemDeleteButton"  Width="40" Click="PaperItemDeleteButton_Click">
+                    <SymbolIcon Symbol="Delete"/>
+                </Button>
             </StackPanel>
         </DataTemplate>
         <Style x:Key="ButtonStyle" TargetType="ButtonBase">
