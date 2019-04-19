@@ -12,6 +12,30 @@ namespace FastResearch.Model
     [Serializable]
     public class OptionPair : INotifyPropertyChanged
     {
+
+        public OptionPair(string option = "", string myValue = "")
+        {
+            _option = option;
+            _myValue = myValue;
+            _isChecked = true;
+        }
+
+        private bool? _isChecked;
+        public bool? isChecked
+        {
+            get
+            {
+                return _isChecked;
+            }
+
+            set
+            {
+                _isChecked = value;
+                OnPropertyChanged("isChecked");
+            }
+        }
+
+
         private string _option;
         public string option
         {
@@ -41,6 +65,36 @@ namespace FastResearch.Model
             }
         }
 
+        private string _tempValue;
+        public string tempValue
+        {
+            get
+            {
+                return _tempValue;
+            }
+
+            set
+            {
+                _tempValue = value;
+                OnPropertyChanged("tempValue");
+            }
+        }
+
+        private string _tempOption;
+        public string tempOption
+        {
+            get
+            {
+                return _tempOption;
+            }
+
+            set
+            {
+                _tempOption = value;
+                OnPropertyChanged("tempOption");
+            }
+        }
+
         private void OnPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -52,6 +106,7 @@ namespace FastResearch.Model
     [Serializable]
     public class Command : INotifyPropertyChanged
     {
+        public int id { get; set; }
         private string _name;
         public string name
         {
@@ -67,7 +122,9 @@ namespace FastResearch.Model
         }
         public string executable { get; set; }
         public string file { get; set; }
-        public ObservableCollection<OptionPair> options;
+        public ObservableCollection<OptionPair> options = new ObservableCollection<OptionPair>();
+
+        public OptionPair tempPair = new OptionPair();
 
         private string _description = string.Empty;
         public string description
@@ -92,7 +149,7 @@ namespace FastResearch.Model
 
         public string GetCommand() => executable + " " + file + " " +   
             (options != null && options.Count > 0 ? 
-            options.Select(it => new string("-" + it.option + " " + it.myValue)).ToList().Aggregate((acc, item) => acc + " " + item) : "");
+            options.Where(m=>m.isChecked == true).Select(it => new string("-" + it.option + " " + it.myValue)).ToList().Aggregate((acc, item) => acc + " " + item) : "");
 
     }
 }

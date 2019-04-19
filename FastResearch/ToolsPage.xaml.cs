@@ -31,6 +31,7 @@ namespace FastResearch
         {
             this.InitializeComponent();
             this.ViewModel = new ToolsPageViewModel();
+            TileView.MaximizedItemHeight = 400.0;
             //this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
             //this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
         }
@@ -75,37 +76,31 @@ namespace FastResearch
 
         private void AddPairButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            ((Command)TileView.SelectedItem).tempPair.myValue = string.Empty;
+            ((Command)TileView.SelectedItem).tempPair.option = string.Empty;
         }
 
         private void AddSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            OptionPair newPair = new OptionPair(((Command)TileView.SelectedItem).tempPair.option, ((Command)TileView.SelectedItem).tempPair.myValue);
+            ((Command)TileView.SelectedItem).options.Add(newPair);
         }
-
-        private void AddCancelButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
         private void EditPairButton_Click(object sender, RoutedEventArgs e)
         {
             OptionPair pair = (sender as Button).Tag as OptionPair;
+            pair.tempOption = ViewModel.DeepCopy(pair.option);
+            pair.tempValue = ViewModel.DeepCopy(pair.myValue);
         }
 
         private void EditSaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OptionPair pair = (sender as Button).Tag as OptionPair;
+            pair.option = ViewModel.DeepCopy(pair.tempOption);
+            pair.myValue = ViewModel.DeepCopy(pair.tempValue);
         }
 
-        private void EditCancelButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        
-
+       
         /*
        private async void GridView_ItemClick(object sender, ItemClickEventArgs e)
        {
