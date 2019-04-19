@@ -21,24 +21,24 @@
             <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click"/>
             
         </CommandBar>     
-        <layout:SfTileView x:Name="TileView" Margin="30,30,30,30"
-				   HorizontalAlignment="Center"
-				   VerticalAlignment="Center"
-				   ItemsSource="{x:Bind ViewModel.CommandItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-				   SelectedIndex="0"
-				   ItemWidth="250" ItemHeight="160">
+        <layout:SfTileView x:Name="TileView" Margin="30,120,30,30"
+                           MaximizedItemHeight="800"
+                           MaximizedItemWidth="1000"
+				           HorizontalAlignment="Center"
+				           VerticalAlignment="Center"
+				           ItemsSource="{x:Bind ViewModel.CommandItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				           SelectedIndex="-1"
+				           ItemWidth="250" ItemHeight="160">
             <layout:SfTileView.MaximizedItemTemplate>
                 <DataTemplate x:DataType="local:Command">
-                    <Border Background="DarkGray" Height="1000" Width="1000">
+                    <Border Background="DarkGray" Height="800" Width="800">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Grid>
+                            <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="300" />
                                     <ColumnDefinition Width="50" />

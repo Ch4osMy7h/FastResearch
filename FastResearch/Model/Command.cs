@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,12 +14,24 @@ namespace FastResearch.Model
     [Serializable]
     public class OptionPair : INotifyPropertyChanged
     {
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
 
-        public OptionPair(string option = "", string myValue = "")
+        [ForeignKey(typeof(Command))]
+        public int commandId { get; set; }
+
+        public OptionPair()
+        {
+            _option = "";
+            myValue = "";
+            _isChecked = true;
+        }
+
+        public OptionPair(string option = "", string myValue = "", bool? _isChecked = true)
         {
             _option = option;
             _myValue = myValue;
-            _isChecked = true;
+            _isChecked = isChecked;
         }
 
         private bool? _isChecked;
@@ -106,6 +120,7 @@ namespace FastResearch.Model
     [Serializable]
     public class Command : INotifyPropertyChanged
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         private string _name;
         public string name
@@ -122,6 +137,14 @@ namespace FastResearch.Model
         }
         public string executable { get; set; }
         public string file { get; set; }
+
+
+        
+        private List<OptionPair> _optionsList;
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<OptionPair> optionsList { get => _optionsList; set => _optionsList = value; }
+
         public ObservableCollection<OptionPair> options = new ObservableCollection<OptionPair>();
 
         public OptionPair tempPair = new OptionPair();
@@ -138,6 +161,16 @@ namespace FastResearch.Model
                 _description = value;
                 OnPropertyChanged("description");
             }
+        }
+
+        public void Update()
+        {
+            optionsList = options.ToList();
+        }
+
+        public void InverseUpdate()
+        {
+            options = new ObservableCollection<OptionPair>(optionsList);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

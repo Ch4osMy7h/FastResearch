@@ -36,6 +36,7 @@ namespace FastResearch
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             DatabaseManager.UserDataBase.InitializeDatabase();
+            DatabaseManager.CommandDataBase.InitializeDatabase();
             PdfReader.PdfFileManger.InitFileMange();
             
 

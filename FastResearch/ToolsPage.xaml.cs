@@ -32,8 +32,6 @@ namespace FastResearch
             this.InitializeComponent();
             this.ViewModel = new ToolsPageViewModel();
             TileView.MaximizedItemHeight = 400.0;
-            //this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
-            //this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
         }
 
         public ToolsPageViewModel ViewModel { get; set; }
@@ -52,17 +50,17 @@ namespace FastResearch
         {
             if(TileView.SelectedIndex != -1)
             {
-                ViewModel.DeleteCommand(TileView.SelectedIndex);
+                ViewModel.DeleteCommand((Command)TileView.SelectedItem);
             }
             TileView.SelectedIndex = -1;
         }
 
-        
-
         private void DeletePairButton_Click(object sender, RoutedEventArgs e)
         {
             OptionPair pair = (sender as Button).Tag as OptionPair;
-            ((Command)TileView.SelectedItem).options.Remove(pair);
+            Command command = (Command)TileView.SelectedItem;
+            ViewModel.DeleteOption(command, pair);
+            ViewModel.UpdateCommand(command);
         }
 
         private void OutputButton_Click(object sender, RoutedEventArgs e)
@@ -76,14 +74,16 @@ namespace FastResearch
 
         private void AddPairButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Command)TileView.SelectedItem).tempPair.myValue = string.Empty;
-            ((Command)TileView.SelectedItem).tempPair.option = string.Empty;
+            Command command = (Command)TileView.SelectedItem;
+            command.tempPair.myValue = string.Empty;
+            command.tempPair.option = string.Empty;
         }
 
         private void AddSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            OptionPair newPair = new OptionPair(((Command)TileView.SelectedItem).tempPair.option, ((Command)TileView.SelectedItem).tempPair.myValue);
-            ((Command)TileView.SelectedItem).options.Add(newPair);
+            Command command = (Command)TileView.SelectedItem;
+            ViewModel.AddOption(command);
+            ViewModel.UpdateCommand(command);
         }
 
         private void EditPairButton_Click(object sender, RoutedEventArgs e)
@@ -91,38 +91,15 @@ namespace FastResearch
             OptionPair pair = (sender as Button).Tag as OptionPair;
             pair.tempOption = ViewModel.DeepCopy(pair.option);
             pair.tempValue = ViewModel.DeepCopy(pair.myValue);
+
         }
 
         private void EditSaveButton_Click(object sender, RoutedEventArgs e)
         {
+            Command command = (Command)TileView.SelectedItem;
             OptionPair pair = (sender as Button).Tag as OptionPair;
-            pair.option = ViewModel.DeepCopy(pair.tempOption);
-            pair.myValue = ViewModel.DeepCopy(pair.tempValue);
+            ViewModel.UpdateOption(command, pair);
+            ViewModel.UpdateCommand(command);
         }
-
-       
-        /*
-       private async void GridView_ItemClick(object sender, ItemClickEventArgs e)
-       {
-            var command = (Model.Command)e.ClickedItem;
-            Debug.WriteLine(command.name);
-            DetailDialog detailDialog = new DetailDialog(command);
-            var old_command = ViewModel.CopyCommand(command);
-       
-            await detailDialog.ShowAsync();
-            if(detailDialog.result == EditResult.EditOK)
-            {
-                
-                CommandItemGrid.ItemsSource = ViewModel.CommandItems;
-            }
-            else
-            {
-                ((Model.Command)e.ClickedItem).name = old_command.name;
-                ((Model.Command)e.ClickedItem).description = old_command.description;
-            }
-            //System.Diagnostics.Debug.WriteLine(command.GetCommand());
-            
-       }
-       */
     }
 }
