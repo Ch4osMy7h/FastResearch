@@ -10,6 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using FastResearch;
+using FastResearch.DatabaseManager;
 using FastResearch.Model;
 using FastResearch.Services;
 using GalaSoft.MvvmLight;
@@ -21,49 +22,60 @@ namespace FastResearch
     {
         public ToolsPageViewModel()
         {
-            this.CommandItems.Add(new Command() { name = "dsadas", description = "你妈死了", executable = "python", file = "a.py", options = new ObservableCollection<OptionPair>{new OptionPair{ option = "fuck", myValue = "1" }, new OptionPair { option = "suck", myValue = "2" } } });
-            this.CommandItems.Add(new Command() { name = "dsajio", description = "我们两个都是你的哥哥" });
-            this.CommandItems.Add(new Command() { name = "普公司的", description = "大苏打！！" });
-            
+            CommandItems = CommandDataBase.GetCommand(); 
+            foreach(var command in CommandItems)
+            {
+                command.InverseUpdate();
+            }
         }
 
         public ObservableCollection<Command> CommandItems { get; set; } = new ObservableCollection<Command>();
 
-        public void AddCommand(String commandName)
+        public void AddCommand(string commandName)
         {
-            ToolsPageService service = SimpleIoc.Default.GetInstance<ToolsPageService>();
-            //service.AddCommand(commandName);
-            CommandItems.Add(new Command() { name = commandName });
+            var command = new Command() { name = commandName };
+            CommandItems.Add(command);
+            CommandDataBase.Insert(command);
+        }
+
+        public void DeleteCommand(Command command)
+        {
+            CommandItems.Remove(command);
+            CommandDataBase.Delete(command);
+        }
+
+        public void UpdateCommand(Command command)
+        {
+            CommandDataBase.Update(command);
+        }
+
+        public void AddOption(Command command)
+        {
+            OptionPair option = new OptionPair(command.tempPair.option, command.tempPair.myValue, command.tempPair.isChecked);
+            option.commandId = command.tempPair.commandId;
+            command.options.Add(option);
+            command.Update();
+            CommandDataBase.Insert(option);
+        }
+
+        public void DeleteOption(Command command, OptionPair option)
+        {
+            command.options.Remove(option);
+            command.Update();
+            CommandDataBase.Delete(option);
+        }
+
+        public void UpdateOption(Command command, OptionPair option)
+        {
+            option.option = DeepCopy(option.tempOption);
+            option.myValue = DeepCopy(option.tempValue);
+            command.Update();
+            CommandDataBase.Update(option);
         }
 
         public Command CopyCommand(Command command)
         {
-            /*
-            object copyObject;
-            
-            using (MemoryStream ms = new MemoryStream())
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(ms, command);
-                ms.Seek(0, SeekOrigin.Begin);
-                copyObject = formatter.Deserialize(ms);
-                ms.Close();
-            }
-            return (Command)copyObject;*/
             return DeepCopy<Command>(command);
-        }
-
-        public void DeleteCommand(int pos)
-        {
-
-            Debug.Print(pos.ToString());
-            Debug.Print(CommandItems.Count.ToString() + " ");
-            try
-            {
-                CommandItems.RemoveAt(pos);
-            }
-            catch {}
-            
         }
 
         public T DeepCopy<T>(T obj)
