@@ -38,22 +38,22 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0">
+                            <Grid Grid.Row="0" Background="Gray">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="300" />
+                                    <ColumnDefinition Width="600" />
                                     <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="50" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{x:Bind name}" FontSize="25" Margin="20" Foreground="White" Grid.Column="0"/>
-                                <Button Content="导出" Click="OutputButton_Click" Grid.Column="1"/>
-                                <Button Content="添加" Click="AddPairButton_Click" Grid.Column="2">
+                                <Button Content="导出" Click="OutputButton_Click" HorizontalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Style="{StaticResource ButtonRevealStyle}"/>
+                                <Button Content="添加" Click="AddPairButton_Click"  Grid.Column="3" Style="{StaticResource ButtonRevealStyle}">
                                     <Button.Flyout>
                                         <Flyout x:Name="addFlyout">
                                             <StackPanel Orientation="Vertical">
                                                 <TextBox Text="{x:Bind tempPair.option, Mode=TwoWay}" Header="option"/>
                                                 <TextBox Text="{x:Bind tempPair.myValue, Mode=TwoWay}" Header="value"/>
-                                                <Button Content="保存" Click="AddSaveButton_Click"/>
+                                                <Button Content="保存" Click="AddSaveButton_Click" Margin="0,8,0,0" HorizontalAlignment="Center" Style="{StaticResource ButtonRevealStyle}"/>
                                             </StackPanel>
                                         </Flyout>
                                     </Button.Flyout>
@@ -61,7 +61,7 @@
 
                             </Grid>
 
-                            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" Grid.Row="1">
+                            <StackPanel Orientation="Horizontal" Margin="40 12 0 0" Grid.Row="1">
                                 <Grid VerticalAlignment="Top">
                                     <Grid.Resources>
                                         <Style TargetType="TextBlock">
@@ -93,22 +93,22 @@
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="50" />
-                                                        <ColumnDefinition Width="100" />
-                                                        <ColumnDefinition Width="100" />
+                                                        <ColumnDefinition Width="240" />
+                                                        <ColumnDefinition Width="300" />
                                                         <ColumnDefinition Width="50" />
                                                         <ColumnDefinition Width="50" />
                                                         <ColumnDefinition />
                                                     </Grid.ColumnDefinitions>
                                                     <CheckBox IsChecked="{x:Bind isChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0"/>
-                                                    <TextBlock Text="{x:Bind option, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Column="1"/>
-                                                    <TextBlock Text="{x:Bind myValue, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Column="2"/>
-                                                    <Button Tag="{Binding}"  Click="EditPairButton_Click" Grid.Column="3">
+                                                    <TextBlock Text="{x:Bind option, Mode=TwoWay, UpdateSourceTrigger=Default}" TextAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                                                    <TextBlock Text="{x:Bind myValue, Mode=TwoWay, UpdateSourceTrigger=Default}" TextAlignment="Left" VerticalAlignment="Center" Grid.Column="2"/>
+                                                    <Button Tag="{Binding}"  Click="EditPairButton_Click" Grid.Column="3" Style="{StaticResource ButtonRevealStyle}">
                                                         <Button.Flyout>
                                                             <Flyout x:Name="editFlyout">
                                                                 <StackPanel Orientation="Vertical">
                                                                     <TextBox Text="{x:Bind tempOption, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="option"/>
                                                                     <TextBox Text="{x:Bind tempValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="value"/>
-                                                                    <Button Tag="{Binding}" Content="保存" Click="EditSaveButton_Click"/>
+                                                                    <Button Tag="{Binding}" Content="保存" Click="EditSaveButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
                                                                 </StackPanel>
                                                             </Flyout>
                                                         </Button.Flyout>
@@ -129,14 +129,14 @@
             </layout:SfTileView.MaximizedItemTemplate>
 
             <layout:SfTileView.ItemTemplate>
-                <DataTemplate x:DataType="local:Command">
-                    <Grid Background="LightBlue" Height="140" Width="230">
+                <DataTemplate x:DataType="local:Command" >
+                    <Grid Background="Gray" Height="140" Width="230" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
+                        <TextBlock Margin="80,60,0,0" FontSize="18" Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
                         <TextBlock Text="{x:Bind description, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="1"/>
                     </Grid>
                 </DataTemplate>

@@ -51,8 +51,10 @@ namespace FastResearch
 
         public void AddOption(Command command)
         {
-            OptionPair option = new OptionPair(command.tempPair.option, command.tempPair.myValue, command.tempPair.isChecked);
-            option.commandId = command.tempPair.commandId;
+            OptionPair option = new OptionPair(command.tempPair.option, command.tempPair.myValue, command.tempPair.isChecked)
+            {
+                commandId = command.tempPair.commandId
+            };
             command.options.Add(option);
             command.Update();
             CommandDataBase.Insert(option);
