@@ -12,8 +12,10 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
-    <StackPanel >
+    <StackPanel>
         <TextBox Name="nameTextBox" Header="请输入命令的名称"/>
+        <TextBox Name="fileTextBox" Header="请输入文件名"/>
+        <TextBox Name="descriptionTextBox" Header="请输入命令描述"/>
         <TextBlock x:Name="errorTextBlock"/>
     </StackPanel>
 </ContentDialog>

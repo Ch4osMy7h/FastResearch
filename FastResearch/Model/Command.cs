@@ -27,15 +27,15 @@ namespace FastResearch.Model
             _isChecked = true;
         }
 
-        public OptionPair(string option = "", string myValue = "", bool? _isChecked = true)
+        public OptionPair(string option = "", string myValue = "", bool _isChecked = true)
         {
             _option = option;
             _myValue = myValue;
             _isChecked = isChecked;
         }
 
-        private bool? _isChecked;
-        public bool? isChecked
+        private bool _isChecked;
+        public bool isChecked
         {
             get
             {
@@ -181,8 +181,8 @@ namespace FastResearch.Model
         }
 
         public string GetCommand() => executable + " " + file + " " +   
-            (options != null && options.Count > 0 ? 
-            options.Where(m=>m.isChecked == true).Select(it => new string("-" + it.option + " " + it.myValue)).ToList().Aggregate((acc, item) => acc + " " + item) : "");
+            (options != null && options.Count > 0 && options.Where(m => m.isChecked == true).Count() > 0 ? 
+            options.Where(m=>m.isChecked == true).Select(it => "-" + it.option + " " + it.myValue).ToList().Aggregate((acc, item) => acc + " " + item) : "");
 
     }
 }

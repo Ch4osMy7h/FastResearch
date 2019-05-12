@@ -123,9 +123,6 @@
       <DependentUpon>AddDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseManager\CommandDatabase.cs" />
-    <Compile Include="DetailDialog.xaml.cs">
-      <DependentUpon>DetailDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converter\NullableBooleanToBoolean.cs" />
     <Compile Include="DatabaseManager\UserDataBase.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -179,10 +176,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DetailDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -202,16 +195,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite">
-      <Version>1.1.1</Version>
+      <Version>3.0.0-preview5.19227.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.3</Version>
+      <Version>6.2.8</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.1.190218001-prerelease</Version>
     </PackageReference>
     <PackageReference Include="MvvmLight">
       <Version>5.4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="SQLiteNetExtensions">
+      <Version>2.1.0</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.SfColorPickers.UWP">
       <Version>17.1.0.38</Version>
