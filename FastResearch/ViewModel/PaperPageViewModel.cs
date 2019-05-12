@@ -181,5 +181,11 @@ namespace FastResearch
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
             service.deletePaper(paper);
         }
+
+        public void deletePaperArea(string paperArea)
+        {
+            PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            service.deletePaperArea(paperArea);
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace FastResearch.Model
 
         public StorageFile paperLocation;
 
-
         public Paper()
         {
            this.name = "";

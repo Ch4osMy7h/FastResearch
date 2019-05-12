@@ -18,9 +18,6 @@
         <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="local:PaperArea">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" AutomationProperties.Name="PaperArea" Width="321">
                 <TextBlock Name ="Item" Text="{x:Bind _name}" VerticalAlignment="Center" Height="Auto" FontWeight="Bold" Width="281"/>
-                <Button Name="PaperItemDeleteButton"  Width="40" Click="PaperItemDeleteButton_Click">
-                    <SymbolIcon Symbol="Delete"/>
-                </Button>
             </StackPanel>
         </DataTemplate>
         <Style x:Key="ButtonStyle" TargetType="ButtonBase">
@@ -158,8 +155,17 @@
                                              Width="321" Grid.Row="0" IsEditable="True"/>-->
                     <ListView  x:Name="PaperItemList" Margin="0,0,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch"
                           ItemClick="NavLinksList_OnItemClick" IsItemClickEnabled="True"
-                          ItemsSource="{Binding}" ItemTemplate="{StaticResource NavLinkItemTemplate}"                     
-                          />
+                          RightTapped="PaperItemList_RightTapped"
+                        ItemsSource="{Binding}" ItemTemplate="{StaticResource NavLinkItemTemplate}"                     
+                          >
+                        <ListView.Resources>
+                            <MenuFlyout x:Name="ContextMenuFlyout">
+                                <MenuFlyout.Items>
+                                    <MenuFlyoutItem x:Name="Remove" Text="Remove" Click="Remove_Click" />
+                                </MenuFlyout.Items>
+                            </MenuFlyout>
+                        </ListView.Resources>
+                    </ListView>
                     <Button Grid.Row="2" 
                             Content="Add Paper" 
                             Height="48"
