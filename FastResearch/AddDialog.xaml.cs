@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FastResearch.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace FastResearch
 
         public String name { get { return nameTextBox.Text; } }
 
+        public Command command { get; set; }
+
         public AddDialog()
         {
             this.InitializeComponent();
@@ -37,12 +40,21 @@ namespace FastResearch
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            if(String.IsNullOrEmpty(nameTextBox.Text))
+            if (String.IsNullOrEmpty(nameTextBox.Text))
             {
                 args.Cancel = true;
                 errorTextBlock.Text = "名称不能为空！";
             }
-            else this.Result = AddResult.AddOK;
+            else if (String.IsNullOrEmpty(fileTextBox.Text))
+            {
+                args.Cancel = true;
+                errorTextBlock.Text = "文件名不能为空！";
+            }
+            else
+            {
+                command = new Command() { name = nameTextBox.Text, description = descriptionTextBox.Text, file = fileTextBox.Text };
+                this.Result = AddResult.AddOK;
+            }
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

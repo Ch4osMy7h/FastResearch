@@ -137,7 +137,6 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <TextBlock Margin="80,60,0,0" FontSize="18" Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
-                        <TextBlock Text="{x:Bind description, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="1"/>
                     </Grid>
                 </DataTemplate>
             </layout:SfTileView.ItemTemplate>

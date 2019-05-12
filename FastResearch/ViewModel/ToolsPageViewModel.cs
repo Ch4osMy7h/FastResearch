@@ -31,9 +31,8 @@ namespace FastResearch
 
         public ObservableCollection<Command> CommandItems { get; set; } = new ObservableCollection<Command>();
 
-        public void AddCommand(string commandName)
+        public void AddCommand(Command command)
         {
-            var command = new Command() { name = commandName };
             CommandItems.Add(command);
             CommandDataBase.Insert(command);
         }

@@ -42,7 +42,7 @@ namespace FastResearch
             await addDialog.ShowAsync();
             if(addDialog.Result == AddResult.AddOK)
             {
-                ViewModel.AddCommand(addDialog.name);
+                ViewModel.AddCommand(addDialog.command);
             }
         }
 
