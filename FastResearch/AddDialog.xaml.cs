@@ -61,5 +61,15 @@ namespace FastResearch
         {
             this.Result = AddResult.AddCancel;
         }
+
+        private async void fileButton_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            picker.FileTypeFilter.Add(".py");
+            var file = await picker.PickSingleFileAsync();
+            fileTextBox.Text = file.Name;
+        }
     }
 }

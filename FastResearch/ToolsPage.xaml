@@ -73,21 +73,26 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="50"/>
                                         <RowDefinition Height="50"/>
+                                        <RowDefinition Height="50"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="800"/>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="*"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="Description " Grid.Row="0" Grid.Column="0"/>
-                                    <TextBlock Text="{x:Bind description}" Grid.Row="1" Grid.Column="0"/>
+                                    <TextBlock Text="File name: " Grid.Row="0" Grid.Column="0"/>
+                                    <TextBlock Text="{x:Bind file}" Grid.Row="0" Grid.Column="1"/>
+
+                                    <TextBlock Text="Description: " Grid.Row="1" Grid.Column="0"/>
+                                    <TextBlock Text="{x:Bind description}" Grid.Row="2" Grid.Column="0"/>
 
                                     <ListView x:Name="optionPairsList" CanDragItems="True" CanReorderItems="True" 
                                           AllowDrop="True" SelectionMode="Single" IsItemClickEnabled = "False"
                                           ItemsSource="{x:Bind options, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                          Grid.Row="2">
+                                          Grid.Row="3">
                                         <ListView.ItemTemplate>
                                             <DataTemplate x:DataType="local:OptionPair">
                                                 <Grid>
