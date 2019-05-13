@@ -91,7 +91,6 @@ namespace FastResearch
             OptionPair pair = (sender as Button).Tag as OptionPair;
             pair.tempOption = ViewModel.DeepCopy(pair.option);
             pair.tempValue = ViewModel.DeepCopy(pair.myValue);
-
         }
 
         private void EditSaveButton_Click(object sender, RoutedEventArgs e)
