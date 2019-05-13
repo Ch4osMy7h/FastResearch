@@ -1,0 +1,19 @@
+﻿<ContentDialog
+    x:Class="FastResearch.RenameDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FastResearch"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="新建命令"
+    PrimaryButtonText="重命名"
+    SecondaryButtonText="取消"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <StackPanel>
+        <TextBox Name="nameTextBox" Header="请输入新命名的名字"/>
+        <TextBlock x:Name="errorTextBlock"/>
+    </StackPanel>
+</ContentDialog>

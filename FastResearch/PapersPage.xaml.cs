@@ -262,10 +262,10 @@ namespace FastResearch
             addPaperFile = await picker.PickSingleFileAsync();
             //当没有选择到文件的时候，返回
             if (addPaperFile == null) return;
-
+            StorageFile newFile = await addPaperFile.CopyAsync(ViewModel.rootLocalDataFolder);
             try
             {
-                await addPaperFile.RenameAsync(paper + ".pdf");
+                await newFile.RenameAsync(paper + ".pdf");
                 
             } catch (Exception ex)
             {
@@ -279,7 +279,7 @@ namespace FastResearch
                 ContentDialogResult result = await noWifiDialog.ShowAsync();
                 return ;
             }
-            StorageFile newFile = await addPaperFile.CopyAsync(ViewModel.rootLocalDataFolder);
+           
             if (this.ViewModel.addPaper(paper, (string)AreaButton.Content, newFile.Path) == false)
             {
                 ContentDialog noWifiDialog = new ContentDialog
@@ -834,10 +834,35 @@ namespace FastResearch
           
         }
 
-        private void ReName_Click(object sender, RoutedEventArgs e)
+        private async void ReName_Click(object sender, RoutedEventArgs e)
         {
-            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
-           
+            RenameDialog renameDialog = new RenameDialog();
+            if (this.ViewModel.IsPaperAreaMenu)
+            {
+                string paperArea = CurClickItem.name;
+                renameDialog.isPaperAreaMenu = true;
+                renameDialog.CurPaperName = paperArea;
+                await renameDialog.ShowAsync();
+                if (renameDialog.Result == RenameResult.AddOK)
+                {
+                    this.ViewModel.readPaperArea();
+                }
+                
+                curPaperName = CurClickItem.name;
+                //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+            }
+            else
+            {
+                string paper = CurClickItem.name;
+          
+                renameDialog.CurPaperName = paper;
+                renameDialog.isPaperAreaMenu = false;
+                await renameDialog.ShowAsync();
+                if (renameDialog.Result == RenameResult.AddOK)
+                {
+                    this.ViewModel.getPapers((string)this.AreaButton.Content);
+                }
+            }
         }
     }
 }

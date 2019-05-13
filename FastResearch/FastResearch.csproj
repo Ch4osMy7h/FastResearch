@@ -133,6 +133,9 @@
     <Compile Include="Model\PaperArea.cs" />
     <Compile Include="PdfReader\PdfFileManger.cs" />
     <Compile Include="PdfReader\PdfReader.cs" />
+    <Compile Include="RenameDialog.xaml.cs">
+      <DependentUpon>RenameDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\Navigation\Navigation.cs" />
     <Compile Include="PapersPage.xaml.cs">
       <DependentUpon>PapersPage.xaml</DependentUpon>
@@ -181,6 +184,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PapersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RenameDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

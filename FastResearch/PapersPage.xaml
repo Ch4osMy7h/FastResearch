@@ -161,7 +161,6 @@
                         <ListView.Resources>
                             <MenuFlyout x:Name="ContextMenuFlyout">
                                 <MenuFlyoutItem x:Name="Edit" Text="Edit" Click="ReName_Click">
-                                   
                                 </MenuFlyoutItem>
                                 <MenuFlyoutItem x:Name="Remove" Text="Remove" Click="Remove_Click" />
                             </MenuFlyout>

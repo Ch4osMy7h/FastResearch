@@ -208,6 +208,12 @@ namespace FastResearch.DatabaseManager
         }
 
 
+        /// <summary>
+        /// 存储Paper所存储路径
+        /// </summary>
+        /// <param name="paper"></param>
+        /// <param name="paperpath"></param>
+        /// <returns></returns>
         public static bool UpdatePaperPath(String paper, String paperpath)
         {
             try
@@ -278,6 +284,62 @@ namespace FastResearch.DatabaseManager
             {
                 Debug.WriteLine("Bug!");
             }
+        }
+
+        /// <summary>
+        /// 更新Paper名
+        /// </summary>
+        /// <param name="newPaperName"></param>
+        /// <param name="oldPaperName"></param>
+        /// <returns></returns>
+        public static bool UpdatePaper(String newPaperName, String oldPaperName)
+        {
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand
+                        ("UPDATE Papers SET Paper='" + newPaperName + "' " + "WHERE Paper='" + oldPaperName + "'", db);
+                    updateCommand.ExecuteReader();
+                    db.Close();
+                    return true;
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Bug!");
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 更新PaperArea名
+        /// </summary>
+        /// <param name="newPaperAreaName"></param>
+        /// <param name="oldPaperAreaName"></param>
+        /// <returns></returns>
+        public static bool UpdatePaperArea(String newPaperAreaName, String oldPaperAreaName)
+        {
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand
+                        ("UPDATE PaperAreas SET PaperArea='" + newPaperAreaName + "' " + "WHERE PaperArea='" + oldPaperAreaName + "'", db);
+                    updateCommand.ExecuteReader();
+                    db.Close();
+                    return true;
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Bug!");
+            }
+            return false;
         }
     }
 }
