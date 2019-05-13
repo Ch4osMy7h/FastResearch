@@ -43,6 +43,9 @@ namespace FastResearch.DatabaseManager
                 Debug.WriteLine("无法打开数据库");
             }
         }
+
+     
+
         /// <summary>
         ///  在数据库中加入PaperArea
         /// </summary>
@@ -91,7 +94,7 @@ namespace FastResearch.DatabaseManager
                     insertCommand.Parameters.AddWithValue("@Paper", paper);
                     insertCommand.Parameters.AddWithValue("@BelongToPaperArea", paperArea);
                     insertCommand.Parameters.AddWithValue("@PapersPath", paperPath);
-                 
+                
                     insertCommand.ExecuteReader();
                     db.Close();
                 }
@@ -175,7 +178,6 @@ namespace FastResearch.DatabaseManager
         public static String GetPaperPath(String paper)
         {
             string paperPath = "";
-
             try
             {
                 using (SqliteConnection db =
@@ -217,6 +219,7 @@ namespace FastResearch.DatabaseManager
                     SqliteCommand updateCommand = new SqliteCommand
                         ("UPDATE Papers SET PapersPath='" + paperpath + "' " + "WHERE Paper='" + paper + "'", db);
                     updateCommand.ExecuteReader();
+                    db.Close();
                     return true;
                 }
             }
@@ -238,6 +241,37 @@ namespace FastResearch.DatabaseManager
                     SqliteCommand updateCommand = new SqliteCommand
                         ("DELETE FROM Papers " + "WHERE Paper='" + paper + "'", db);
                     updateCommand.ExecuteReader();
+
+                    db.Close();
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Bug!");
+            }
+        }
+
+        public static void deletePaperArea(string paperArea)
+        {
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand
+                        ("DELETE FROM Papers " + "WHERE BelongToPaperArea='" + paperArea + "'", db);
+                    updateCommand.ExecuteReader();
+                }
+
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand updateCommand = new SqliteCommand
+                        ("DELETE FROM PaperAreas " + "WHERE PaperArea='" + paperArea + "'", db);
+                    updateCommand.ExecuteReader();
+                    db.Close();
                 }
             }
             catch

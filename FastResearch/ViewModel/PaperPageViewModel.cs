@@ -23,7 +23,7 @@ namespace FastResearch
     public class PaperAreaViewModel : ViewModelBase
     {
 
-        public ObservableCollection<PaperArea> papersItems = new ObservableCollection<PaperArea>();
+        private ObservableCollection<PaperArea> papersItems = new ObservableCollection<PaperArea>();
         public bool IsPaperAreaMenu { get; set; }
 
 
@@ -63,6 +63,7 @@ namespace FastResearch
             {
                 return this.papersItems;
             }
+            set => this.papersItems = value;
         }
         public StorageFolder rootLocalDataFolder
         {
@@ -119,7 +120,7 @@ namespace FastResearch
                 this.papersItems.Clear();
                 foreach (string paper_name in PaperAreaName)
                 {
-                    this.papersItems.Add(new PaperArea { _name = paper_name });
+                    this.papersItems.Add(new PaperArea { name = paper_name });
                 }
             } catch
             {
@@ -141,7 +142,7 @@ namespace FastResearch
                 this.papersItems.Clear();
                 foreach (string paper_name in papers)
                 {
-                    this.papersItems.Add(new PaperArea { _name = paper_name });
+                    this.papersItems.Add(new PaperArea { name = paper_name });
                 }
             } catch
             {
@@ -180,6 +181,12 @@ namespace FastResearch
         {
             PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
             service.deletePaper(paper);
+        }
+
+        public void deletePaperArea(string paperArea)
+        {
+            PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+            service.deletePaperArea(paperArea);
         }
     }
 }

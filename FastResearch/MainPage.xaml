@@ -18,9 +18,6 @@
                 <NavigationViewItem Icon="Repair" Content="Tools" Tag="ToolsPage" />
                 <NavigationViewItem Icon="Document" Content="Papers" Tag="PapersPage"/>
             </NavigationView.MenuItems>
-            <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
-            </NavigationView.AutoSuggestBox>
             <Frame x:Name="ContentFrame" Padding="0,0,0,0" IsTabStop="True"
                NavigationFailed="ContentFrame_NavigationFailed">
                 <Frame.ContentTransitions>

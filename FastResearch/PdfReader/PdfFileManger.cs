@@ -62,9 +62,9 @@ namespace FastResearch.PdfReader
         public static async void addPaperAreaFolder(string name) 
         {
             
-            StorageFolder newPaperAreaFolder = await RootPaperItems.CreateFolderAsync(name);
+            //StorageFolder newPaperAreaFolder = await RootPaperItems.CreateFolderAsync(name);
             //这边需要添加判重机制
-            PaperAreaFolder.Add(newPaperAreaFolder);
+            //PaperAreaFolder.Add(newPaperAreaFolder);
         }
 
         public static StorageFile mapPaperToFile(string paper)

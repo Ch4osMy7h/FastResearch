@@ -63,7 +63,7 @@ namespace FastResearch
             //solve the problem that can't not press a button in titlebar 
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(BackgroundElement);
-
+       
             this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
             this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
             PaperItemList.ItemsSource = this.ViewModel.PapersItems;
@@ -139,10 +139,10 @@ namespace FastResearch
                 
                 PaperItemSaveButton.Visibility = Visibility.Collapsed;
                 Bind.Visibility = Visibility.Visible;
-                this.ViewModel.getPapers(item._name);
-                PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+                this.ViewModel.getPapers(item.name);
+            
                 this.NewAreaButton.Content = "Add Paper";
-                this.AreaButton.Content = item._name;
+                this.AreaButton.Content = item.name;
                 this.PaperItemInputBox.Text = "";
                 this.ViewModel.IsPaperAreaMenu = false;
             }
@@ -151,8 +151,8 @@ namespace FastResearch
                 //实现读取论文 
                 try
                 {
-                    curPaperName = item._name;
-                    string paperPath = this.ViewModel.getPdfDocument(item._name);
+                    curPaperName = item.name;
+                    string paperPath = this.ViewModel.getPdfDocument(item.name);
                     Debug.WriteLine(paperPath);
                     StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
                     PdfLoadedDocument pdf =
@@ -162,7 +162,7 @@ namespace FastResearch
                     BookmarkButton.IsEnabled = false;
                     pdfViewer.PageChanged += PdfViewer_PageChanged;
 
-                    PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+                   // PaperItemList.ItemsSource = this.ViewModel.PapersItems;
                     if(InkButton.IsChecked.Value)
                     {
                         InkButton.IsChecked = false;
@@ -235,7 +235,7 @@ namespace FastResearch
                     ContentDialogResult result = await noWifiDialog.ShowAsync();
                 }
                 this.ViewModel.readPaperArea();
-                PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+                //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
             }
             else
             {
@@ -773,14 +773,14 @@ namespace FastResearch
 
         private void DeletButton_Click(object sender, RoutedEventArgs e)
         {
-            string paper = CurClickItem._name;
+            string paper = CurClickItem.name;
             this.ViewModel.deletePaper(paper);
             this.ViewModel.getPapers((string)this.AreaButton.Content);
         }
 
         private void ListItemDelete_Click(object sender, RoutedEventArgs e)
         {
-            string paper = CurClickItem._name;
+            string paper = CurClickItem.name;
             //this.ViewModel.DeletePaperArea(paper);
             this.ViewModel.getPaperArea();
         }
@@ -789,14 +789,55 @@ namespace FastResearch
         {
             if(this.ViewModel.IsPaperAreaMenu)
             {
-                string paper = CurClickItem._name;
+                string paper = CurClickItem.name;
                 Debug.WriteLine(paper);
                 this.ViewModel.deletePaper(paper);
             } else
             {
-                string paper = CurClickItem._name;
+                string paper = CurClickItem.name;
                 this.ViewModel.deletePaper(paper);
             }
+        }
+
+        private void PaperItemList_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            ListView listView = (ListView)sender;
+            ContextMenuFlyout.ShowAt(listView, e.GetPosition(listView));
+            var a = ((FrameworkElement)e.OriginalSource).DataContext as PaperArea;
+            CurClickItem = a;
+        }
+
+
+        /// <summary>
+        /// 通过右键删除PaperArea和Paper
+        /// </summary>
+        /// <param name="paperArea"></param>
+        private async void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.ViewModel.IsPaperAreaMenu) {
+                string paperArea = CurClickItem.name;
+                this.ViewModel.deletePaperArea(paperArea);
+                this.ViewModel.readPaperArea();
+                curPaperName = CurClickItem.name;
+                //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+            } else
+            {
+                string paper = CurClickItem.name;
+                string paperPath = this.ViewModel.getPdfDocument(paper);
+                Debug.WriteLine(paperPath);
+                StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
+                await file.DeleteAsync();
+                this.ViewModel.deletePaper(paper);
+                this.ViewModel.getPapers((string)this.AreaButton.Content);           
+                //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+            }
+          
+        }
+
+        private void ReName_Click(object sender, RoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+           
         }
     }
 }

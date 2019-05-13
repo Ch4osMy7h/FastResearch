@@ -18,8 +18,8 @@ namespace FastResearch.Services
         {
 
 
-                _paperArea = DatabaseManager.UserDataBase.getPaperArea();            
-                return _paperArea;
+            _paperArea = DatabaseManager.UserDataBase.getPaperArea();
+            return _paperArea;
         }
         public void AddPaperArea(string paperArea)
         {
@@ -46,6 +46,13 @@ namespace FastResearch.Services
         public void deletePaper(string paper)
         {
             DatabaseManager.UserDataBase.deletePaper(paper);
+        }
+
+    
+        public void deletePaperArea(string paperArea)
+        {
+          
+            DatabaseManager.UserDataBase.deletePaperArea(paperArea);
         }
     }
 }

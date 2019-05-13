@@ -206,8 +206,8 @@
     <PackageReference Include="MvvmLight">
       <Version>5.4.1.1</Version>
     </PackageReference>
-    <PackageReference Include="SQLiteNetExtensions">
-      <Version>2.1.0</Version>
+    <PackageReference Include="SQLiteNetExtensions-netstandard">
+      <Version>2.0.0-alpha3</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.SfColorPickers.UWP">
       <Version>17.1.0.38</Version>
