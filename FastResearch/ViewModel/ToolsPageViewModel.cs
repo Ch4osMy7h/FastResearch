@@ -39,7 +39,15 @@ namespace FastResearch
 
         public void DeleteCommand(Command command)
         {
-            CommandItems.Remove(command);
+            try
+            {
+                CommandItems.Remove(command);
+            }
+            catch
+            {
+
+            }
+            
             CommandDataBase.Delete(command);
         }
 

@@ -135,7 +135,7 @@ namespace FastResearch.Model
                 OnPropertyChanged("name");
             }
         }
-        public string executable { get; set; }
+        public string executable { get; set; } = "python";
         public string file { get; set; }
 
 
