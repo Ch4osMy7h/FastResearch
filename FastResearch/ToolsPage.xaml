@@ -19,8 +19,8 @@
         <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="0,32,0,0" VerticalAlignment="Top">
             <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click"/>
             <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click"/>
-            
-        </CommandBar>     
+
+        </CommandBar>
         <layout:SfTileView x:Name="TileView" Margin="30,120,30,30"
                            MaximizedItemHeight="800"
                            MaximizedItemWidth="1000"
@@ -29,25 +29,45 @@
 				           ItemsSource="{x:Bind ViewModel.CommandItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				           SelectedIndex="-1"
 				           ItemWidth="250" ItemHeight="160">
-            <layout:SfTileView.MaximizedItemTemplate>
+
+                <layout:SfTileView.MaximizedItemTemplate>
                 <DataTemplate x:DataType="local:Command">
-                    <Border Background="DarkGray" Height="800" Width="800">
+                    <Border x:Name="myBorder" Background="DarkGray" Height="800" Width="800">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="10*" />
                             </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Background="Gray">
+                            <Grid x:Name="myGrid" Grid.Row="0" Background="Gray">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="WindowState">
+                                        <VisualState x:Name="WideState">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="600" />
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="MyTextBlock.FontSize" Value="100" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="NarrowState">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="0" />
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="myGrid.Background" Value="Red" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="600" />
-                                    <ColumnDefinition Width="50" />
-                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="10*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{x:Bind name}" FontSize="25" Margin="20" Foreground="White" Grid.Column="0"/>
-                                <Button Content="导出" Click="OutputButton_Click" HorizontalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Style="{StaticResource ButtonRevealStyle}"/>
-                                <Button Content="添加" Click="AddPairButton_Click"  Grid.Column="3" Style="{StaticResource ButtonRevealStyle}">
+                                <TextBlock x:Name="MyTextBlock" Text="{x:Bind name}" FontSize="25" Margin="20" Foreground="White" Grid.Column="0"/>
+                                <Button x:Name="MyButtonOut" Content="导出" Click="OutputButton_Click" HorizontalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Style="{StaticResource ButtonRevealStyle}"/>
+                                <Button x:Name="MyButtonAdd" Content="添加" Click="AddPairButton_Click" Margin="12,0,0,0" Grid.Column="2" Style="{StaticResource ButtonRevealStyle}">
                                     <Button.Flyout>
                                         <Flyout x:Name="addFlyout">
                                             <StackPanel Orientation="Vertical">
@@ -58,7 +78,6 @@
                                         </Flyout>
                                     </Button.Flyout>
                                 </Button>
-
                             </Grid>
 
                             <StackPanel Orientation="Horizontal" Margin="40 12 0 0" Grid.Row="1">
@@ -127,21 +146,19 @@
                     </Border>
                 </DataTemplate>
             </layout:SfTileView.MaximizedItemTemplate>
-
             <layout:SfTileView.ItemTemplate>
                 <DataTemplate x:DataType="local:Command" >
-                    <Grid Background="Gray" Height="140" Width="230" >
+                    <Grid x:Name="myGrid1" Background="Gray" Height="140" Width="230" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock Margin="80,60,0,0" FontSize="18" Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
-                    </Grid>
+                            <TextBlock Margin="80,60,0,0" FontSize="18" Text="{x:Bind name, Mode=TwoWay, UpdateSourceTrigger=Default}" Grid.Row="0"/>
+                        </Grid>
                 </DataTemplate>
             </layout:SfTileView.ItemTemplate>
-
         </layout:SfTileView>
     </Grid>
-   
+
 </Page>
