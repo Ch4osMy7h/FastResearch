@@ -13,7 +13,7 @@
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <StackPanel>
-        <TextBox Name="nameTextBox" Header="请输入新命名的名字"/>
+        <TextBox Name="nameTextBox" Header="请输入新名字"/>
         <TextBlock x:Name="errorTextBlock"/>
     </StackPanel>
 </ContentDialog>
