@@ -36,6 +36,7 @@ namespace FastResearch
 
         public ToolsPageViewModel ViewModel { get; set; }
 
+
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
             AddDialog addDialog = new AddDialog();
@@ -48,7 +49,8 @@ namespace FastResearch
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if(TileView.SelectedIndex != -1)
+            //SelectedIndex为-1时为预览视图
+            if (TileView.SelectedIndex != -1)
             {
                 ViewModel.DeleteCommand((Command)TileView.SelectedItem);
             }
@@ -57,6 +59,7 @@ namespace FastResearch
 
         private void DeletePairButton_Click(object sender, RoutedEventArgs e)
         {
+            //通过当前点击的Button的Tag属性获取ListView的ItemTemplate相关的OptionPair对象
             OptionPair pair = (sender as Button).Tag as OptionPair;
             Command command = (Command)TileView.SelectedItem;
             ViewModel.DeleteOption(command, pair);
@@ -65,16 +68,15 @@ namespace FastResearch
 
         private void OutputButton_Click(object sender, RoutedEventArgs e)
         {
-            int temp = TileView.SelectedIndex;
             var dp = new DataPackage();
             dp.SetText(((Command)TileView.SelectedItem).GetCommand());//将当前命令对象的命令文本形式写入剪贴板
             Clipboard.SetContent(dp);      
-            TileView.SelectedIndex = temp;
         }
 
         private void AddPairButton_Click(object sender, RoutedEventArgs e)
         {
             Command command = (Command)TileView.SelectedItem;
+            //将当前command里的tempPair值置空
             command.tempPair.myValue = string.Empty;
             command.tempPair.option = string.Empty;
         }

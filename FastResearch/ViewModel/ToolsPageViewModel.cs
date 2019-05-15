@@ -25,7 +25,7 @@ namespace FastResearch
             CommandItems = CommandDataBase.GetCommand(); 
             foreach(var command in CommandItems)
             {
-                command.InverseUpdate();
+                command.InverseUpdate();//将每个command里从数据库获得的List转化为ObservableCollection
             }
         }
 
@@ -58,6 +58,7 @@ namespace FastResearch
 
         public void AddOption(Command command)
         {
+            //从目标command里的tempPair构建出新的optionPair并更新相关信息
             OptionPair option = new OptionPair(command.tempPair.option, command.tempPair.myValue, command.tempPair.isChecked)
             {
                 commandId = command.tempPair.commandId
@@ -80,11 +81,6 @@ namespace FastResearch
             option.myValue = DeepCopy(option.tempValue);
             command.Update();
             CommandDataBase.Update(option);
-        }
-
-        public Command CopyCommand(Command command)
-        {
-            return DeepCopy<Command>(command);
         }
 
         public T DeepCopy<T>(T obj)

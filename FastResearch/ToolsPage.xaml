@@ -111,7 +111,10 @@
                                     <ListView x:Name="optionPairsList" CanDragItems="True" CanReorderItems="True" 
                                           AllowDrop="True" SelectionMode="Single" IsItemClickEnabled = "False"
                                           ItemsSource="{x:Bind options, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                          Grid.Row="3">
+                                          Grid.Row="3"
+                                          Height="160"
+                                          ScrollViewer.VerticalScrollMode="Enabled"
+                                          ScrollViewer.VerticalScrollBarVisibility="Auto">
                                         <ListView.ItemTemplate>
                                             <DataTemplate x:DataType="local:OptionPair">
                                                 <Grid>
@@ -126,7 +129,7 @@
                                                     <CheckBox IsChecked="{x:Bind isChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0"/>
                                                     <TextBlock Text="{x:Bind option, Mode=TwoWay, UpdateSourceTrigger=Default}" TextAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
                                                     <TextBlock Text="{x:Bind myValue, Mode=TwoWay, UpdateSourceTrigger=Default}" TextAlignment="Left" VerticalAlignment="Center" Grid.Column="2"/>
-                                                    <Button Tag="{Binding}"  Click="EditPairButton_Click" Grid.Column="3" Style="{StaticResource ButtonRevealStyle}">
+                                                    <Button Tag="{Binding}" Click="EditPairButton_Click" Grid.Column="3" Style="{StaticResource ButtonRevealStyle}">
                                                         <Button.Flyout>
                                                             <Flyout x:Name="editFlyout">
                                                                 <StackPanel Orientation="Vertical">

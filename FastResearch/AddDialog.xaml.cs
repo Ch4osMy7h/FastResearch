@@ -72,7 +72,8 @@ namespace FastResearch
             {
                 var file = await picker.PickSingleFileAsync();
                 fileTextBox.Text = file.Name;
-            } catch
+            }
+            catch
             {
                 
             }
