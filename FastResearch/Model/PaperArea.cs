@@ -8,6 +8,9 @@ using FastResearch.Model;
 
 namespace FastResearch.Model
 {
+    /// <summary>
+    /// PaperArea类
+    /// </summary>
     public class PaperArea : INotifyPropertyChanged
     {
         private string _name;

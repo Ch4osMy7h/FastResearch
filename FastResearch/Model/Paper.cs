@@ -8,6 +8,9 @@ using Windows.Storage;
 
 namespace FastResearch.Model
 {
+    /// <summary>
+    /// Paper 类
+    /// </summary>
     public class Paper
     {
 

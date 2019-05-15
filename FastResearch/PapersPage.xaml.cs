@@ -4,6 +4,7 @@ using Syncfusion.Pdf.Parsing;
 using Syncfusion.UI.Xaml.Controls.Navigation;
 using Syncfusion.Windows.PdfViewer;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -66,10 +67,10 @@ namespace FastResearch
       
             this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
             this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
-            PaperItemList.ItemsSource = this.ViewModel.PapersItems;
             Bind.Visibility = Visibility.Visible;
             PaperItemSaveButton.Visibility = Visibility.Collapsed;
         }
+
 
         private void PdfViewer_SemanitcZoomChanged(object sender, SemanticZoomViewChangedEventArgs e)
         {
@@ -129,7 +130,11 @@ namespace FastResearch
         }
 
 
-
+        /// <summary>
+        /// ListView Item点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void NavLinksList_OnItemClick(object sender, Windows.UI.Xaml.Controls.ItemClickEventArgs e)
         {
             Model.PaperArea item = (Model.PaperArea)e.ClickedItem;
@@ -155,7 +160,6 @@ namespace FastResearch
                 {
                     curPaperName = item.name;
                     string paperPath = this.ViewModel.getPdfDocument(item.name);
-                    Debug.WriteLine(paperPath);
                     StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
                     PdfLoadedDocument pdf =
                             await PdfReader.PdfReader.LoadDocument(file, NewAreaButton.Name, PaperItemInputBox.Name);
@@ -197,6 +201,12 @@ namespace FastResearch
             }
         }
 
+
+        /// <summary>
+        /// 论文跳转按钮可用判断
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PdfViewer_PageChanged(object sender, PageChangedEventArgs e)
         {
             PageDestinationTextBox.Text = string.Format("{0}", pdfViewer.PageNumber.ToString());
@@ -210,6 +220,12 @@ namespace FastResearch
                 NextPageButton.IsEnabled = true;
         }
 
+
+        /// <summary>
+        ///论文领域界面跳转
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AreaButton_Click(object sender, RoutedEventArgs e)
         {
             PaperItemSaveButton.Visibility = Visibility.Visible;
@@ -220,6 +236,12 @@ namespace FastResearch
             this.ViewModel.readPaperArea();
         }
 
+
+        /// <summary>
+        /// 论文保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void PaperItemSaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.ViewModel.IsPaperAreaMenu)
@@ -255,20 +277,37 @@ namespace FastResearch
 
         }
 
+        /// <summary>
+        /// 论文绑定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Bind_Click(object sender, RoutedEventArgs e)
         {
             PaperItemSaveButton.Visibility = Visibility.Collapsed;
             String paper = PaperItemInputBox.Text;
+            if(paper.Length == 0)
+            {
+                ContentDialog noWifiDialog = new ContentDialog
+                {
+                    Title = "Wrong",
+                    Content = "文件名不能为空",
+                    CloseButtonText = "Close"
+                };
+                
+                ContentDialogResult result = await noWifiDialog.ShowAsync();
+                return ;
+            }
             var picker = new FileOpenPicker();
             picker.FileTypeFilter.Add(".pdf");
             addPaperFile = await picker.PickSingleFileAsync();
             //当没有选择到文件的时候，返回
             if (addPaperFile == null) return;
-            StorageFile newFile = await addPaperFile.CopyAsync(ViewModel.rootLocalDataFolder);
+            StorageFile newFile;
             try
             {
-                await newFile.RenameAsync(paper + ".pdf");
-                
+                newFile = await addPaperFile.CopyAsync(ViewModel.rootLocalDataFolder);
+                await newFile.RenameAsync(paper + ".pdf", NameCollisionOption.GenerateUniqueName);
             } catch (Exception ex)
             {
                 ContentDialog noWifiDialog = new ContentDialog
@@ -303,19 +342,19 @@ namespace FastResearch
             if (pdf.Bookmarks.Count > 0)
                 BookmarkButton.IsEnabled = true;
             LoadNavigator(pdf);
+
+
             this.ViewModel.getPapers((string)AreaButton.Content);
+            //方便后面保存操作
+
             curPaperName = (string)AreaButton.Content;
+            PaperItemInputBox.Text = "";
         }
 
         private void PdfViewer_PopupAnnotationAdded(object sender, PopupAnnotationAddedEventArgs e)
         {
             PopupButton.IsChecked = false;
         }
-
-
-
-
-
 
 
         /// <summary>
@@ -348,12 +387,22 @@ namespace FastResearch
             }
         }
 
+        /// <summary>
+        /// 关闭书签
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeBookmarkButton_Click(object sender, RoutedEventArgs e)
         {
             BookmarkGrid.Visibility = Visibility.Collapsed;
             isBookmarkClicked = false;
         }
 
+        /// <summary>
+        /// 书签点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Bookmark_Click(object sender, RoutedEventArgs e)
         {
             if (!isBookmarkClicked)
@@ -368,6 +417,13 @@ namespace FastResearch
             }
         }
 
+
+
+
+        /// <summary>
+        /// 读取书签
+        /// </summary>
+        /// <param name="ldoc"></param>
         private void LoadNavigator(PdfLoadedDocument ldoc)
         {
             PdfBookmarkBase bookmarkBase = ldoc.Bookmarks;
@@ -387,14 +443,22 @@ namespace FastResearch
             }
         }
 
-
-
+        /// <summary>
+        /// 界面判断
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NavigatorItem_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             SfTreeNavigatorItem item = sender as SfTreeNavigatorItem;
             item.HeaderTemplate = Resources["HeaderTemplate1"] as DataTemplate;
         }
 
+        /// <summary>
+        /// 界面判断
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NavigatorItem_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             SfTreeNavigatorItem item = sender as SfTreeNavigatorItem;
@@ -403,7 +467,11 @@ namespace FastResearch
 
 
 
-
+        /// <summary>
+        /// 子书签添加
+        /// </summary>
+        /// <param name="bookmark"></param>
+        /// <returns></returns>
         private SfTreeNavigatorItem AddChildBookmarks(PdfBookmark bookmark)
         {
             if (bookmark != null)
@@ -448,6 +516,12 @@ namespace FastResearch
                 return null;
         }
 
+
+        /// <summary>
+        /// 书签点击
+        /// </summary>
+        /// <param name="Sender"></param>
+        /// <param name="args"></param>
         private void NavigatorItem_ItemClicked(object Sender, Syncfusion.UI.Xaml.Controls.Navigation.ItemClickEventArgs args)
         {
             SfTreeNavigatorItem item = Sender as SfTreeNavigatorItem;
@@ -587,6 +661,10 @@ namespace FastResearch
             UncheckOthers(sender);
         }
 
+        /// <summary>
+        /// 取消button锁定
+        /// </summary>
+        /// <param name="sender"></param>
         private void UncheckOthers(object sender)
         {
             ToggleButton checkedButton = sender as ToggleButton;
@@ -611,6 +689,12 @@ namespace FastResearch
 
        
 
+        /// <summary>
+        /// 论文保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             this.ViewModel.Save(pdfViewer.Save(), curPaperName);
@@ -618,6 +702,11 @@ namespace FastResearch
             m_isButtonClicked = true;
         }
 
+        /// <summary>
+        /// 论文跳转
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void PageDestinationTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             int destPage = 0;
@@ -675,6 +764,7 @@ namespace FastResearch
         {
             PageDestinationTextBox.Text = string.Format("{0}", pdfViewer.PageNumber);
         }
+
 
         private void PageDestinationTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -801,6 +891,12 @@ namespace FastResearch
             }
         }
 
+
+        /// <summary>
+        /// ListView item右键事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void PaperItemList_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             try
@@ -830,55 +926,90 @@ namespace FastResearch
         /// <param name="paperArea"></param>
         private async void Remove_Click(object sender, RoutedEventArgs e)
         {
-            if(this.ViewModel.IsPaperAreaMenu) {
-                string paperArea = CurClickItem.name;
-                this.ViewModel.deletePaperArea(paperArea);
-                this.ViewModel.readPaperArea();
-                curPaperName = CurClickItem.name;
-                //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
-            } else
+            try
             {
-                string paper = CurClickItem.name;
-                string paperPath = this.ViewModel.getPdfDocument(paper);
-                StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
-                await file.DeleteAsync();
-                this.ViewModel.deletePaper(paper);
-                this.ViewModel.getPapers((string)this.AreaButton.Content);           
-                //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+                if (this.ViewModel.IsPaperAreaMenu)
+                {
+                    string paperArea = CurClickItem.name;
+                    List<String> papersPath = this.ViewModel.getPaperAreaPath(paperArea);
+                    this.ViewModel.deletePaperArea(paperArea);
+                    this.ViewModel.readPaperArea();
+                    curPaperName = CurClickItem.name;
+                    
+                    foreach(String path in papersPath) {
+                        StorageFile file = await StorageFile.GetFileFromPathAsync(path);
+                        Debug.WriteLine(path);
+                        await file.DeleteAsync();
+                    }
+                    //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+                }
+                else
+                {
+                    string paper = CurClickItem.name;
+                    string paperPath = this.ViewModel.getPdfDocument(paper);
+                    StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
+                    await file.DeleteAsync();
+                    this.ViewModel.deletePaper(paper);
+                    this.ViewModel.getPapers((string)this.AreaButton.Content);
+                    //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
+                }
+            } catch
+            {
+                ContentDialog noWifiDialog = new ContentDialog
+                {
+                    Title = "Wrong",
+                    Content = "错误的操作，未选中目标",
+                    CloseButtonText = "Close"
+                };
+
+                ContentDialogResult result = await noWifiDialog.ShowAsync();
             }
-          
+
         }
 
         private async void ReName_Click(object sender, RoutedEventArgs e)
         {
-            RenameDialog renameDialog = new RenameDialog();
-            if (this.ViewModel.IsPaperAreaMenu)
+            try
             {
-                string paperArea = CurClickItem.name;
-                renameDialog.isPaperAreaMenu = true;
-                renameDialog.CurPaperName = paperArea;
-                await renameDialog.ShowAsync();
-                if (renameDialog.Result == RenameResult.AddOK)
+                RenameDialog renameDialog = new RenameDialog();
+                if (this.ViewModel.IsPaperAreaMenu)
                 {
-                    this.ViewModel.readPaperArea();
+                    string paperArea = CurClickItem.name;
+                    renameDialog.isPaperAreaMenu = true;
+                    renameDialog.CurPaperName = paperArea;
+                    await renameDialog.ShowAsync();
+                    if (renameDialog.Result == RenameResult.AddOK)
+                    {
+                        this.ViewModel.readPaperArea();
+                    }
+
+                    curPaperName = CurClickItem.name;
+                    //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
                 }
-                
-                curPaperName = CurClickItem.name;
-                //PaperItemList.ItemsSource = this.ViewModel.PapersItems;
-            }
-            else
+                else
+                {
+                    string paper = CurClickItem.name;
+
+                    renameDialog.CurPaperName = paper;
+                    renameDialog.isPaperAreaMenu = false;
+                    string paperPath = this.ViewModel.getPdfDocument(paper);
+                    StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
+                    await renameDialog.ShowAsync();
+                    if (renameDialog.Result == RenameResult.AddOK)
+                    {
+                        this.ViewModel.getPapers((string)this.AreaButton.Content);
+                    }
+                }
+            } catch
             {
-                string paper = CurClickItem.name;
-          
-                renameDialog.CurPaperName = paper;
-                renameDialog.isPaperAreaMenu = false;
-                string paperPath = this.ViewModel.getPdfDocument(paper);
-                StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
-                await renameDialog.ShowAsync();
-                if (renameDialog.Result == RenameResult.AddOK)
+                ContentDialog noWifiDialog = new ContentDialog
                 {
-                    this.ViewModel.getPapers((string)this.AreaButton.Content);
-                }
+                    Title = "Wrong",
+                    Content = "错误的操作，未选中目标",
+                    CloseButtonText = "Close"
+                };
+
+                ContentDialogResult result = await noWifiDialog.ShowAsync();
             }
         }
     }
