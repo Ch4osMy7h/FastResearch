@@ -138,6 +138,12 @@ namespace FastResearch.DatabaseManager
 
             return PaperArea;
         }
+
+        /// <summary>
+        /// 获得当前PaperArea下的Paper名
+        /// </summary>
+        /// <param name="paperArea"> 论文领域</param>
+        /// <returns></returns>
         public static List<String> GetPaperName(String paperArea)
         {
             List<String> PaperName = new List<string>();
@@ -173,7 +179,7 @@ namespace FastResearch.DatabaseManager
         /// <summary>
         /// 获取PaperPath对应的Paper文件夹
         /// </summary>
-        /// <param name="paper"> Paper 名字</param>
+        /// <param name="paper"> 论文名</param>
         /// <returns></returns>
         public static String GetPaperPath(String paper)
         {
@@ -211,8 +217,8 @@ namespace FastResearch.DatabaseManager
         /// <summary>
         /// 存储Paper所存储路径
         /// </summary>
-        /// <param name="paper"></param>
-        /// <param name="paperpath"></param>
+        /// <param name="paper">论文名</param>
+        /// <param name="paperpath"> 论文名对应的存储路径</param>
         /// <returns></returns>
         public static bool UpdatePaperPath(String paper, String paperpath)
         {
@@ -236,6 +242,12 @@ namespace FastResearch.DatabaseManager
             return false;
         }
         
+
+
+        /// <summary>
+        /// 删除paper对应的论文
+        /// </summary>
+        /// <param name="paper"> 论文名</param>
         public static void deletePaper(string paper)
         {
             try
@@ -257,6 +269,10 @@ namespace FastResearch.DatabaseManager
             }
         }
 
+        /// <summary>
+        /// 删除论文领域
+        /// </summary>
+        /// <param name="paperArea"> 论文领域</param>
         public static void deletePaperArea(string paperArea)
         {
             try
@@ -289,8 +305,8 @@ namespace FastResearch.DatabaseManager
         /// <summary>
         /// 更新Paper名
         /// </summary>
-        /// <param name="newPaperName"></param>
-        /// <param name="oldPaperName"></param>
+        /// <param name="newPaperName">新论文名</param>
+        /// <param name="oldPaperName">旧论文名</param>
         /// <returns></returns>
         public static bool UpdatePaper(String newPaperName, String oldPaperName)
         {
@@ -317,8 +333,8 @@ namespace FastResearch.DatabaseManager
         /// <summary>
         /// 更新PaperArea名
         /// </summary>
-        /// <param name="newPaperAreaName"></param>
-        /// <param name="oldPaperAreaName"></param>
+        /// <param name="newPaperAreaName">  新论文领域名</param>
+        /// <param name="oldPaperAreaName"> 旧论文领域名</param>
         /// <returns></returns>
         public static bool UpdatePaperArea(String newPaperAreaName, String oldPaperAreaName)
         {
@@ -342,6 +358,9 @@ namespace FastResearch.DatabaseManager
             return false;
         }
 
+        /// <summary>
+        /// 删除数据库所有内容
+        /// </summary>
         public static void DeleteAll()
         {
             try
@@ -363,6 +382,43 @@ namespace FastResearch.DatabaseManager
             {
                 Debug.WriteLine("Bug!");
             }
+        }
+
+
+        /// <summary>
+        /// 获取PaperArea下所有paper的path
+        /// </summary>
+        /// <returns></returns>
+        public static List<String> getPaperAreaPath(string paperArea)
+        {
+            List<String> Paperspath = new List<string>();
+
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand selectCommand = new SqliteCommand
+                        ("SELECT PapersPath from Papers Where BelongToPaperArea=" + paperArea, db);
+
+                    SqliteDataReader query = selectCommand.ExecuteReader();
+
+                    while (query.Read())
+                    {
+                        Paperspath.Add(query.GetString(0));
+
+                    }
+
+                    db.Close();
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("bug");
+            }
+
+            return Paperspath;
         }
     }
 }

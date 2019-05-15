@@ -67,12 +67,20 @@ namespace FastResearch.PdfReader
             //PaperAreaFolder.Add(newPaperAreaFolder);
         }
 
+        /// <summary>
+        /// 查找Paper对应的Path
+        /// </summary>
+        /// <param name="paper"> 论文名</param>
+        /// <returns></returns>
         public static StorageFile mapPaperToFile(string paper)
         {
             return Papers.Find(x => x.name == paper).paperLocation;
 
         }
 
+        /// <summary>
+        /// 清空数据库时候用来重建存放论文的文件夹
+        /// </summary>
         public static async void rebuildRootPaper()
         {
             Windows.Storage.StorageFolder storageFolder =
