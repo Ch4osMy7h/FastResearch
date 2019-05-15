@@ -1,10 +1,13 @@
-﻿using System;
+﻿using FastResearch.Services;
+using GalaSoft.MvvmLight.Ioc;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -47,7 +50,7 @@ namespace FastResearch
             this.InitializeComponent();
         }
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             if (String.IsNullOrEmpty(nameTextBox.Text))
             {
@@ -65,8 +68,13 @@ namespace FastResearch
                 } else
                 {
                     NewPaperName = nameTextBox.Text;
-                  
+                    PaperAreaService service = SimpleIoc.Default.GetInstance<PaperAreaService>();
+                    string paperPath = service.getPaperPath(CurPaperName);
+                    
+                    StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
+                    await file.RenameAsync(NewPaperName+ ".pdf");
                     DatabaseManager.UserDataBase.UpdatePaper(NewPaperName, CurPaperName);
+                    DatabaseManager.UserDataBase.UpdatePaperPath(NewPaperName, file.Path);
                     this.Result = RenameResult.AddOK;
                 }
                

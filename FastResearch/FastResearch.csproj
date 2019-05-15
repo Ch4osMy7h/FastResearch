@@ -122,6 +122,9 @@
     <Compile Include="AddDialog.xaml.cs">
       <DependentUpon>AddDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClearDialog.xaml.cs">
+      <DependentUpon>ClearDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseManager\CommandDatabase.cs" />
     <Compile Include="Converter\NullableBooleanToBoolean.cs" />
     <Compile Include="DatabaseManager\UserDataBase.cs" />
@@ -176,6 +179,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="AddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClearDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

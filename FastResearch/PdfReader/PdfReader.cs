@@ -1,3 +1,4 @@
+﻿
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +33,10 @@ namespace FastResearch.PdfReader
             PdfLoadedDocument loadedDocument = new PdfLoadedDocument(buffer);
             return loadedDocument;
 
-           // PdfDocument pdf = await PdfDocument.LoadFromFileAsync(file);
-           // //PdfFileManger.copyPaperToFileManger(file, paperArea,  paperName);
-           // // 获取PDF文档的总页数
-           // uint pageCount = pdf.PageCount;
+            // PdfDocument pdf = await PdfDocument.LoadFromFileAsync(file);
+            // //PdfFileManger.copyPaperToFileManger(file, paperArea,  paperName);
+            // // 获取PDF文档的总页数
+            // uint pageCount = pdf.PageCount;
 
             // List<BitmapImage> pageimages = new List<BitmapImage>();
 
@@ -48,7 +49,7 @@ namespace FastResearch.PdfReader
             // {
             //     Debug.WriteLine(p);
             //     PdfPage page = pdf.GetPage(p);
-
+            
             //     await page.PreparePageAsync();
             //     // 将页面内容保存为图像
             //     InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream();

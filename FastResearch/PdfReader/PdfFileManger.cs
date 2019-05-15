@@ -73,6 +73,22 @@ namespace FastResearch.PdfReader
 
         }
 
+        public static async void rebuildRootPaper()
+        {
+            Windows.Storage.StorageFolder storageFolder =
+                       Windows.Storage.ApplicationData.Current.LocalFolder;
+
+            //Windows.Storage.StorageFile sampleFile =
+            //    await storageFolder.CreateFileAsync("sample.txt",
+            //        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            //Debug.WrWindows.Storage.StorageFile sampleFile =
+            RootPaperItems = await storageFolder.CreateFolderAsync("Root",
+                Windows.Storage.CreationCollisionOption.OpenIfExists);
+            await RootPaperItems.DeleteAsync();
+            RootPaperItems = await storageFolder.CreateFolderAsync("Root",
+                Windows.Storage.CreationCollisionOption.OpenIfExists);
+        }
+
     }
 
 }

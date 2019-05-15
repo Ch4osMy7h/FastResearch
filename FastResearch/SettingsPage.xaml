@@ -9,6 +9,34 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <TextBlock  Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="10,0,0,0"
+                    FontWeight="Normal"
+                    FontSize="30"
+                    Text="Settings" />
+        <ScrollViewer
+            x:Name="contentSV"
+            Grid.Row="1"
+            Padding="20,0,0,0"
+            IsTabStop="False"
+            UseSystemFocusVisuals="False"
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="10,50,0,0"
+                    FontWeight="Normal"
+                    Text="数据管理" />
+                <StackPanel x:Name="clear" Margin="10, 10,0,0">
+                    <Button Content="清空所有数据" x:Name="ClearData" Click="ClearData_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

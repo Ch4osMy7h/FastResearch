@@ -41,12 +41,8 @@ namespace FastResearch.DatabaseManager
         public static ObservableCollection<Command> GetCommand()
         {
             var ob = db.GetAllWithChildren<OptionPair>().ToList();
-           var cb = db.GetAllWithChildren<Command>().ToList() ;
-            return new ObservableCollection<Command>(db.GetAllWithChildren<Command>().ToList());         
-           
+            var cb = db.GetAllWithChildren<Command>().ToList();
+            return new ObservableCollection<Command>(db.GetAllWithChildren<Command>().ToList());           
         }
-
-
-
     }
 }

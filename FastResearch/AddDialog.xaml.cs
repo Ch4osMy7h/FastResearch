@@ -68,8 +68,15 @@ namespace FastResearch
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
             picker.FileTypeFilter.Add(".py");
-            var file = await picker.PickSingleFileAsync();
-            fileTextBox.Text = file.Name;
+            try
+            {
+                var file = await picker.PickSingleFileAsync();
+                fileTextBox.Text = file.Name;
+            } catch
+            {
+                
+            }
+          
         }
     }
 }

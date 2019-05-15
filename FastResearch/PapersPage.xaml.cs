@@ -63,7 +63,7 @@ namespace FastResearch
             //solve the problem that can't not press a button in titlebar 
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(BackgroundElement);
-       
+      
             this.AreaButton.Content = this.ViewModel.getPaperAreaFirstOrNot();
             this.ViewModel.getPapers(this.ViewModel.getPaperAreaFirstOrNot());
             PaperItemList.ItemsSource = this.ViewModel.PapersItems;
@@ -86,6 +86,8 @@ namespace FastResearch
                 this.pdfViewer.Unload(true);
             UnlinkChildrens(this);
         }
+
+
 
         void UnlinkChildrens(UIElement element)
         {
@@ -417,7 +419,7 @@ namespace FastResearch
                 child.PointerExited += NavigatorItem_PointerExited;
                 child.Tag = bookmark;
 
-                //这段需要研究下
+                
                 if (bookmark.Count != 0)
                 {
                     for (int i = 0; i < bookmark.Count; i++)
@@ -799,12 +801,26 @@ namespace FastResearch
             }
         }
 
-        private void PaperItemList_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        private async void PaperItemList_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
-            ListView listView = (ListView)sender;
-            ContextMenuFlyout.ShowAt(listView, e.GetPosition(listView));
-            var a = ((FrameworkElement)e.OriginalSource).DataContext as PaperArea;
-            CurClickItem = a;
+            try
+            {
+                ListView listView = (ListView)sender;
+                ContextMenuFlyout.ShowAt(listView, e.GetPosition(listView));
+                var a = ((FrameworkElement)e.OriginalSource).DataContext as PaperArea;
+                CurClickItem = a;
+            } catch 
+            {
+                ContentDialog noWifiDialog = new ContentDialog
+                {
+                    Title = "Wrong",
+                    Content = "错误的操作，未选中目标",
+                    CloseButtonText = "Close"
+                };
+
+                ContentDialogResult result = await noWifiDialog.ShowAsync();
+            }
+            
         }
 
 
@@ -824,7 +840,6 @@ namespace FastResearch
             {
                 string paper = CurClickItem.name;
                 string paperPath = this.ViewModel.getPdfDocument(paper);
-                Debug.WriteLine(paperPath);
                 StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
                 await file.DeleteAsync();
                 this.ViewModel.deletePaper(paper);
@@ -857,6 +872,8 @@ namespace FastResearch
           
                 renameDialog.CurPaperName = paper;
                 renameDialog.isPaperAreaMenu = false;
+                string paperPath = this.ViewModel.getPdfDocument(paper);
+                StorageFile file = await StorageFile.GetFileFromPathAsync(paperPath);
                 await renameDialog.ShowAsync();
                 if (renameDialog.Result == RenameResult.AddOK)
                 {

@@ -97,13 +97,13 @@
                                     </Grid.RowDefinitions>
 
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Text="File name: " Grid.Row="0" Grid.Column="0"/>
-                                    <TextBlock Text="{x:Bind file}" Grid.Row="0" Grid.Column="1"/>
+                                    <TextBlock Text="{x:Bind file}" Margin="200,0,0,0" Grid.Row="0" Grid.Column="0"/>
 
                                     <TextBlock Text="Description: " Grid.Row="1" Grid.Column="0"/>
                                     <TextBlock Text="{x:Bind description}" Grid.Row="2" Grid.Column="0"/>

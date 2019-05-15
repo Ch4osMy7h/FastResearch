@@ -182,7 +182,7 @@ namespace FastResearch.Model
 
         public string GetCommand() => executable + " " + file + " " +   
             (options != null && options.Count > 0 && options.Where(m => m.isChecked == true).Count() > 0 ? 
-            options.Where(m=>m.isChecked == true).Select(it => "-" + it.option + " " + it.myValue).ToList().Aggregate((acc, item) => acc + " " + item) : "");
-
+            options.Where(m=>m.isChecked == true).Select(it => "--" + it.option + " " + it.myValue).ToList().Aggregate((acc, item) => acc + " " + item) : "");
+        
     }
 }

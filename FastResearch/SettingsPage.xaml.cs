@@ -26,5 +26,11 @@ namespace FastResearch
         {
             this.InitializeComponent();
         }
+
+        private async void ClearData_Click(object sender, RoutedEventArgs e)
+        {
+            ClearDialog clearDialog = new ClearDialog();
+            await clearDialog.ShowAsync();
+        }
     }
 }

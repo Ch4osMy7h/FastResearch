@@ -341,5 +341,28 @@ namespace FastResearch.DatabaseManager
             }
             return false;
         }
+
+        public static void DeleteAll()
+        {
+            try
+            {
+                using (SqliteConnection db =
+                    new SqliteConnection("Filename=userdata.db"))
+                {
+                    db.Open();
+                    SqliteCommand deleteCommand = new SqliteCommand
+                        ("DELETE FROM PaperAreas", db);
+                    deleteCommand.ExecuteReader();
+                    deleteCommand = new SqliteCommand
+                        ("DELETE FROM Papers", db);
+                    deleteCommand.ExecuteReader();
+                    db.Close();
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Bug!");
+            }
+        }
     }
 }

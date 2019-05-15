@@ -150,7 +150,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="48"/>
                     </Grid.RowDefinitions>
-                    <Button Content="PaperArea" Name="AreaButton" Grid.Row="0" Click="AreaButton_Click" Width="321" Height="48" />
+                    <Button Content="Paper Area" Name="AreaButton" Grid.Row="0" Click="AreaButton_Click" Width="321" Height="48" />
                     <!--<ComboBox ItemsSource="{x:Bind ViewModel.PaperAreas}" 
                                              Width="321" Grid.Row="0" IsEditable="True"/>-->
                     <ListView  x:Name="PaperItemList" Margin="0,0,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch"
@@ -218,7 +218,6 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-
                     <Grid Grid.Column="0" x:Name="BookmarkGrid" Visibility="Collapsed" Width="300" BorderThickness="0.5 0.5 0 0" BorderBrush="#707070">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40" />

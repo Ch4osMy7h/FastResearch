@@ -16,7 +16,7 @@
         <TextBox Name="nameTextBox" Header="请输入命令的名称"/>
         <StackPanel Orientation="Horizontal">
             <TextBox Name="fileTextBox" Header="请输入文件名"/>
-            <Button Content="选择文件" Click="fileButton_Click"/>
+            <Button Margin="8,20,0,0" Content="选择文件" Click="fileButton_Click"/>
         </StackPanel>
         <TextBox Name="descriptionTextBox" Header="请输入命令描述"/>
         <TextBlock x:Name="errorTextBlock"/>
