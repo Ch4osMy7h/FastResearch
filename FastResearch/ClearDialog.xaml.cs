@@ -40,7 +40,7 @@ namespace FastResearch
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             DatabaseManager.UserDataBase.DeleteAll();
-            //DatabaseManager.CommandDataBase.deleteAll();
+            DatabaseManager.CommandDataBase.DeleteAll();
             PdfReader.PdfFileManger.rebuildRootPaper();
             this.Result = ClearResult.ClearOK;
         }
