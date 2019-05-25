@@ -286,6 +286,7 @@ namespace FastResearch
         {
             PaperItemSaveButton.Visibility = Visibility.Collapsed;
             String paper = PaperItemInputBox.Text;
+            Debug.WriteLine(this.ViewModel.rootLocalDataFolder.Path);
             if(paper.Length == 0)
             {
                 ContentDialog noWifiDialog = new ContentDialog
@@ -301,6 +302,7 @@ namespace FastResearch
             var picker = new FileOpenPicker();
             picker.FileTypeFilter.Add(".pdf");
             addPaperFile = await picker.PickSingleFileAsync();
+           
             //当没有选择到文件的时候，返回
             if (addPaperFile == null) return;
             StorageFile newFile;

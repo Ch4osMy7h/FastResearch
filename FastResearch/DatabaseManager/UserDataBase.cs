@@ -34,7 +34,7 @@ namespace FastResearch.DatabaseManager
                     SqliteCommand createTable = new SqliteCommand(TablePaperAreaCommand, db);
                     createTable.ExecuteReader();
                     String TablePaperCommand = "CREATE TABLE IF NOT " +
-                                "EXISTS Papers(PaperId INTEGER, " + "Paper Text, " + "BelongToPaperArea Text," + "PapersPath Text)";
+                                "EXISTS Papers(PaperId INTEGER, " + "Paper Text, " + "BelongToPaperArea Text, " + "PapersPath Text)";
                     createTable = new SqliteCommand(TablePaperCommand, db);
                     createTable.ExecuteReader();
                 }
