@@ -16,21 +16,7 @@
 - 一个界面显示论文对应的pdf (较大布局， 居中)
 - 一个界面用来记录对应的笔记 (位于右边)
 ## Code
-- 打开论文对应的文件夹
 
-<!-- # Plan
-- 类似于things3的任务设计
-  ![avatar](readme_img/1.png) -->
-
-# Structure
-## DataBaseManger:
-- UserDataBase.cs: 数据库的创建和增删改查
-  
-## ViewModel
-MainPageViewModel.cs
-ToolsPageViewModel.cs
-PapersPageViewModel.cs
-## Model
 
 
 
